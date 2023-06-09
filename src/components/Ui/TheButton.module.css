@@ -1,0 +1,32 @@
+/* .button {
+  width: 130px;
+  border: none;
+  padding: 8px 0;
+  background-color: var(--primaryitemcolor);
+  color: white;
+  border-radius: 7px;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #ef4c06;
+} */
+
+
+.button {
+  background-color: var(--primaryitemcolor);
+  color: var(--light);
+  padding: 15px 15px 15px 15px;
+  width: 200px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid var(--primaryitemcolor);
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #EF3901;
+  border: 1px solid #EF3901;
+}

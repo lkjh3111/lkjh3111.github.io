@@ -1,0 +1,120 @@
+.navbar {
+  background-color: transparent;
+  /* padding: 10px 5rem; */
+  padding-left: 3%;
+  padding-right: 3%;
+  transition: 0.3s;
+}
+
+.navbar_active{
+  background-color: var(--primarybackground);
+  /* padding: 10px 5rem; */
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.navbar_brand {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .toggle {
+  border: none;
+  background-color: var(--primarybackground);
+}
+
+.navbar .link {
+  text-decoration: none;
+}
+
+.navbar .toggle:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.navbar img {
+  /* right:0%; */
+  width: 20%;
+  height: 100%;
+}
+
+.navbar_active img {
+  /* right:0%; */
+  width: 20%;
+  height: 100%;
+}
+
+.navbar__text {
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  font-size: 20px;
+  color: var(--light);
+  transition: opacity 0.2s ease 0s;
+  text-decoration: none;
+}
+
+.navbar__text:hover {
+  color: var(--secondarytextcolor);
+}
+
+.navbar__text__active {
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  font-size: 20px;
+  color: var(--dark);
+  transition: opacity 0.2s ease 0s;
+  text-decoration: none;
+}
+
+.navbar__text__active:hover {
+  color: var(--tertiarytextcolor);
+}
+
+/* .navbar .nav__linkgroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+} */
+
+.navbar .nav__link {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--dark);
+  transition: 0.3s;
+}
+
+.navbar .nav__link:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+.navbar .nav__link .active {
+  color: var(--primaryitemcolor) !important;
+  text-decoration: none;
+} 
+
+/* .navbar .lastnav__link {
+  color: var(--primaryitemcolor);
+}
+
+.navbar .nav__link:hover {
+  color: var(--primaryitemcolor);
+}
+
+@media only screen and (max-width: 1200px) {
+  .navbar {
+    padding: 7px 1rem;
+  }
+
+  .navbar .nav__linkgroup {
+    position: relative;
+    display: block;
+  }
+} */

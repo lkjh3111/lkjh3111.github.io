@@ -1,0 +1,122 @@
+/* .items {
+  padding: 0px 20px 20px 20px;
+}
+
+.items .item_group {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.buttons {
+  text-align: right;
+}
+
+.buttons .btn_style {
+  background-color: var(--light);
+  border: 1px solid var(--primaryitemcolor);
+  color: var(--primaryitemcolor);
+  transition: 0.3s;
+}
+
+.buttons .btn_style2 {
+  border: 1px solid var(--primaryitemcolor);
+}
+
+.buttons .btn_style:hover {
+  background-color: var(--primaryitemcolor);
+  color: var(--light);
+}
+
+.amount {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount p {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 576px) {
+  .amount p {
+    font-size: 22px;
+    font-weight: 700;
+  }
+} */
+
+/* .login-modal {
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.login-modal.open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.signup_modal_content {
+  /* display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center; */
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 70px;
+  padding-right: 70px;
+  border-radius: 5px;
+  text-align: center;
+  /* margin: 10px; */
+}
+
+.signup_modal_content label {
+  font-size: 16px;
+  float:left;
+  font-weight: 700;
+  margin-left: 2px;
+  /* margin-bottom: 30px; */
+}
+
+.signup_modal_content h2 {
+  color: var(--primaryitemcolor);
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.signup_modal_content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button_modal_div {
+  text-align: right;
+  margin-top: 30px;
+}
+
+/* .login_modal_content button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+} */
+
+.signup button.close-button {
+  margin-top: 10px;
+  background-color: #ccc;
+  color: #fff;
+}
