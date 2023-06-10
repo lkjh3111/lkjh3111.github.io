@@ -38,6 +38,7 @@
   text-align: left;
   /* margin-bottom: 20px; */
   display: flex;
+  width: 50%;
 }
 
 .text__div h1 {
@@ -131,13 +132,31 @@
   display: flex;
 }
 
-.order_button {
+/* .order_button {
   color: var(--light);
   text-decoration: none;
   margin-right: 20px;
 }
 
 .order_button:hover {
+  color: var(--light);
+} */
+
+.trade_now_button {
+  color: var(--light);
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.trade_now_button:hover {
+  color: var(--light);
+}
+.practice_button {
+  color: var(--light);
+  text-decoration: none;
+}
+
+.practice_button:hover {
   color: var(--light);
 }
 
@@ -162,6 +181,9 @@
   .devices__image {
     display: none;
   }
+  .text__div {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -169,7 +191,7 @@
     position: static;
     transform: translateY(0%);
     text-align: center;
-    padding-right: 0;
+    padding: 0 2% 0 2%;
   }
 
   .buttons {

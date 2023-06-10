@@ -61,7 +61,7 @@
 
 .navbar_brand img {
   /* right:0%; */
-  width: 10%;
+  width: 15%;
   height: 100%;
 }
 
@@ -83,8 +83,9 @@
 }
 
 @media only screen and (max-width: 991px) {
-  .content_div p:nth-child(2) {
-    display: none;
+  .content_div{
+    padding-right: 0%;
+    text-align: justify;
   }
 
   .about {

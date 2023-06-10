@@ -61,7 +61,12 @@
   .text_div {
     padding-right: 0;
     position: static;
+    text-align: justify;
     transform: translateY(0);
+  }
+
+  .text_div h2{
+    text-align: center;
   }
 
   .image_div {

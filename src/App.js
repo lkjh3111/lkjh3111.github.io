@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TheNav from "./components/Header/TheNav";
 // import TheNavbar from "./components/Header/TheNavbar";
 import Sections from "./components/Sections/Sections";
-import Login from "./components/Login/Login";
 import CartProvider from "./components/store/CartProvider";
 import TheFooter from "./components/Footer/TheFooter";
 // import Swal from "sweetalert2";

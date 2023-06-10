@@ -1,5 +1,11 @@
 .row {
-  padding: 100px 0 50px 0;
+  /* padding: 100px 0 50px 0; */
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .row_content {
@@ -28,6 +34,13 @@
   transform: translateY(-50%);
 }
 
+.text_div_ {
+  padding-right: 10%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .text_div h3{
   font-size: 30px;
   font-weight: 700;
@@ -38,14 +51,21 @@
   font-size: 20px;
 }
 
+.text_content_right {
+  font-size: 20px;
+}
+
 .image_div {
   width: 100%;
-  margin-left: 10%;
-  margin-bottom: 10%;
+  /* margin-left: 10%; */
+  /* margin-bottom: 10%;
+  margin-top: 10%; */
 }
 
 .image {
-  width: 80%;
+  width: 100%;
+  margin-bottom: 10%;
+  /* margin-top: 10%; */
 }
 
 .download_badge {
@@ -60,7 +80,12 @@
   .text_div {
     padding-right: 0;
     position: static;
+    text-align: justify;
     transform: translateY(0);
+  }
+
+  .text_div h3{
+    text-align: center;
   }
 
   .image_div {

@@ -69,9 +69,7 @@ const HomeSection = () => {
               data-aos-easing='ease-out'
               data-aos-duration='1500'
             >
-              <h1>
-                Trade Stocks, Forex <br /> and Crypto
-              </h1>
+              <h1>Trade Stocks, Forex and Crypto</h1>
             </div>
             <div
               className={classes.buttons}
@@ -80,7 +78,7 @@ const HomeSection = () => {
               data-aos-duration='1500'
             >
               <Link
-                className={classes.order_button}
+                className={classes.trade_now_button}
                 z
                 // to='dishes'
                 spy={true}
@@ -91,7 +89,7 @@ const HomeSection = () => {
                 <TheButton>Trade Now</TheButton>
               </Link>
               <Link
-                className={classes.order_button}
+                className={classes.practice_button}
                 // to='dishes'
                 spy={true}
                 smooth={true}

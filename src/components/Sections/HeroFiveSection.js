@@ -57,24 +57,27 @@ const HeroFiveSection = () => {
 
         <Row className={`${classes.row_content} mx-auto`}>
           <Col
-            lg={6}
+            lg={{ span: 6, order: 1 }}
             data-aos='fade-right'
             data-aos-easing='ease-out'
             data-aos-duration='700'
+            xs={{ span: 12, order: 2 }}
           >
             <div className={classes.image_div}>
               <img className={classes.image} src={feature2} alt='about'></img>
             </div>
           </Col>
           <Col
-            lg={6}
+            // lg={6}
+            lg={{ span: 6, order: 2 }}
             data-aos='fade-left'
             data-aos-easing='ease-out'
             data-aos-duration='700'
+            xs={{ span: 12, order: 1 }}
           >
             <div className={classes.text_div}>
               <h3>Risk Management</h3>
-              <p className={classes.text_content}>
+              <p className={classes.text_content_right}>
                 With features such as Stop Loss/Take Profit, Negative Balance
                 Protection and Trailing Stop, you can manage your losses and
                 profits at the levels you set.
@@ -93,9 +96,9 @@ const HeroFiveSection = () => {
             <div className={classes.text_div}>
               <h3>Trading Community</h3>
               <p className={classes.text_content}>
-                Join the massive IQ Option community, discuss trading ideas and
-                opportunities, or simply follow other traders with features like
-                Trader Sentiment and Community Live Trades.
+                Join the massive 158 Forex Trading community, discuss trading
+                ideas and opportunities, or simply follow other traders with
+                features like Trader Sentiment and Community Live Trades.
               </p>
             </div>
           </Col>
