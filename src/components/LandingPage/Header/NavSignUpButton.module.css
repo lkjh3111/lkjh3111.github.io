@@ -1,4 +1,4 @@
-.cart__button {
+.sign__up__button {
   background-color: var(--primaryitemcolor);
   color: var(--light);
   padding: 10px 0;
@@ -10,7 +10,7 @@
   transition: 0.3s;
 }
 
-.cart__button i {
+.sign__up__button i {
   display: inline-block;
   margin-right: 5px;
   font-size: 18px;
@@ -26,7 +26,7 @@
   border-radius: 11px;
 } */
 
-.cart__button:hover {
+.sign__up__button:hover {
   background-color: #EF3901;
   border: 1px solid #EF3901;
 }

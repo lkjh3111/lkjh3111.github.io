@@ -1,20 +1,19 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import Modal from "../Ui/Modal";
-import TheButton from "../Ui/TheButton";
-import classes from "./SignUp.module.css";
+import React, { useState, useRef, useEffect } from "react";
+import Modal from "../../Ui/Modal";
+import TheButton from "../../Ui/TheButton";
+import classes from "./Login.module.css";
 // import CartContext from "../store/cartcontext";
 
-const SignUp = (props) => {
+const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const modalRef = useRef();
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        props.onSignUp();
+        props.onLogin();
       }
     };
 
@@ -33,16 +32,15 @@ const SignUp = (props) => {
     setPassword(e.target.value);
   };
 
-  const handleSignUp = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     // Perform login logic here with username and password
     // Reset the form fields
     setUsername("");
     setPassword("");
-    setConfirmPassword("");
   };
   return (
-    <Modal onSignUp={props.onSignUp}>
+    <Modal onLogin={props.onLogin}>
       {/* <div>
         <div>
           <p>Login</p>
@@ -51,12 +49,12 @@ const SignUp = (props) => {
           <TheButton>Login</TheButton>
         </div>
       </div> */}
-      <div className={classes.signup_modal_content} ref={modalRef}>
+      <div className={classes.login_modal_content} ref={modalRef}>
         <div>
-          <h2>Sign Up</h2>
+          <h2>Login</h2>
         </div>
         <div>
-          <form onSubmit={handleSignUp}>
+          <form onSubmit={handleLogin}>
             <div className='mb-3'>
               <label className={classes.input__label}>Email</label>
               <input
@@ -66,7 +64,7 @@ const SignUp = (props) => {
                 onChange={handleUsernameChange}
               />
             </div>
-            <div className='mb-3'>
+            <div className='mb-2'>
               <label className={classes.input__label}>Password</label>
               <input
                 type='password'
@@ -75,17 +73,20 @@ const SignUp = (props) => {
                 onChange={handlePasswordChange}
               />
             </div>
-            <div className='mb-3'>
-              <label className={classes.input__label}>Confirm Password</label>
-              <input
-                type='password'
-                placeholder='Re-enter Password'
-                value={confirmPassword}
-                onChange={handlePasswordChange}
-              />
+            <div>
+              {/* <div> */}
+              <label className={classes.remember__label}>
+                <input
+                  type='checkbox'
+                  className={classes.checkbox}
+                  id='customCheck1'
+                />
+                Remember me
+              </label>
+              {/* </div> */}
             </div>
             <div className={classes.button_modal_div}>
-              <TheButton type='submit'>Sign Up</TheButton>
+              <TheButton type='submit'>Login</TheButton>
             </div>
           </form>
         </div>
@@ -99,4 +100,4 @@ const SignUp = (props) => {
 
 // ENDS
 
-export default SignUp;
+export default Login;

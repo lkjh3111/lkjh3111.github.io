@@ -1,4 +1,4 @@
-.cart__button {
+.login__button {
   background-color: transparent;
   /* color: var(--light); */
   color: var(--primaryitemcolor);
@@ -11,7 +11,7 @@
   transition: 0.3s;
 }
 
-.cart__button_active {
+.login__button_active {
   background-color: transparent;
   color: var(--light);
   color: var(--light);
@@ -24,33 +24,17 @@
   transition: 0.3s;
 }
 
-/* .cart__button i {
-  display: inline-block;
-  margin-right: 5px;
-  font-size: 18px;
-  color: var(--light);
-}
-
-.cart__button .badge {
-  display: inline;
-  margin-left: 10px;
-  background-color: var(--primarybackground);
-  color: var(--dark);
-  padding: 2px 13px 2px 13px;
-  border-radius: 11px;
-} */
-
-.cart__button:hover {
+.login__button:hover {
   background-color: #ef4c06;
   color: var(--light);
 }
 
-.cart__button_active:hover {
+.login__button_active:hover {
   background-color: var(--light);
   color: var(--dark);
 }
 
-.bump.cart__button {
+.bump.login__button {
   animation: bump 0.3s ease 0s 1 normal;
 }
 

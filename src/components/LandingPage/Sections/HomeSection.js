@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import TheButton from "../Ui/TheButton";
-import TransparentButton from "../Ui/TransparentButton";
+import React from "react";
+import TheButton from "../../Ui/TheButton";
+import TransparentButton from "../../Ui/TransparentButton";
 import classes from "./HomeSection.module.css";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Container } from "react-bootstrap";
 import { Link } from "react-scroll";
 import "bootstrap/dist/css/bootstrap.min.css";
-import DevicesImage from "../../assets/image/devices.webp";
+import DevicesImage from "../../../assets/image/devices.webp";
 // import BackgroundImage from "../../assets/image/chart.png";
 
 const HomeSection = () => {

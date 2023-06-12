@@ -22,7 +22,7 @@
 }
 
 .bg_image {
-  background-image: url("../../assets/image/chart.png");
+  background-image: url("../../../assets/image/chart.png");
   background-size: cover;
   background-position: center;
 }
@@ -162,7 +162,7 @@
 
 .devices__image{
   position: absolute;
-  background: url("../../assets/image/devices.webp");
+  background: url("../../../assets/image/devices.webp");
   /* background-size: 100% 100%; */
   background-size: contain;
   top: 30px;

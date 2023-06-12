@@ -2,9 +2,9 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./HeroFiveSection.module.css";
-import feature1 from "../../assets/image/feature1.jpeg";
-import feature2 from "../../assets/image/feature2.jpeg";
-import feature3 from "../../assets/image/feature3.jpg";
+import feature1 from "../../../assets/image/feature1.jpeg";
+import feature2 from "../../../assets/image/feature2.jpeg";
+import feature3 from "../../../assets/image/feature3.jpg";
 
 const HeroFiveSection = () => {
   //Structure % layout of the get our mobile app

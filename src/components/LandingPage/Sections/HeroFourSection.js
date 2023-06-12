@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Row, Container, Col } from "react-bootstrap";
-import TheButton from "../Ui/TheButton";
+import TheButton from "../../Ui/TheButton";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./HeroFourSection.module.css";
-import aboutImage from "../../assets/image/app.png";
-import Modal from "../Ui/Modal";
+import aboutImage from "../../../assets/image/app.png";
+import Modal from "../../Ui/Modal";
 
 const HeroFourSection = () => {
   const [showModal, setShowModal] = useState(false);
