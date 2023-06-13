@@ -1,0 +1,23 @@
+.site_layout {
+  display: flex;
+}
+
+.sidebar {
+    width: 15%;
+    overflow: auto;
+    padding: 20px 0 20px 20px;
+    border-right: 1px solid #ebebeb;
+}
+
+.content {
+  padding: 20px;
+  overflow: auto;
+  flex: 1;
+  height: 100vh;
+}
+
+@media (max-width: 1020px) {
+  .sidebar {
+    display: none !important;
+ }
+}

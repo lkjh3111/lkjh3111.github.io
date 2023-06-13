@@ -145,12 +145,14 @@ const TheNavbar = (props) => {
                 Testimonials
               </Link>
             </Nav.Link> */}
-            <Nav.Link href='#buttons' className={`${classes.nav__link}`}>
+            {/* <Nav.Link href='#buttons' className={`${classes.nav__link}`}> */}
+            <Nav.Link className={`${classes.nav__link}`}>
               {/* <NavLoginButton onClick={props.onShowLogin} /> */}
               <NavLoginButton onClick={onShowLoginHandler} />
               {loginIsShown && <Login onLogin={onCloseLoginHandler} />}
             </Nav.Link>
-            <Nav.Link href='#buttons' className={`${classes.nav__link}`}>
+            {/* <Nav.Link href='#buttons' className={`${classes.nav__link}`}> */}
+            <Nav.Link className={`${classes.nav__link}`}>
               <NavSignUpButton onClick={onShowSignUpHandler} />
               {signUpIsShown && <SignUp onSignUp={onCloseSignUpHandler} />}
             </Nav.Link>

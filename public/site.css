@@ -1,66 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 * {
-  /* border: 1px solid red; */
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  /* background-image: url("assets/image/chart.png");
-  background-size: initial; */
+  outline: none;
 }
-
-:root {
-  --primarybackground: #ffffff;
-  --primaryitemcolor: #ff5f1a;
-  --textcolor: rgba(0, 0, 0, 0.81);
-  --primarytextcolor: #000000;
-  --secondarytextcolor: #959190;
-  --secondarybackgroundcolor: #f0f0f0;
-  --tertiarytextcolor: #443d3d;
-  --bordercolor: rgba(255, 108, 45, 0.6);
-  --secondarybordercolor: #e1e1e1;
-  --tertiarybordercolor: #d9d9d9;
-  --heartcolor: #e81224;
-  --light: #ffffff;
-  --dark: #000000;
-}
-
-html,
-body {
-  overflow-x: hidden;
-}
-
-body {
-  /* font-family: "Space Grotesk", sans-serif !important; */
-  font-family: Poppins, sans-serif;
-  color: var(--primarytextcolor);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  position: relative;
-}
-
-/* test {
-  background-image: url("assets/image/chart.png");
-  background-size: inherit;
-} */
-
-/* ::-webkit-scrollbar {
-  background-color: #f1f1f1;
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--primaryitemcolor) !important;
-  border-radius: 10px !important;
-}
-
-::selection {
-  background-color: var(--primaryitemcolor);
-  color: var(--light);
-} */
-
 
 html,
 body,
@@ -1009,109 +951,89 @@ header .header-right .header-user .signout i {
 
 /* Navbar */
 
-.sidebar {
-  width: 16%;
+.navbar {
+  width: 25%;
   overflow: auto;
   padding: 20px 0 20px 20px;
   background-color: #ffffff;
   border-right: 1px solid #ebebeb;
 }
 
-.sidebar .logo {
+.navbar .logo {
   margin-bottom: 30px;
 }
 
-.sidebar .text {
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-  font-size: 20px;
-  color: #505050;
-  transition: opacity 0.2s ease 0s;
+.navbar .logo img {
+  width: 130px;
+  height: 28px;
 }
 
-.sidebar .text:hover {
-  color: var(--tertiarytextcolor);
-}
-
-.sidebar .logo img {
-  /* width: 130px;
-  height: 28px; */
-  width: 50px;
-  height: 100%;
-  margin-right: 5px;
-}
-
-.sidebar h3 {
+.navbar h3 {
   color: #666666;
   font-weight: 600;
 }
 
-.sidebar ul {
+.navbar ul {
   margin: 20px 0;
-  padding: 0;
 }
 
-.sidebar ul li a {
+.navbar ul li a {
   display: block;
   margin: 10px 0;
   padding: 10px 0;
   color: #666666;
   font-weight: 500;
-  font-size: 17px;
   text-decoration: none;
   border-right: 5px solid #ffffff;
 }
 
-.sidebar ul li a i,
-.sidebar ul li a span {
+.navbar ul li a i,
+.navbar ul li a span {
   vertical-align: middle;
 }
 
-.sidebar ul li a i {
+.navbar ul li a i {
   margin-right: 25px;
 }
 
-.sidebar ul li a span {
+.navbar ul li a span {
   font-size: 1em;
 }
 
-.sidebar ul li a:hover {
+.navbar ul li a:hover {
   color: #413fbc;
 }
 
-.sidebar ul li a:active {
+.navbar ul li a:active {
   color: #413fbc;
   border-right: 5px solid #413fbc;
 }
 
-.sidebar ul li a.active {
+.navbar ul li a.active {
   color: #413fbc;
   pointer-events: none;
   border-right: 5px solid #413fbc;
 }
 
-.sidebar .copyright {
+.navbar .copyright {
   color: #666666;
   font-size: 0.8em;
   margin-top: 50px;
   line-height: 160%;
 }
 
-.sidebar .copyright strong {
+.navbar .copyright strong {
   color: #333333;
 }
 
-.sidebar .copyright span {
+.navbar .copyright span {
   color: #da0000;
 }
 
 /* Content */
 
 .content {
-  padding: 15px;
+  padding: 20px;
   overflow: auto;
 }
 
@@ -1527,26 +1449,13 @@ header .header-right .header-user .signout i {
 /* 404 */
 
 .logo-404 {
-  /* width: 100px; */
-  display: flex;
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-  font-size: 30px;
-  color: #505050;
-  transition: opacity 0.2s ease 0s;
-}
-
-.logo-404 img{
-  width: 80px;
+  width: 150px;
 }
 
 .title-404 {
-  font-size: 90px;
+  font-size: 2em;
   font-weight: 600;
-  margin: 10px 0 10px 0;
+  margin: 40px 0 10px 0;
 }
 
 .paragraph-404 {
@@ -1807,11 +1716,11 @@ header .header-right .header-user .signout i {
     display: none;
   }
 
-  .sidebar ul li a {
+  .navbar ul li a {
     font-size: 0.95em;
   }
 
-  .sidebar ul li a i {
+  .navbar ul li a i {
     margin-right: 10px;
   }
 }

@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import Modal from "../../Ui/Modal";
 import TheButton from "../../Ui/TheButton";
 import classes from "./Login.module.css";
+import { Link, useNavigate } from "react-router-dom";
 // import CartContext from "../store/cartcontext";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const modalRef = useRef();
 
@@ -39,6 +41,13 @@ const Login = (props) => {
     setUsername("");
     setPassword("");
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    navigate("/dashboard");
+  };
+
   return (
     <Modal onLogin={props.onLogin}>
       {/* <div>
@@ -54,7 +63,10 @@ const Login = (props) => {
           <h2>Login</h2>
         </div>
         <div>
-          <form onSubmit={handleLogin}>
+          <form
+            // onSubmit={handleLogin}
+            onSubmit={handleSubmit}
+          >
             <div className='mb-3'>
               <label className={classes.input__label}>Email</label>
               <input
@@ -86,7 +98,9 @@ const Login = (props) => {
               {/* </div> */}
             </div>
             <div className={classes.button_modal_div}>
-              <TheButton type='submit'>Login</TheButton>
+              <TheButton type='submit' onClick={handleSubmit}>
+                Login
+              </TheButton>
             </div>
           </form>
         </div>

@@ -1,0 +1,49 @@
+/* .content {
+  padding: 20px;
+  overflow: auto;
+  display: flex;
+} */
+
+.flex {
+  display: flex;
+}
+
+.content_30 {
+  width: 30%;
+  padding-right: 20px;
+}
+
+.content_70 {
+  width: 70%;
+  /* padding-right: 20px; */
+  flex: 1;
+}
+
+.candlestick {
+  width: 70%;
+  padding-right: 20px;
+  flex: 1;
+}
+
+.buy_sell {
+  width: 30%;
+}
+
+.trades {
+  display: flex;
+  justify-content: space-between;
+}
+
+.history {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.orders {
+  flex: 1;
+}
+
+
+/* .box-right-padding {
+  padding-right: 20px;
+} */
