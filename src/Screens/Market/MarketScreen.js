@@ -47,7 +47,7 @@ const MarketScreen = () => {
   return (
     <SiteLayout>
       <div>
-        <Header title='Market' />
+        <Header icon='menu' title='Market' />
         <div className='flex flex-destroy'>
           <div className='content-30 box-right-padding'>
             <Market />

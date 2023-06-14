@@ -17,11 +17,11 @@ const Navigation = () => (
   <Routes>
     <Route path='/' element={<LandingPage />} />
     <Route path='/trading' element={<MarketScreen />} />
-    <Route path='/members' element={<ProfileScreen />} />
+    <Route path='/profile' element={<ProfileScreen />} />
     <Route path='/capital' element={<CapitalScreen />} />
     <Route path='/dashboard' element={<DashboardScreen />} />
     <Route path='/transactions' element={<TransactionsScreen />} />
-    <Route path='/members/forgot-password' element={<ForgotScreen />} />
+    <Route path='/forgot-password' element={<ForgotScreen />} />
     {/* <Route path='/members/signup' element={<SignupScreen />} /> */}
     <Route path='*' element={<NotFoundScreen />} status={404} />
   </Routes>

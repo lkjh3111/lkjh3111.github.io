@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
 const ProcessType = memo(({ type }) => {
   if (type === 1) {
@@ -8,7 +8,7 @@ const ProcessType = memo(({ type }) => {
         <div className='icon green'>
           <i className='material-icons'>arrow_upward</i>
         </div>
-        <strong>Yükleme</strong>
+        <strong>Deposit</strong>
       </div>
     );
   }
@@ -18,7 +18,7 @@ const ProcessType = memo(({ type }) => {
       <div className='icon red'>
         <i className='material-icons'>arrow_downward</i>
       </div>
-      <strong>Çekme</strong>
+      <strong>Withdrawal</strong>
     </div>
   );
 });

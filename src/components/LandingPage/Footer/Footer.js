@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import classes from "./Footer.module.css";
-import Logo from "../../../assets/Logo/test.svg";
+import Logo from "../../../assets/Logo/logo.svg";
 import { Link } from "react-scroll";
 import insta from "../../../assets/Icon/instagram.png";
 import twitter from "../../../assets/Icon/twitter.png";

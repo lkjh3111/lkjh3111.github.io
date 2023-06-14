@@ -69,7 +69,7 @@ const TransactionsScreen = () => {
 
   return (
     <SiteLayout>
-      <Header icon='sort' title='İşlemler' />
+      <Header icon='menu' title='Transactions' />
       <TopBar
         searchValue={keyword}
         searchOnChange={handleSearchValue}
@@ -81,13 +81,13 @@ const TransactionsScreen = () => {
           <thead>
             <tr>
               <th className='left'>&nbsp;</th>
-              <th className='left responsive-hide'>İşlem</th>
-              <th className='left responsive-hide'>Tarih</th>
-              <th className='left'>Kimden</th>
-              <th className='left'>Kime</th>
+              <th className='left responsive-hide'>Process</th>
+              <th className='left responsive-hide'>History</th>
+              <th className='left'>From</th>
+              <th className='left'>To</th>
               <th className='left'>Coin</th>
-              <th className='center'>Miktar</th>
-              <th className='center'>Durum</th>
+              <th className='center'>Amount</th>
+              <th className='center'>Status</th>
             </tr>
           </thead>
           <tbody>

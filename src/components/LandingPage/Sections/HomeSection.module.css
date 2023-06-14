@@ -1,19 +1,13 @@
 .container {
   position: relative;
-  padding: 108px 0px 390px 0px;
+  padding: 100px 0px 100px 0px;
   padding-left: 5%;
   padding-right: 5%;
-  /* min-height: 620px; */
-  /* margin-right: 10%;
-  margin-left: 10%; */
-  color: rgb(255, 255, 255);
   text-align: center;
   box-sizing: border-box;
   background-position: 50% 0px;
   background-size: auto 75%;
   background-repeat: no-repeat;
-  /* overflow-x: hidden; */
-  /* background-color: rgb(7, 7, 61); */
 }
 
 .row {
@@ -36,7 +30,6 @@
   font-size: 50px;
   line-height: 50px;
   text-align: left;
-  /* margin-bottom: 20px; */
   display: flex;
   width: 50%;
 }
@@ -47,23 +40,9 @@
   margin-bottom: 20px;
 } 
 
-/* .text__div h1 span {
-  color: var(--primaryitemcolor);
-}
-
-.text__div p {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-/* .devices__image {
-  display: block;
-  margin-left: auto;
-  width: 87%;
-} */
-
 .markets{
   width: 100%;
+  margin-bottom: 3%;
 }
 
 .markets__properties {
@@ -72,8 +51,6 @@
   justify-content: center;
   margin-top: 7%;
   overflow-x: scroll;
-  /* padding-left: 150px; */
-  /* padding-right: 150px; */
 }
 
 .markets__properties::-webkit-scrollbar{
@@ -88,59 +65,20 @@
   user-select: none;
   font-size: 25px;
   color: var(--light);
-  /* padding: 0px 8px; */
   box-sizing: border-box;
   margin-right: 8px;
   margin-left: 8px;
   transition: opacity 0.2s ease 0s;
   flex-shrink: 0;
-  /* font-size: 32px;
-  font-weight: 700;
-  color: var(--light); */
 }
 
 .markets__properties .markets__properties__text:hover {
   color: var(--secondarytextcolor);
 }
 
-/* .number__properties__text__underline {
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  font-weight: 500;
-  white-space: nowrap;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-  font-size: 25px;
-  color: var(--light);
-  padding: 0px 8px;
-  box-sizing: border-box;
-  margin-right: 16px;
-  text-decoration: underline;
-} */
-
-/* .number__properties .number__properties__text {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--secondarytextcolor);
-} */
-
 .buttons {
   display: flex;
 }
-
-/* .order_button {
-  color: var(--light);
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-.order_button:hover {
-  color: var(--light);
-} */
 
 .trade_now_button {
   color: var(--light);
@@ -163,19 +101,12 @@
 .devices__image{
   position: absolute;
   background: url("../../../assets/image/devices.webp");
-  /* background-size: 100% 100%; */
   background-size: contain;
   top: 30px;
   left: 50%;
   width: 600px;
   height: 600px;
 }
-
-/* @media only screen and (min-width: 1400px) and (min-height: 900px) {
-  .row {
-    padding: 150px 0;
-  }
-} */
 
 @media only screen and (max-width: 1200px) {
   .devices__image {
@@ -187,6 +118,12 @@
 }
 
 @media only screen and (max-width: 991px) {
+  .container {
+    padding-left: 0%;
+    padding-right: 0%;
+    max-width: 90%;
+  }
+
   .text__div {
     position: static;
     transform: translateY(0%);
@@ -194,18 +131,16 @@
     padding: 0 2% 0 2%;
   }
 
+  .text__div h1 {
+    font-size: 50px;
+  }
+
   .buttons {
     justify-content: center;
     align-items: center;
   }
-}
 
-@media only screen and (max-width: 576px) {
-  .text__div {
-    padding: 0 2% 0 2%;
-  }
-
-  .text__div h1 {
-    font-size: 36px;
+  .markets__properties .markets__properties__text{
+    font-size: 20px;
   }
 }

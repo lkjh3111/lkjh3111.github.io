@@ -5,7 +5,7 @@ import { Navbar, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-scroll";
 import classes from "./TheNavbar.module.css";
-import Logo from "../../../assets/Logo/test.svg";
+import Logo from "../../../assets/Logo/logo.svg";
 import { useState } from "react";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";

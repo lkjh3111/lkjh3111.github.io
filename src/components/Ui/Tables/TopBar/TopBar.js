@@ -1,5 +1,5 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
 const TopBar = memo(({ searchValue, searchOnChange, searchSubmit }) => (
   <div className='top-buttons flex flex-destroy flex-center flex-space-between'>
@@ -11,7 +11,7 @@ const TopBar = memo(({ searchValue, searchOnChange, searchSubmit }) => (
             id='search'
             name='search'
             autoComplete='off'
-            placeholder='Aranacak kelime'
+            placeholder='Search'
             onChange={searchOnChange}
             value={searchValue}
           />
@@ -24,12 +24,12 @@ const TopBar = memo(({ searchValue, searchOnChange, searchSubmit }) => (
     <div>
       <button type='button' className='button button-white button-large'>
         <i className='material-icons button-icon-left'>event</i>
-        Periyod
+        Period
         <i className='material-icons button-icon-right'>keyboard_arrow_down</i>
       </button>
       <button type='button' className='button button-purple button-large'>
         <i className='material-icons button-icon-left'>download</i>
-        CSV indir
+        Download CSV
       </button>
     </div>
   </div>

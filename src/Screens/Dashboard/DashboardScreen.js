@@ -7,7 +7,7 @@ import RecentActivity from "../../components/Ui/Widgets/RecentActivity/RecentAct
 
 const DashboardScreen = () => (
   <SiteLayout>
-    <Header icon='sort' title='Yatır-çek' />
+    <Header icon='menu' title='Deposit/Withdrawal' />
     <div className='flex flex-destroy flex-space-between'>
       <div className='flex-1 box-right-padding'>
         <BankProcess />
@@ -16,33 +16,32 @@ const DashboardScreen = () => (
         <Box>
           <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
             <div className='flex flex-center flex-space-between'>
-              <p>Önemli</p>
+              <p>Important</p>
             </div>
           </div>
           <div className='box-content box-text box-horizontal-padding box-content-height-nobutton'>
             <p>
-              &bull; EFT transferlerinde alıcı/lehdar kısmına Crypto Exchange
-              yazılması gerekmektedir.
+              &bull; Crypto Exchange to the recipient / beneficiary part in EFT
+              transfers needs to be written.
             </p>
             <p>
-              &bull; Adınıza açılmış olan tüm bireysel, vadesiz, Türk Lirası
-              hesaplarınızdan, listelenen hesaplara Havale/EFT işlemi
-              gerçekleştirebilirsiniz. Farklı kişiye ait hesaplardan yapılan
-              gönderimler kabul edilmeyecektir.
+              &bull; All individual, current, US Dollar opened in your name
+              Transfer/EFT transaction from your accounts to the listed accounts
+              you can do. Made from accounts belonging to different people
+              Submissions will not be accepted.
             </p>
             <p>
-              &bull; ATM kullanılarak yapılan transferler (kartlı/kartsız),
-              gönderici bilgilerini teyit etmek mümkün olmadığı için kabul
-              edilmeyecektir.
+              &bull; Transfers made using ATM (with/without card), accepted as
+              it is not possible to confirm the sender information. will not be.
             </p>
             <p>
-              &bull; Gönderdiğiniz miktar kontrollerin ardından sistem
-              tarafından otomatik olarak hesabınıza yansıtılacaktır, ayrıca bir
-              bildirimde bulunmanıza gerek yoktur.
+              &bull; After the amount you send is checked, the system will be
+              automatically credited to your account by You do not need to give
+              notice.
             </p>
             <p>
-              &bull; Kimlik doğrulama işleminizi tamamladığınız için açıklama
-              kısmına sabit yatırma kodu girmeniz gerekmemektedir.
+              &bull; Description for completing your authentication You do not
+              need to enter a fixed deposit code.
             </p>
           </div>
         </Box>
@@ -56,32 +55,33 @@ const DashboardScreen = () => (
         <Box>
           <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
             <div className='flex flex-center flex-space-between'>
-              <p>Önemli</p>
+              <p>Important</p>
             </div>
           </div>
           <div className='box-content box-text box-horizontal-padding box-content-height-nobutton'>
             <p>
-              &bull; Adınıza açılmış (bireysel, vadesiz, TL) tüm banka
-              hesaplarınıza çekim yapabilirsiniz. Farklı bir kişiye transfer
-              işleminiz gerçekleşmeyecektir.
+              &bull; All banks opened in your name (personal, demand, USD) You
+              can withdraw to your accounts. Transfer to a different person your
+              transaction will not be executed.
             </p>
-            <p>&bull; Minimum çekim tutarı 10 TL&apos;dir.</p>
+            <p>&bull; Minimum withdrawal amount is 10 USD.</p>
             <p>
-              &bull; Çekim işlemi sırasında 3 TL işlem ücreti tahsil edilir.
-            </p>
-            <p>
-              &bull; Bir çekim talimatı verdiğinizde bu tutar kullanılabilir
-              bakiyenizden düşecektir.
+              &bull; A transaction fee of 3 USD is charged during the withdrawal
+              process.
             </p>
             <p>
-              &bull; Henüz gerçekleşmemiş talimatlarınızı iptal edebilirsiniz.
-              Bu durumda talimat tutarı tekrar kullanılabilir bakiyenize
-              aktarılır.
+              &bull; This amount is available when you place a withdrawal order
+              It will be deducted from your balance.
             </p>
             <p>
-              &bull; Bankaların mesai saatleri dışında verilen çekim
-              talimatları, bankaların mesaiye başlaması ile birlikte işleme
-              alınır.
+              &bull; You can cancel orders that have not yet been fulfilled. In
+              this case, the order amount will be added to your reusable
+              balance. transferred.
+            </p>
+            <p>
+              &bull; Withdrawals given outside the working hours of banks orders
+              are processed with the start of the working hours of the banks is
+              taken.
             </p>
           </div>
         </Box>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../../assets/Logo/test.svg";
+import Logo from "../../assets/Logo/logo.svg";
 
 const NotFoundScreen = () => (
   <div className='full-height flex flex-column flex-center'>

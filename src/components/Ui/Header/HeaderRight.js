@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const HeaderRight = memo(() => {
-  const location = useLocation();
+  // const location = useLocation();
 
   return (
     <div className='header-right no-select'>
@@ -48,7 +48,7 @@ const HeaderRight = memo(() => {
             </Link>
           </li>
           <li>
-            <Link to='/members/notifications'>
+            <Link to='/profile/notifications'>
               <span className='notification-badge'>23</span>
               <i className='material-icons'>notifications</i>
             </Link>
@@ -56,13 +56,13 @@ const HeaderRight = memo(() => {
         </ul>
         <ul className='header-user nowrap'>
           <li>
-            <Link to='/members'>
+            <Link to='/profile'>
               <span>John Doe</span>
               <span>@john_doe</span>
             </Link>
           </li>
           <li>
-            <Link to='/members'>
+            <Link to='/profile'>
               <div
                 className='profile-picture cover'
                 style={{
@@ -72,7 +72,7 @@ const HeaderRight = memo(() => {
             </Link>
           </li>
           <li className='responsive-hide'>
-            <Link to='/members/signout' className='signout'>
+            <Link to='/profile/signout' className='signout'>
               <i className='material-icons'>power_settings_new</i>
             </Link>
           </li>
