@@ -1,18 +1,16 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
-import ProcessType from './ProcessType';
-import StatusName from './StatusName';
+import ProcessType from "./ProcessType";
+import StatusName from "./StatusName";
 
 const RecentActivityRow = memo(({ item }) => (
   <div className='activity-row flex flex-center flex-space-between no-select'>
     <ProcessType type={item.type} />
-    <div className='center'>
-      <p>{item.time}</p>
-    </div>
+    <div className='center'>{item.timestamp}</div>
     <div className='center'>
       <strong>
-        {item.amount} {item.currency}
+        {item.amount} {item.asset}
       </strong>
     </div>
     <div className='center'>

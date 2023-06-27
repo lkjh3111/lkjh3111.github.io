@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import SiteLayout from "../../components/layouts/SiteLayout";
-import Header from "../../components/Ui/Header/Header";
 import TopBar from "../../components/Ui/Tables/TopBar/TopBar";
 import TransactionRow from "../../components/Ui/Tables/Transactions/TransactionRow";
 
@@ -69,7 +68,7 @@ const TransactionsScreen = () => {
 
   return (
     <SiteLayout>
-      <Header icon='menu' title='Transactions' />
+      <h3 className='title'>Transactions</h3>
       <TopBar
         searchValue={keyword}
         searchOnChange={handleSearchValue}

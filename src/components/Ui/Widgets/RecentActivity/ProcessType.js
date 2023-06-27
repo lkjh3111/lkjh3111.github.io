@@ -2,7 +2,7 @@ import { memo } from "react";
 import PropTypes from "prop-types";
 
 const ProcessType = memo(({ type }) => {
-  if (type === 1) {
+  if (type === "DEPOSIT") {
     return (
       <div className='nowrap'>
         <div className='icon green'>
@@ -24,7 +24,7 @@ const ProcessType = memo(({ type }) => {
 });
 
 ProcessType.propTypes = {
-  type: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ProcessType;

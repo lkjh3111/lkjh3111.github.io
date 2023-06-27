@@ -1,9 +1,11 @@
 import { memo, useState } from "react";
-// import { Link } from "react-router-dom";
+import AuthService from "../../../../services/AuthService";
 
 import Box from "../../Common/Box";
 
 const Profile = memo(() => {
+  const user = AuthService.getCurrentUser();
+  const name = user.firstName + " " + user.lastName;
   const [menuOpened, setMenuOpened] = useState(false);
 
   const handleMenuOpen = () => {
@@ -68,10 +70,10 @@ const Profile = memo(() => {
         </div>
         <div className='box-horizontal-padding'>
           <div className='center'>
-            <h3>John Doe</h3>
-            {/* <strong>Level 1</strong>
+            <h3>{name}</h3>
+            <strong>Level 1</strong>
             <p>You must be level 2 to increase your limits.</p>
-            <Link to='/members/application'>Level 2 application</Link> */}
+            {/* <Link to='/members/application'>Level 2 application</Link> */}
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import SiteLayout from "../../components/layouts/SiteLayout";
-import Header from "../../components/Ui/Header/Header";
 
 import Market from "../../components/Ui/Widgets/Market/Market";
 import BuySell from "../../components/Ui/Widgets/BuySell/BuySell";
@@ -47,7 +46,7 @@ const MarketScreen = () => {
   return (
     <SiteLayout>
       <div>
-        <Header icon='menu' title='Market' />
+        <h3 className='title'>Market</h3>
         <div className='flex flex-destroy'>
           <div className='content-30 box-right-padding'>
             <Market />

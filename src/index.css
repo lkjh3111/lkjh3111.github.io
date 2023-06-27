@@ -872,7 +872,7 @@ a i {
 /* Header */
 
 header {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 
 header .header-left button {
@@ -1014,12 +1014,20 @@ header .header-right .header-user .signout i {
 /* Navbar */
 
 .sidebar {
-  width: 16%;
+  width: 260px;
   overflow: auto;
   padding: 20px 0 20px 20px;
   background-color: #ffffff;
   border-right: 1px solid #ebebeb;
 }
+
+/* .sidebar2 {
+  width: 16%;
+  overflow: auto;
+  padding: 20px 0 20px 20px;
+  background-color: #ffffff;
+  border-right: 1px solid #ebebeb;
+} */
 
 .sidebar .logo {
   margin-bottom: 30px;
@@ -1125,6 +1133,10 @@ header .header-right .header-user .signout i {
 
 .content-70 {
   width: 70%;
+}
+
+.title {
+  margin-bottom: 30px;
 }
 
 /* Market widget */
@@ -1260,6 +1272,49 @@ header .header-right .header-user .signout i {
 }
 
 .widget-coin-vertical button {
+  padding: 0;
+  margin-top: 10px;
+  color: #3a38a7;
+  font-weight: 600;
+}
+
+/* Wallet */
+.wallet .icon {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+  border-radius: 50em;
+  display: inline-block;
+  background-color: #cccccc;
+}
+
+.wallet h3 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.wallet strong {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.wallet .coin-price {
+  padding: 15px;
+  color: #666666;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 20px;
+  display: inline-block;
+  background-color: #f9f9f9;
+  /* margin-left: 30px; */
+}
+
+.wallet p {
+  line-height: 160%;
+}
+
+.wallet button {
   padding: 0;
   margin-top: 10px;
   color: #3a38a7;
@@ -1811,13 +1866,13 @@ header .header-right .header-user .signout i {
     display: none;
   }
 
-  .sidebar ul li a {
+  /* .sidebar ul li a {
     font-size: 0.95em;
   }
 
   .sidebar ul li a i {
     margin-right: 10px;
-  }
+  } */
 }
 
 @media (max-width: 1020px) {
@@ -1838,10 +1893,10 @@ header .header-right .header-user .signout i {
     display: none !important;
   }
 
-  .assets-row .icon {
+  /* .assets-row .icon {
     width: 30px;
     height: 30px;
-  }
+  } */
 }
 
 @media (max-width: 768px) {

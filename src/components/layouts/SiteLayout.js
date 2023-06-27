@@ -1,16 +1,30 @@
-import { memo } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 import Sidebar from "../Ui/Sidebar/Sidebar";
+import Header from "../Ui/Header/Header";
+import { SidebarUserData } from "../Ui/Sidebar/SidebarUserData";
 
-const SiteLayout = memo(({ children }) => (
-  <div className='flex'>
-    <div className='sidebar full-height responsive-hide'>
-      <Sidebar />
+const SiteLayout = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className='flex'>
+      <div
+        className={isOpen ? "sidebar" : "sidebar full-height responsive-hide"}
+      >
+        <Sidebar userData={SidebarUserData} />
+      </div>
+      <div className='content full-height flex-1'>
+        <Header icon='menu' onClick={handleToggle} />
+        {children}
+      </div>
     </div>
-    <div className='content full-height flex-1'>{children}</div>
-  </div>
-));
+  );
+};
 
 SiteLayout.propTypes = {
   children: PropTypes.node.isRequired,

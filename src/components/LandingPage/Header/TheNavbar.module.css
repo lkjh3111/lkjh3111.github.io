@@ -1,6 +1,5 @@
 .navbar {
   background-color: transparent;
-  /* padding: 10px 5rem; */
   padding-left: 3%;
   padding-right: 3%;
   transition: 0.3s;
@@ -8,7 +7,6 @@
 
 .navbar_active{
   background-color: var(--primarybackground);
-  /* padding: 10px 5rem; */
   padding-left: 3%;
   padding-right: 3%;
 }
@@ -19,18 +17,19 @@
   align-items: center;
 }
 
-.navbar .toggle {
+.navbar .toggle, .navbar_active .toggle {
   border: none;
   background-color: var(--primarybackground);
 }
 
-.navbar .link {
+.navbar .link, .navbar_active .link {
   text-decoration: none;
 }
 
-.navbar .toggle:focus {
+.navbar .toggle:focus, .navbar_active .toggle:focus {
   border: none;
   box-shadow: none;
+  background-color: var(--light);
 }
 
 .navbar img {
@@ -75,30 +74,116 @@
   color: var(--tertiarytextcolor);
 }
 
-/* .navbar .nav__linkgroup {
+.navbar .nav__linkgroup, .navbar_active .nav__linkgroup {
   position: relative;
   display: flex;
-  align-items: center;
-} */
-
-.navbar .nav__link {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--dark);
-  transition: 0.3s;
+  align-items: flex-end;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* padding: 0; */
 }
 
-.navbar .nav__link:focus {
+.navbar .nav__link, .navbar_active .nav__link{
+  font-size: 18px;
+  font-weight: 500;
+  /* color: var(--dark); */
+  transition: 0.3s;
+  padding: 5px;
+}
+
+.navbar .nav__link:focus, .navbar_active .nav__link:focus{
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
 }
 
 
-.navbar .nav__link .active {
+.navbar .nav__link .active, .navbar_active .nav__link .active{
   color: var(--primaryitemcolor) !important;
   text-decoration: none;
 } 
+
+.login__button {
+  background-color: transparent;
+  /* color: var(--light); */
+  color: var(--primaryitemcolor);
+  padding: 10px 0;
+  width: 110px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid var(--primaryitemcolor);
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.login__button_active {
+  background-color: transparent;
+  color: var(--light);
+  padding: 10px 0;
+  width: 110px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid var(--light);
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.login__button:hover {
+  background-color: #ef4c06;
+  color: var(--light);
+}
+
+.login__button_active:hover {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+.bump.login__button {
+  animation: bump 0.3s ease 0s 1 normal;
+}
+
+.sign__up__button {
+  background-color: var(--primaryitemcolor);
+  color: var(--light);
+  padding: 10px 0;
+  width: 110px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid var(--primaryitemcolor);
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.sign__up__button i {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 18px;
+  color: var(--light);
+}
+
+.sign__up__button:hover {
+  background-color: #EF3901;
+  border: 1px solid #EF3901;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 /* .navbar .lastnav__link {
   color: var(--primaryitemcolor);

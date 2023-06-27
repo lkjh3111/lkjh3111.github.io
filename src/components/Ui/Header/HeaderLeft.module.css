@@ -1,0 +1,10 @@
+.pointer {
+  display: none;
+}
+
+@media (max-width: 1020px) {
+  .pointer {
+    display: inline;
+    cursor: pointer;
+  }
+}

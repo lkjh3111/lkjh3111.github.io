@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import SiteLayout from "../../components/layouts/SiteLayout";
-import Header from "../../components/Ui/Header/Header";
 import TopBar from "../../components/Ui/Tables/TopBar/TopBar";
 import CapitalRow from "../../components/Ui/Tables/Capital/CapitalRow";
 
@@ -126,7 +125,7 @@ const CapitalScreen = () => {
 
   return (
     <SiteLayout>
-      <Header icon='menu' title='Capital' />
+      <h3 className='title'>Capital</h3>
       <TopBar
         searchValue={keyword}
         searchOnChange={handleSearchValue}

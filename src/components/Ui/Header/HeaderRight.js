@@ -1,9 +1,15 @@
 import { memo } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import AuthService from "../../../services/AuthService";
 
 const HeaderRight = memo(() => {
   // const location = useLocation();
+  const user = AuthService.getCurrentUser();
+  const name = user.firstName + " " + user.lastName;
 
+  const handleLogout = (e) => {
+    AuthService.logout();
+  };
   return (
     <div className='header-right no-select'>
       <div className='flex flex-center'>
@@ -57,8 +63,8 @@ const HeaderRight = memo(() => {
         <ul className='header-user nowrap'>
           <li>
             <Link to='/profile'>
-              <span>John Doe</span>
-              <span>@john_doe</span>
+              <span>{name}</span>
+              <span>@{user.username}</span>
             </Link>
           </li>
           <li>
@@ -72,7 +78,7 @@ const HeaderRight = memo(() => {
             </Link>
           </li>
           <li className='responsive-hide'>
-            <Link to='/profile/signout' className='signout'>
+            <Link className='signout' onClick={handleLogout}>
               <i className='material-icons'>power_settings_new</i>
             </Link>
           </li>

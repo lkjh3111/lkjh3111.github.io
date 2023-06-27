@@ -2,12 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import Modal from "../../Ui/Modal";
 import TheButton from "../../Ui/TheButton";
 import classes from "./Login.module.css";
-import { Link, useNavigate } from "react-router-dom";
-// import CartContext from "../store/cartcontext";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../../../services/AuthService";
 
 const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const modalRef = useRef();
@@ -36,37 +38,38 @@ const Login = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Perform login logic here with username and password
-    // Reset the form fields
-    setUsername("");
-    setPassword("");
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    navigate("/dashboard");
+    AuthService.login(username, password).then(
+      (response) => {
+        let roles = response.result.roles;
+        if (roles.find((e) => e === "ADMIN")) {
+          navigate("/admin/dashboard");
+        } else {
+          navigate("/dashboard");
+        }
+        window.location.reload();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.result) ||
+          error.result ||
+          error.toString();
+        setLoading(false);
+        setError(message);
+      }
+    );
   };
 
   return (
     <Modal onLogin={props.onLogin}>
-      {/* <div>
-        <div>
-          <p>Login</p>
-        </div>
-        <div>
-          <TheButton>Login</TheButton>
-        </div>
-      </div> */}
       <div className={classes.login_modal_content} ref={modalRef}>
         <div>
           <h2>Login</h2>
         </div>
         <div>
-          <form
-            // onSubmit={handleLogin}
-            onSubmit={handleSubmit}
-          >
+          {error && <div>{error}</div>}
+          <form onSubmit={handleLogin}>
             <div className='mb-3'>
               <label className={classes.input__label}>Email</label>
               <input
@@ -74,6 +77,7 @@ const Login = (props) => {
                 placeholder='Enter Email'
                 value={username}
                 onChange={handleUsernameChange}
+                autoComplete='on'
               />
             </div>
             <div className='mb-2'>
@@ -83,10 +87,10 @@ const Login = (props) => {
                 placeholder='Enter Password'
                 value={password}
                 onChange={handlePasswordChange}
+                autoComplete='on'
               />
             </div>
             <div>
-              {/* <div> */}
               <label className={classes.remember__label}>
                 <input
                   type='checkbox'
@@ -95,10 +99,9 @@ const Login = (props) => {
                 />
                 Remember me
               </label>
-              {/* </div> */}
             </div>
             <div className={classes.button_modal_div}>
-              <TheButton type='submit' onClick={handleSubmit}>
+              <TheButton type='submit' disabled={loading} onClick={handleLogin}>
                 Login
               </TheButton>
             </div>
