@@ -5,6 +5,7 @@ import classes from "./SignUp.module.css";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../../services/AuthService";
 import validator from "validator";
+import { toast } from "react-toastify";
 
 const SignUp = (props) => {
   const [state, setState] = useState({
@@ -20,6 +21,10 @@ const SignUp = (props) => {
   const navigate = useNavigate();
 
   const modalRef = useRef();
+
+  const successNotification = () =>
+    toast.success("Successfully registered. Login to proceed.");
+  const failNotification = () => toast.error("Invalid details");
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -108,8 +113,9 @@ const SignUp = (props) => {
       state.password
     ).then(
       (response) => {
-        navigate("/");
-        window.location.reload();
+        successNotification();
+        // navigate("/");
+        // window.location.reload();
       },
       (error) => {
         const message =
@@ -118,7 +124,8 @@ const SignUp = (props) => {
             error.response.data.result) ||
           error.result ||
           error.toString();
-        console.log(message);
+        // console.log(message);
+        failNotification();
       }
     );
     // }
@@ -131,80 +138,73 @@ const SignUp = (props) => {
         </div>
         <div>
           <form onSubmit={handleSignUp}>
-            <div className="mb-3">
-              <label className={classes.input__label}>First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="Enter First Name"
-                // error={state.errors["firstNameBoolean"]}
-                // helpertext={state.errors["firstName"]}
-                value={state.firstName}
-                onChange={handleChange}
-                autoComplete="on"
-              />
+            <div className={classes.signup_input}>
+              <div className={classes.signup_content}>
+                <label className={classes.input__label}>First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="Enter First Name"
+                  // error={state.errors["firstNameBoolean"]}
+                  // helpertext={state.errors["firstName"]}
+                  value={state.firstName}
+                  onChange={handleChange}
+                  autoComplete="on"
+                />
+              </div>
+              <div className={classes.signup_content}>
+                <label className={classes.input__label}>Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Enter Last Name"
+                  // error={state.errors["lastNameBoolean"]}
+                  // helpertext={state.errors["lastName"]}
+                  value={state.lastName}
+                  onChange={handleChange}
+                  autoComplete="on"
+                />
+              </div>
+              <div className={classes.signup_content}>
+                <label className={classes.input__label}>Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Enter Username"
+                  // error={state.errors["usernameBoolean"]}
+                  // helpertext={state.errors["username"]}
+                  value={state.username}
+                  onChange={handleChange}
+                  autoComplete="on"
+                />
+              </div>
+              <div className={classes.signup_content}>
+                <label className={classes.input__label}>Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Enter Email"
+                  // error={state.errors["emailBoolean"]}
+                  // helpertext={state.errors["emailName"]}
+                  value={state.email}
+                  onChange={handleChange}
+                  autoComplete="on"
+                />
+              </div>
+              <div className={classes.signup_content}>
+                <label className={classes.input__label}>Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter Password"
+                  // error={state.errors["passwordBoolean"]}
+                  // helpertext={state.errors["passwordName"]}
+                  value={state.password}
+                  onChange={handleChange}
+                  autoComplete="on"
+                />
+              </div>
             </div>
-            <div className="mb-3">
-              <label className={classes.input__label}>Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Enter Last Name"
-                // error={state.errors["lastNameBoolean"]}
-                // helpertext={state.errors["lastName"]}
-                value={state.lastName}
-                onChange={handleChange}
-                autoComplete="on"
-              />
-            </div>
-            <div className="mb-3">
-              <label className={classes.input__label}>Username</label>
-              <input
-                type="text"
-                name="username"
-                placeholder="Enter Username"
-                // error={state.errors["usernameBoolean"]}
-                // helpertext={state.errors["username"]}
-                value={state.username}
-                onChange={handleChange}
-                autoComplete="on"
-              />
-            </div>
-            <div className="mb-3">
-              <label className={classes.input__label}>Email</label>
-              <input
-                type="text"
-                name="email"
-                placeholder="Enter Email"
-                // error={state.errors["emailBoolean"]}
-                // helpertext={state.errors["emailName"]}
-                value={state.email}
-                onChange={handleChange}
-                autoComplete="on"
-              />
-            </div>
-            <div className="mb-3">
-              <label className={classes.input__label}>Password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter Password"
-                // error={state.errors["passwordBoolean"]}
-                // helpertext={state.errors["passwordName"]}
-                value={state.password}
-                onChange={handleChange}
-                autoComplete="on"
-              />
-            </div>
-            {/* <div className='mb-3'>
-              <label className={classes.input__label}>Confirm Password</label>
-              <input
-                type='password'
-                placeholder='Re-enter Password'
-                value={confirmPassword}
-                onChange={handlePasswordChange}
-              />
-            </div> */}
             <div className={classes.button_modal_div}>
               <TheButton type="submit" onClick={handleSignUp}>
                 Sign Up
@@ -212,9 +212,6 @@ const SignUp = (props) => {
             </div>
           </form>
         </div>
-        {/* <button className='close-button' onClick={props.onLogin}>
-          Close
-        </button> */}
       </div>
     </Modal>
   );

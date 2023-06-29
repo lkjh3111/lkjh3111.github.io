@@ -4,7 +4,6 @@ import TheButton from "../../Ui/TheButton";
 import classes from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.min.css";
 import AuthService from "../../../services/AuthService";
 
 const Login = (props) => {
@@ -112,10 +111,6 @@ const Login = (props) => {
             </div>
           </form>
         </div>
-        {/* <button className='close-button' onClick={props.onLogin}>
-          Close
-          
-        </button> */}
       </div>
     </Modal>
   );
