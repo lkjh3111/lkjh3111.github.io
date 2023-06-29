@@ -566,10 +566,16 @@ a i {
   display: inline-block;
 }
 
-.tabs button.active {
+.tabs button.active-buy {
   color: #ffffff;
   pointer-events: none;
   background-color: #00b638;
+}
+
+.tabs button.active-sell {
+  color: #ffffff;
+  pointer-events: none;
+  background-color: #d40000;
 }
 
 .tabs button.passive {
@@ -1573,12 +1579,17 @@ header .header-right .header-user .signout i {
 }
 
 .buy-sell-percentage {
-  padding: 10px;
+  padding-top: 18px;
+  padding-left: 20px;
+  padding-right: 25px;
+  padding-bottom: 33px;
   font-size: 0.8em;
   background-color: #f5f5f5;
   border-left: 1px solid #dadada;
   border-right: 1px solid #dadada;
   border-bottom: 1px solid #dadada;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 /* 404 */
