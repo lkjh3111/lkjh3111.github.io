@@ -19,32 +19,32 @@ import WalletScreen from "../Screens/Wallet/WalletScreen";
 
 const Navigation = () => (
   <Routes>
-    <Route path='/' element={<LandingPage />} />
+    <Route path="/" element={<LandingPage />} />
     <Route
-      path='/trading'
+      path="/trading"
       element={<PrivateRoute Component={MarketScreen} />}
     />
     <Route
-      path='/profile'
+      path="/profile"
       element={<PrivateRoute Component={ProfileScreen} />}
     />
     <Route
-      path='/capital'
+      path="/capital"
       element={<PrivateRoute Component={CapitalScreen} />}
     />
     <Route
-      path='/dashboard'
+      path="/dashboard"
       element={<PrivateRoute Component={DashboardScreen} />}
     />
     <Route
-      path='/transactions'
+      path="/transactions"
       element={<PrivateRoute Component={TransactionsScreen} />}
     />
-    <Route path='/wallet' element={<PrivateRoute Component={WalletScreen} />} />
+    {/* <Route path='/wallet' element={<PrivateRoute Component={WalletScreen} />} /> */}
     {/* <Route path='/forgot-password' element={<ForgotScreen />} /> */}
     {/* <SiteLayout /> */}
     {/* <Route path='/members/signup' element={<SignupScreen />} /> */}
-    <Route path='*' element={<NotFoundScreen />} status={404} />
+    <Route path="*" element={<NotFoundScreen />} status={404} />
   </Routes>
 );
 

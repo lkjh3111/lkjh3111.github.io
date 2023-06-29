@@ -9,11 +9,11 @@ export const SidebarUserData = [
     path: "/trading",
     icon: "paid",
   },
-  {
-    title: "My Wallet",
-    path: "/wallet",
-    icon: "account_balance_wallet",
-  },
+  // {
+  //   title: "My Wallet",
+  //   path: "/wallet",
+  //   icon: "account_balance_wallet",
+  // },
   {
     title: "Transactions",
     path: "/transactions",
