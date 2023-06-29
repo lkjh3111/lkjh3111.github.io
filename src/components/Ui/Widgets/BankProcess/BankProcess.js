@@ -3,6 +3,7 @@ import { memo, useState } from "react";
 import Box from "../../Common/Box";
 import AuthService from "../../../../services/AuthService";
 import UserService from "../../../../services/UserService";
+import { toast } from "react-toastify";
 
 const BankProcess = memo(() => {
   const [tab, setTab] = useState(0);
@@ -28,11 +29,16 @@ const BankProcess = memo(() => {
     setWithdrawCurrency(e.target.value);
   };
 
+  const depositNotification = () => toast.success("Deposit request sent.");
+  const withdrawNotification = () => toast.success("Withdrawal request sent.");
+  const errorNotification = (e) => toast.error(e);
+
   const handleDeposit = (e) => {
     e.preventDefault();
     UserService.deposit(id, depositAmount, depositCurrency).then(
       (response) => {
         // console.log(response);
+        depositNotification();
       },
       (error) => {
         const message =
@@ -42,6 +48,7 @@ const BankProcess = memo(() => {
           error.result ||
           error.toString();
         console.log(message);
+        errorNotification();
       }
     );
   };
@@ -51,6 +58,7 @@ const BankProcess = memo(() => {
     UserService.withdraw(id, withdrawAmount, withdrawCurrency).then(
       (response) => {
         // console.log(response);
+        withdrawNotification();
       },
       (error) => {
         const message =
@@ -60,6 +68,7 @@ const BankProcess = memo(() => {
           error.result ||
           error.toString();
         console.log(message);
+        errorNotification();
       }
     );
   };

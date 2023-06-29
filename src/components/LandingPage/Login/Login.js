@@ -3,6 +3,8 @@ import Modal from "../../Ui/Modal";
 import TheButton from "../../Ui/TheButton";
 import classes from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.min.css";
 import AuthService from "../../../services/AuthService";
 
 const Login = (props) => {
@@ -13,6 +15,9 @@ const Login = (props) => {
   const navigate = useNavigate();
 
   const modalRef = useRef();
+
+  const failNotification = () =>
+    toast.error("Email or password doesn't match!");
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -57,6 +62,7 @@ const Login = (props) => {
           error.toString();
         setLoading(false);
         setError(message);
+        failNotification();
       }
     );
   };
@@ -68,40 +74,39 @@ const Login = (props) => {
           <h2>Login</h2>
         </div>
         <div>
-          {error && <div>{error}</div>}
           <form onSubmit={handleLogin}>
-            <div className='mb-3'>
+            <div className="mb-3">
               <label className={classes.input__label}>Email</label>
               <input
-                type='text'
-                placeholder='Enter Email'
+                type="text"
+                placeholder="Enter Email"
                 value={username}
                 onChange={handleUsernameChange}
-                autoComplete='on'
+                autoComplete="on"
               />
             </div>
-            <div className='mb-2'>
+            <div className="mb-2">
               <label className={classes.input__label}>Password</label>
               <input
-                type='password'
-                placeholder='Enter Password'
+                type="password"
+                placeholder="Enter Password"
                 value={password}
                 onChange={handlePasswordChange}
-                autoComplete='on'
+                autoComplete="on"
               />
             </div>
             <div>
               <label className={classes.remember__label}>
                 <input
-                  type='checkbox'
+                  type="checkbox"
                   className={classes.checkbox}
-                  id='customCheck1'
+                  id="customCheck1"
                 />
                 Remember me
               </label>
             </div>
             <div className={classes.button_modal_div}>
-              <TheButton type='submit' disabled={loading} onClick={handleLogin}>
+              <TheButton type="submit" disabled={loading} onClick={handleLogin}>
                 Login
               </TheButton>
             </div>
@@ -109,6 +114,7 @@ const Login = (props) => {
         </div>
         {/* <button className='close-button' onClick={props.onLogin}>
           Close
+          
         </button> */}
       </div>
     </Modal>
