@@ -99,7 +99,6 @@ const SignUp = (props) => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    console.log(state);
     // if (handleValidation()) {
     AuthService.signUp(
       state.firstName,
@@ -132,69 +131,69 @@ const SignUp = (props) => {
         </div>
         <div>
           <form onSubmit={handleSignUp}>
-            <div className='mb-3'>
+            <div className="mb-3">
               <label className={classes.input__label}>First Name</label>
               <input
-                type='text'
-                name='firstName'
-                placeholder='Enter First Name'
+                type="text"
+                name="firstName"
+                placeholder="Enter First Name"
                 // error={state.errors["firstNameBoolean"]}
                 // helpertext={state.errors["firstName"]}
                 value={state.firstName}
                 onChange={handleChange}
-                autoComplete='on'
+                autoComplete="on"
               />
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <label className={classes.input__label}>Last Name</label>
               <input
-                type='text'
-                name='lastName'
-                placeholder='Enter Last Name'
+                type="text"
+                name="lastName"
+                placeholder="Enter Last Name"
                 // error={state.errors["lastNameBoolean"]}
                 // helpertext={state.errors["lastName"]}
                 value={state.lastName}
                 onChange={handleChange}
-                autoComplete='on'
+                autoComplete="on"
               />
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <label className={classes.input__label}>Username</label>
               <input
-                type='text'
-                name='username'
-                placeholder='Enter Username'
+                type="text"
+                name="username"
+                placeholder="Enter Username"
                 // error={state.errors["usernameBoolean"]}
                 // helpertext={state.errors["username"]}
                 value={state.username}
                 onChange={handleChange}
-                autoComplete='on'
+                autoComplete="on"
               />
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <label className={classes.input__label}>Email</label>
               <input
-                type='text'
-                name='email'
-                placeholder='Enter Email'
+                type="text"
+                name="email"
+                placeholder="Enter Email"
                 // error={state.errors["emailBoolean"]}
                 // helpertext={state.errors["emailName"]}
                 value={state.email}
                 onChange={handleChange}
-                autoComplete='on'
+                autoComplete="on"
               />
             </div>
-            <div className='mb-3'>
+            <div className="mb-3">
               <label className={classes.input__label}>Password</label>
               <input
-                type='password'
-                name='password'
-                placeholder='Enter Password'
+                type="password"
+                name="password"
+                placeholder="Enter Password"
                 // error={state.errors["passwordBoolean"]}
                 // helpertext={state.errors["passwordName"]}
                 value={state.password}
                 onChange={handleChange}
-                autoComplete='on'
+                autoComplete="on"
               />
             </div>
             {/* <div className='mb-3'>
@@ -207,7 +206,7 @@ const SignUp = (props) => {
               />
             </div> */}
             <div className={classes.button_modal_div}>
-              <TheButton type='submit' onClick={handleSignUp}>
+              <TheButton type="submit" onClick={handleSignUp}>
                 Sign Up
               </TheButton>
             </div>

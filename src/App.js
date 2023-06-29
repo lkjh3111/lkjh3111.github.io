@@ -1,5 +1,7 @@
 import Navigation from "./Navigation/Navigation";
 
-const App = () => <Navigation />;
+const App = () => {
+  return <Navigation />;
+};
 
 export default App;

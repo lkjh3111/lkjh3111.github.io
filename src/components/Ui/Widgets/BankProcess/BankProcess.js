@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from "react";
+import { memo, useState } from "react";
 
 import Box from "../../Common/Box";
 import AuthService from "../../../../services/AuthService";
@@ -32,7 +32,7 @@ const BankProcess = memo(() => {
     e.preventDefault();
     UserService.deposit(id, depositAmount, depositCurrency).then(
       (response) => {
-        console.log(response);
+        // console.log(response);
       },
       (error) => {
         const message =
@@ -50,7 +50,7 @@ const BankProcess = memo(() => {
     e.preventDefault();
     UserService.withdraw(id, withdrawAmount, withdrawCurrency).then(
       (response) => {
-        console.log(response);
+        // console.log(response);
       },
       (error) => {
         const message =
