@@ -2,9 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Modal from "../../Ui/Modal";
 import TheButton from "../../Ui/TheButton";
 import classes from "./SignUp.module.css";
-import { useNavigate } from "react-router-dom";
 import AuthService from "../../../services/AuthService";
-import validator from "validator";
 import { toast } from "react-toastify";
 
 const SignUp = (props) => {
@@ -14,17 +12,21 @@ const SignUp = (props) => {
     username: "",
     email: "",
     password: "",
-    // errors: {
-    //   firstNameBoolean: false,
-    // },
   });
-  const navigate = useNavigate();
+
+  const [errors, setErrors] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const modalRef = useRef();
 
   const successNotification = () =>
     toast.success("Successfully registered. Login to proceed.");
-  const failNotification = () => toast.error("Invalid details");
+  const failNotification = (e) => toast.error(e);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -49,86 +51,81 @@ const SignUp = (props) => {
   };
 
   const handleClear = () => {
-    this.setState({
+    setState({
       firstName: "",
       lastName: "",
-      userame: "",
+      username: "",
       email: "",
       password: "",
     });
   };
 
-  const handleValidation = (e) => {
+  const validateForm = () => {
     let errors = {};
-    let formIsValid = true;
-
-    if (!state.firstName) {
-      formIsValid = false;
-      errors["firstName"] = "Cannot be empty";
-      errors["firstNameBoolean"] = true;
+    if (!state.firstName.trim()) {
+      errors.firstName = "First name is required";
     }
 
-    if (!state.lastName) {
-      formIsValid = false;
-      errors["lastName"] = "Cannot be empty";
-      errors["lastNameBoolean"] = true;
+    if (!state.lastName.trim()) {
+      errors.lastName = "Last name is required";
     }
 
-    if (!state.username) {
-      formIsValid = false;
-      errors["username"] = "Cannot be empty";
-      errors["usernameBoolean"] = true;
+    if (!state.username.trim()) {
+      errors.username = "Username is required";
     }
 
-    if (state.email) {
-      formIsValid = false;
-      errors["email"] = "Cannot be empty";
-      errors["emailBoolean"] = true;
+    if (!state.email.trim()) {
+      errors.email = "Email is required";
     } else {
-      if (!validator.isEmail(state.email)) {
-        formIsValid = false;
-        errors["email"] = "Invalid Contact Number";
-        errors["emailBoolean"] = true;
+      if (!validEmailRegex.test(state.email)) {
+        errors.email = "Email is invalid";
       }
     }
 
-    if (!state.password) {
-      formIsValid = false;
-      errors["password"] = "Cannot be empty";
-      errors["passwordBoolean"] = true;
+    if (!state.password.trim()) {
+      errors.password = "Password is required";
+    } else if (state.password.length < 5) {
+      errors.password = "Password is too short";
     }
 
-    this.setState({ errors: errors });
-    return formIsValid;
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return false;
+    } else {
+      setErrors({});
+      return true;
+    }
   };
+
+  const validEmailRegex = RegExp(
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  );
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    // if (handleValidation()) {
-    AuthService.signUp(
-      state.firstName,
-      state.lastName,
-      state.username,
-      state.email,
-      state.password
-    ).then(
-      (response) => {
-        successNotification();
-        // navigate("/");
-        // window.location.reload();
-      },
-      (error) => {
-        const message =
-          (error.response &&
-            error.response.data &&
-            error.response.data.result) ||
-          error.result ||
-          error.toString();
-        // console.log(message);
-        failNotification();
-      }
-    );
-    // }
+    if (validateForm()) {
+      AuthService.signUp(
+        state.firstName,
+        state.lastName,
+        state.username,
+        state.email,
+        state.password
+      ).then(
+        (response) => {
+          handleClear();
+          successNotification();
+        },
+        (error) => {
+          const message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.result) ||
+            error.result ||
+            error.toString();
+          failNotification(message);
+        }
+      );
+    }
   };
   return (
     <Modal onSignUp={props.onSignUp}>
@@ -140,68 +137,100 @@ const SignUp = (props) => {
           <form onSubmit={handleSignUp}>
             <div className={classes.signup_input}>
               <div className={classes.signup_content}>
-                <label className={classes.input__label}>First Name</label>
+                <div className={classes.signup_label}>
+                  <label>First Name</label>
+                  <span className="text-danger">
+                    <small>{errors.firstName}</small>
+                  </span>
+                </div>
                 <input
                   type="text"
                   name="firstName"
                   placeholder="Enter First Name"
-                  // error={state.errors["firstNameBoolean"]}
-                  // helpertext={state.errors["firstName"]}
                   value={state.firstName}
                   onChange={handleChange}
                   autoComplete="on"
+                  className={
+                    errors.firstName
+                      ? "is-invalid form-control"
+                      : "form-control"
+                  }
                 />
               </div>
               <div className={classes.signup_content}>
-                <label className={classes.input__label}>Last Name</label>
+                <div className={classes.signup_label}>
+                  <label>Last Name</label>
+                  <span className="text-danger">
+                    <small>{errors.lastName}</small>
+                  </span>
+                </div>
                 <input
                   type="text"
                   name="lastName"
                   placeholder="Enter Last Name"
-                  // error={state.errors["lastNameBoolean"]}
-                  // helpertext={state.errors["lastName"]}
                   value={state.lastName}
                   onChange={handleChange}
                   autoComplete="on"
+                  className={
+                    errors.lastName ? "is-invalid form-control" : "form-control"
+                  }
                 />
               </div>
               <div className={classes.signup_content}>
-                <label className={classes.input__label}>Username</label>
+                <div className={classes.signup_label}>
+                  <label>Username</label>
+                  <span className="text-danger">
+                    <small>{errors.username}</small>
+                  </span>
+                </div>
                 <input
                   type="text"
                   name="username"
                   placeholder="Enter Username"
-                  // error={state.errors["usernameBoolean"]}
-                  // helpertext={state.errors["username"]}
                   value={state.username}
                   onChange={handleChange}
                   autoComplete="on"
+                  className={
+                    errors.username ? "is-invalid form-control" : "form-control"
+                  }
                 />
               </div>
               <div className={classes.signup_content}>
-                <label className={classes.input__label}>Email</label>
+                <div className={classes.signup_label}>
+                  <label>Email</label>
+                  <span className="text-danger">
+                    <small>{errors.email}</small>
+                  </span>
+                </div>
                 <input
                   type="text"
                   name="email"
                   placeholder="Enter Email"
-                  // error={state.errors["emailBoolean"]}
-                  // helpertext={state.errors["emailName"]}
                   value={state.email}
                   onChange={handleChange}
                   autoComplete="on"
+                  className={
+                    errors.email ? "is-invalid form-control" : "form-control"
+                  }
                 />
               </div>
               <div className={classes.signup_content}>
-                <label className={classes.input__label}>Password</label>
+                <div className={classes.signup_label}>
+                  <label>Password</label>
+                  <span className="text-danger">
+                    <small>{errors.password}</small>
+                  </span>
+                </div>
                 <input
                   type="password"
                   name="password"
                   placeholder="Enter Password"
-                  // error={state.errors["passwordBoolean"]}
-                  // helpertext={state.errors["passwordName"]}
                   value={state.password}
                   onChange={handleChange}
                   autoComplete="on"
+                  className={
+                    errors.password ? "is-invalid form-control" : "form-control"
+                  }
                 />
               </div>
             </div>

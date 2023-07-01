@@ -1870,6 +1870,16 @@ header .header-right .header-user .signout i {
   margin-bottom: 0;
 }
 
+/* Sign-up */
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+  box-shadow: none;
+}
+
 @media (max-width: 1200px) {
   header .header-right .header-menu {
     display: none;
