@@ -89,11 +89,13 @@ const RecentActivity = memo(() => {
           </ul>
         </div>
       </div>
-      <div className="box-content bank-process-height">
-        {data &&
-          data.map((item) => (
-            <RecentActivityRow key={item.id.toString()} item={item} />
-          ))}
+      <div className="box-content small-height">
+        <div className="small-height-hide-scroll">
+          {data &&
+            data.map((item) => (
+              <RecentActivityRow key={item.id.toString()} item={item} />
+            ))}
+        </div>
       </div>
     </Box>
   );

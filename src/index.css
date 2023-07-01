@@ -1320,9 +1320,16 @@ header .header-right .header-user .signout i {
 
 /* Dashboard */
 
-.bank-process-height {
+.small-height {
   height: 300px;
-  overflow: auto;
+  overflow: hidden;
+}
+
+.small-height-hide-scroll {
+  position: relative;
+  height: 300px;
+  overflow-y: scroll;
+  right: -15px;
 }
 
 /* Profile widget */

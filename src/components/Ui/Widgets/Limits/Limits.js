@@ -55,41 +55,43 @@ const Limits = memo(() => {
 
   return (
     <Box>
-      <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
-        <div className='flex flex-center flex-space-between'>
+      <div className="box-title box-vertical-padding box-horizontal-padding no-select">
+        <div className="flex flex-center flex-space-between">
           <div>
             <p>Limits</p>
           </div>
           <ul>
             <li>
-              <button type='button' className='active'>
+              <button type="button" className="active">
                 Deposit
               </button>
             </li>
             <li>
-              <button type='button'>Withdraw</button>
+              <button type="button">Withdraw</button>
             </li>
           </ul>
         </div>
       </div>
-      <div className='box-content box-content-height-nobutton'>
-        <div className='limits-header-row flex flex-center flex-space-between no-select'>
-          <div>&nbsp;</div>
-          <div className='center'>
-            <span className='gray'>24s limit</span>
+      <div className="box-content small-height">
+        <div className="small-height-hide-scroll">
+          <div className="limits-header-row flex flex-center flex-space-between no-select">
+            <div>&nbsp;</div>
+            <div className="center">
+              <span className="gray">24s limit</span>
+            </div>
+            <div className="center">
+              <span className="gray">30g limit</span>
+            </div>
+            <div className="center">
+              <span className="gray">Status</span>
+            </div>
           </div>
-          <div className='center'>
-            <span className='gray'>30g limit</span>
-          </div>
-          <div className='center'>
-            <span className='gray'>Status</span>
-          </div>
-        </div>
 
-        {data &&
-          data.map((item) => (
-            <LimitsRow key={item.id.toString()} item={item} />
-          ))}
+          {data &&
+            data.map((item) => (
+              <LimitsRow key={item.id.toString()} item={item} />
+            ))}
+        </div>
       </div>
     </Box>
   );
