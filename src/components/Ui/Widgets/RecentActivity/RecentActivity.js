@@ -72,24 +72,24 @@ const RecentActivity = memo(() => {
 
   return (
     <Box>
-      <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
-        <div className='flex flex-center flex-space-between'>
+      <div className="box-title box-vertical-padding box-horizontal-padding no-select">
+        <div className="flex flex-center flex-space-between">
           <div>
             <p>Recent Transactions</p>
           </div>
           <ul>
             <li>
-              <button type='button'>Yesterday</button>
+              <button type="button">Yesterday</button>
             </li>
             <li>
-              <button type='button' className='active'>
+              <button type="button" className="active">
                 Today
               </button>
             </li>
           </ul>
         </div>
       </div>
-      <div className='box-content box-content-height-nobutton'>
+      <div className="box-content bank-process-height">
         {data &&
           data.map((item) => (
             <RecentActivityRow key={item.id.toString()} item={item} />

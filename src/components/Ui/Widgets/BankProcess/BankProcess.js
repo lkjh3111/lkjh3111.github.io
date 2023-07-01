@@ -99,7 +99,7 @@ const BankProcess = memo(() => {
         </div>
       </div>
       {tab === 0 && (
-        <div className="box-content box-horizontal-padding box-vertical-padding .bank-process-height">
+        <div className="box-content box-horizontal-padding box-vertical-padding box-content-height-nobutton">
           <form className="form" noValidate>
             <div className="form-elements">
               <div className="form-line">

@@ -31,10 +31,10 @@ const DashboardScreen = () => {
       <div className="flex flex-destroy flex-space-between">
         <div className="flex-1 box-right-padding">
           <Wallet balance={balance} />
-          <BankProcess />
+          <RecentActivity />
         </div>
         <div className="flex-1">
-          <RecentActivity />
+          <BankProcess />
         </div>
       </div>
     </SiteLayout>
