@@ -71,15 +71,15 @@ const BankProcess = memo(() => {
 
   return (
     <Box>
-      <div className="box-title box-vertical-padding box-horizontal-padding no-select">
-        <div className="flex flex-center flex-space-between">
+      <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
+        <div className='flex flex-center flex-space-between'>
           <div>
             <p>Deposit/Widthrawal</p>
           </div>
           <ul>
             <li>
               <button
-                type="button"
+                type='button'
                 className={tab === 0 ? "active" : "passive"}
                 onClick={() => setTab(0)}
               >
@@ -88,7 +88,7 @@ const BankProcess = memo(() => {
             </li>
             <li>
               <button
-                type="button"
+                type='button'
                 className={tab === 1 ? "active" : "passive"}
                 onClick={() => setTab(1)}
               >
@@ -99,35 +99,35 @@ const BankProcess = memo(() => {
         </div>
       </div>
       {tab === 0 && (
-        <div className="box-content box-horizontal-padding box-vertical-padding box-content-height-nobutton">
-          <form className="form" noValidate>
-            <div className="form-elements">
-              <div className="form-line">
-                <div className="full-width">
-                  <label htmlFor="depositAmount">Deposit Amount:</label>
+        <div className='box-content box-horizontal-padding box-vertical-padding small-height'>
+          <form className='form' noValidate>
+            <div className='form-elements'>
+              <div className='form-line'>
+                <div className='full-width'>
+                  <label htmlFor='depositAmount'>Deposit Amount:</label>
                   <input
-                    type="number"
-                    name="depositAmount"
-                    id="depositAmount"
-                    placeholder="Enter amount"
+                    type='number'
+                    name='depositAmount'
+                    id='depositAmount'
+                    placeholder='Enter amount'
                     onChange={handleDepositAmountChange}
                   />
                 </div>
               </div>
             </div>
           </form>
-          <form className="form" noValidate>
-            <div className="form-elements">
-              <div className="form-line">
-                <div className="full-width">
-                  <label htmlFor="currency">Currency</label>
+          <form className='form' noValidate>
+            <div className='form-elements'>
+              <div className='form-line'>
+                <div className='full-width'>
+                  <label htmlFor='currency'>Currency</label>
                   <select
-                    name="currency"
-                    id="currency"
+                    name='currency'
+                    id='currency'
                     onChange={handleDepositCurrencyChange}
                     value={depositCurrency}
                   >
-                    <option value="usd">USD</option>
+                    <option value='usd'>USD</option>
 
                     {/* <option value='php'>PHP</option> */}
                   </select>
@@ -137,8 +137,8 @@ const BankProcess = memo(() => {
           </form>
 
           <button
-            type="button"
-            className="button button-purple button-medium button-block"
+            type='button'
+            className='button button-purple button-medium button-block'
             onClick={handleDeposit}
           >
             Deposit
@@ -147,17 +147,17 @@ const BankProcess = memo(() => {
       )}
 
       {tab === 1 && (
-        <div className="box-content box-horizontal-padding box-vertical-padding box-content-height-nobutton">
-          <form className="form" noValidate>
-            <div className="form-elements">
-              <div className="form-line">
-                <div className="full-width">
-                  <label htmlFor="withdrawAmount">Withdraw Amount:</label>
+        <div className='box-content box-horizontal-padding box-vertical-padding small-height'>
+          <form className='form' noValidate>
+            <div className='form-elements'>
+              <div className='form-line'>
+                <div className='full-width'>
+                  <label htmlFor='withdrawAmount'>Withdraw Amount:</label>
                   <input
-                    type="number"
-                    name="withdrawAmount"
-                    id="withdrawAmount"
-                    placeholder="Enter amount"
+                    type='number'
+                    name='withdrawAmount'
+                    id='withdrawAmount'
+                    placeholder='Enter amount'
                     onChange={handleWithdrawAmountChange}
                   />
                 </div>
@@ -165,18 +165,18 @@ const BankProcess = memo(() => {
             </div>
           </form>
 
-          <form className="form" noValidate>
-            <div className="form-elements">
-              <div className="form-line">
-                <div className="full-width">
-                  <label htmlFor="currency">Currency</label>
+          <form className='form' noValidate>
+            <div className='form-elements'>
+              <div className='form-line'>
+                <div className='full-width'>
+                  <label htmlFor='currency'>Currency</label>
                   <select
-                    name="currency"
-                    id="currency"
+                    name='currency'
+                    id='currency'
                     onChange={handleWithdrawCurrencyChange}
                     value={withdrawCurrency}
                   >
-                    <option value="usd">USD</option>
+                    <option value='usd'>USD</option>
                   </select>
                 </div>
               </div>
@@ -194,8 +194,8 @@ const BankProcess = memo(() => {
           </div> */}
 
           <button
-            type="button"
-            className="button button-purple button-medium button-block"
+            type='button'
+            className='button button-purple button-medium button-block'
             onClick={handleWithdraw}
           >
             Withdraw

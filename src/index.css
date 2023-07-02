@@ -487,6 +487,14 @@ a i {
   padding-bottom: 20px;
 }
 
+.box-top-padding {
+  padding-top: 20px;
+}
+
+.box-bottom-padding {
+  padding-bottom: 20px;
+}
+
 .box-horizontal-padding {
   padding-left: 20px;
   padding-right: 20px;
@@ -1291,6 +1299,13 @@ header .header-right .header-user .signout i {
   overflow: hidden;
 }
 
+.wallet .box-title {
+  height: 50px;
+  font-size: 1.1em;
+  font-weight: 600;
+  overflow: hidden;
+}
+
 .wallet h3 {
   font-size: 1.5em;
   font-weight: 600;
@@ -1303,7 +1318,7 @@ header .header-right .header-user .signout i {
 }
 
 .wallet .coin-price {
-  padding-bottom: 10px;
+  padding-top: 5px;
   font-weight: 600;
   font-size: 27px;
   display: inline-block;
@@ -1314,14 +1329,14 @@ header .header-right .header-user .signout i {
 }
 
 .wallet-height {
-  height: 100px;
+  height: 80px;
   overflow: hidden;
 }
 
 /* Dashboard */
 
 .small-height {
-  height: 300px;
+  height: 343px;
   overflow: hidden;
 }
 

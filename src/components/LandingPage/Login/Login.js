@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Modal from "../../Ui/Modal";
 import TheButton from "../../Ui/TheButton";
 import classes from "./Login.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthService from "../../../services/AuthService";
 
@@ -10,6 +10,8 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState("");
+  const [remember, setRemember] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({
     email: "",
     password: "",
@@ -41,6 +43,14 @@ const Login = (props) => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const togglePassword = (e) => {
+    if (showPassword) {
+      setShowPassword(false);
+    } else {
+      setShowPassword(true);
+    }
   };
 
   const validateForm = () => {
@@ -130,24 +140,41 @@ const Login = (props) => {
                   <small>{errors.password}</small>
                 </span>
               </div>
-              <input
-                type="password"
-                placeholder="Enter Password"
-                value={password}
-                onChange={handlePasswordChange}
-                autoComplete="on"
-                className={
-                  errors.password ? "is-invalid form-control" : "form-control"
-                }
-              />
+              <div className="input-group">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter Password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  autoComplete="on"
+                  className={
+                    errors.password ? "is-invalid form-control" : "form-control"
+                  }
+                />
+                <div className="input-group-btn">
+                  <button
+                    className="btn btn-outline-primary btn-lg"
+                    onClick={togglePassword}
+                  >
+                    <i
+                      className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}
+                    ></i>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className={classes.checkbox_label}>
-              <input
-                type="checkbox"
-                className={classes.checkbox}
-                // id="customCheck1"
-              />
-              <label>Remember me</label>
+            <div className={classes.remember_forgot_div}>
+              <div className={classes.checkbox_label}>
+                <input
+                  type="checkbox"
+                  className={classes.checkbox}
+                  // id="customCheck1"
+                />
+                <label>Remember me</label>
+              </div>
+              <div>
+                <Link to="/forgot-password">Forgot password?</Link>
+              </div>
             </div>
             <div className={classes.button_modal_div}>
               <TheButton type="submit" disabled={loading} onClick={handleLogin}>
