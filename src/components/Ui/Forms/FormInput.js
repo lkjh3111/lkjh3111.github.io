@@ -1,20 +1,23 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
-const FormInput = memo(({ type, name, value, placeholder, onChange }) => (
-  <input
-    id={name}
-    name={name}
-    type={type}
-    value={value}
-    autoComplete='off'
-    onChange={onChange}
-    placeholder={placeholder}
-  />
-));
+const FormInput = memo(
+  ({ type, name, value, placeholder, onChange, error }) => (
+    <input
+      id={name}
+      name={name}
+      type={type}
+      value={value}
+      autoComplete="on"
+      onChange={onChange}
+      placeholder={placeholder}
+      className={error ? "is-invalid form-control" : "form-control"}
+    />
+  )
+);
 
 FormInput.defaultProps = {
-  value: '',
+  value: "",
 };
 
 FormInput.propTypes = {

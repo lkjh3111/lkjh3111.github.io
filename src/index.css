@@ -199,7 +199,7 @@ select,
 textarea,
 button,
 .readonly-input {
-  border: none;
+  /* border: none; */
   border-radius: 0;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -562,13 +562,13 @@ a i {
 /* Tabs */
 
 .tabs {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .tabs button {
   width: 50%;
   margin: 0;
-  padding: 10px 0;
+  padding: 5px 0;
   cursor: pointer;
   font-weight: 500;
   display: inline-block;
@@ -602,7 +602,10 @@ a i {
 }
 
 .secondary-tabs {
-  padding: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: #f5f5f5;
   border: 1px solid #dadada;
   border-top-left-radius: 10px;
@@ -611,7 +614,7 @@ a i {
 
 .secondary-tabs button {
   margin: 0;
-  padding: 5px;
+  padding: 3px;
   cursor: pointer;
   color: #000000;
   font-size: 0.9em;
@@ -1575,7 +1578,10 @@ header .header-right .header-user .signout i {
 /* Buy sell widget */
 
 .buy-sell-line {
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   font-size: 0.9em;
   border-left: 1px solid #dadada;
   border-right: 1px solid #dadada;
@@ -1590,10 +1596,23 @@ header .header-right .header-user .signout i {
   vertical-align: middle;
 }
 
-.buy-sell-line input {
-  width: 60px;
+.buy-sell-line-input {
+  width: 80px;
   text-align: right;
   margin-right: 5px;
+}
+
+.buy-sell-line-input-error {
+  width: 80px;
+  text-align: right;
+  margin-right: 5px;
+  background-color: #ffb5b5;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .buy-sell-line input:hover {
@@ -1601,11 +1620,11 @@ header .header-right .header-user .signout i {
 }
 
 .buy-sell-percentage {
-  padding-top: 18px;
+  padding-top: 5px;
   padding-left: 20px;
   padding-right: 25px;
-  padding-bottom: 33px;
-  font-size: 0.8em;
+  padding-bottom: 25px;
+  font-size: 0.6em;
   background-color: #f5f5f5;
   border-left: 1px solid #dadada;
   border-right: 1px solid #dadada;
@@ -1614,11 +1633,57 @@ header .header-right .header-user .signout i {
   border-bottom-right-radius: 10px;
 }
 
+.buy-sell-title {
+  height: 50px;
+  font-size: 1.1em;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.buy-sell-height {
+  height: 260px;
+  overflow: auto;
+}
+
+.buy-sell-top-padding {
+  padding-top: 15px;
+}
+
+.buy-sell-button-top-padding {
+  padding-top: 10px;
+}
+
+.buy-sell-button-small {
+  padding: 5px 10px;
+}
+
+/* Candlestick */
+
+.candlestick-title {
+  display: flex;
+  height: 100px;
+  font-size: 1.1em;
+  font-weight: 600;
+  overflow: hidden;
+  align-items: center;
+}
+
+.candlestick-vertical-padding {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.candlestick-content-height {
+  height: 542px;
+  overflow: auto;
+}
+
 /* 404 */
 
 .logo-404 {
   /* width: 100px; */
   display: flex;
+  justify-content: center;
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
@@ -1627,6 +1692,8 @@ header .header-right .header-user .signout i {
   font-size: 30px;
   color: #505050;
   transition: opacity 0.2s ease 0s;
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .logo-404 img {
@@ -1642,6 +1709,46 @@ header .header-right .header-user .signout i {
 .paragraph-404 {
   font-size: 1em;
   margin-bottom: 40px;
+}
+
+/* Forgot */
+
+.forgot-label {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.form .reset-pass-element .form-line input[type="password"] {
+  /* width: 100%;
+  padding: 10px; */
+  font-size: 1em;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #dadada;
+}
+
+form .reset-pass-element .form-line label {
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: block;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.form .reset-pass-element .form-line .buttons button {
+  width: 100%;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.form .reset-pass-element .form-line .full-width {
+  width: 100%;
+  padding: 0 5px;
+  margin-bottom: 25px;
+  position: relative;
 }
 
 /* Forms */
@@ -1676,7 +1783,7 @@ header .header-right .header-user .signout i {
 
 .form .form-elements .form-line .full-width {
   width: 100%;
-  padding: 0 5px;
+  /* padding: 0 5px; */
   margin-bottom: 25px;
   position: relative;
 }
@@ -1899,6 +2006,7 @@ header .header-right .header-user .signout i {
 
 .form-control.is-invalid:focus,
 .was-validated .form-control:invalid:focus {
+  border: none;
   box-shadow: none;
 }
 

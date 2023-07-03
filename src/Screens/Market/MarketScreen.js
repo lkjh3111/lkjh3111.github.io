@@ -4,6 +4,7 @@ import SiteLayout from "../../components/layouts/SiteLayout";
 
 import Market from "../../components/Ui/Widgets/Market/Market";
 import BuySell from "../../components/Ui/Widgets/BuySell/BuySell";
+import ExoticBuySell from "../../components/Ui/Widgets/BuySell/ExoticBuySell";
 import BuyOrders from "../../components/Ui/Widgets/BuyOrders/BuyOrders";
 import SellOrders from "../../components/Ui/Widgets/SellOrders/SellOrders";
 import TradeHistory from "../../components/Ui/Widgets/TradeHistory/TradeHistory";
@@ -26,7 +27,7 @@ const MarketScreen = () => {
       weight: "104k",
       financialRate: "-0.0252%/hr",
       icon: "https://icons-for-free.com/iconfiles/png/512/btc+coin+crypto+icon-1320162856490699468.png",
-      amount: "18.783,33",
+      amount: 18783.33,
       description: `Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group using the name Satoshi Nakamoto. Released as an open source software in 2009.`,
     };
 
@@ -46,14 +47,14 @@ const MarketScreen = () => {
   return (
     <SiteLayout>
       <div>
-        <h3 className='title'>Market</h3>
-        <div className='flex flex-destroy'>
-          <div className='content-30 box-right-padding'>
+        <h3 className="title">Market</h3>
+        <div className="flex flex-destroy">
+          <div className="content-30 box-right-padding">
             <Market />
 
             {coinInfo && <CoinVertical item={coinInfo} />}
           </div>
-          <div className='content-70 flex-1'>
+          <div className="content-70 flex-1">
             {coinInfo && (
               <CoinHorizontal
                 item={coinInfo}
@@ -63,23 +64,24 @@ const MarketScreen = () => {
               />
             )}
 
-            <div className='flex flex-destroy'>
-              <div className='content-70 flex-1 box-right-padding'>
+            <div className="flex flex-destroy">
+              <div className="content-70 flex-1 box-right-padding">
                 <CandleStick />
               </div>
-              <div className='content-30'>
-                <BuySell />
+              <div className="content-30">
+                {coinInfo && <BuySell item={coinInfo} />}
+                {coinInfo && <ExoticBuySell item={coinInfo} />}
               </div>
             </div>
 
-            <div className='flex flex-destroy flex-space-between'>
-              <div className='flex-1 box-right-padding'>
+            <div className="flex flex-destroy flex-space-between">
+              <div className="flex-1 box-right-padding">
                 <TradeHistory />
               </div>
-              <div className='flex-1 box-right-padding'>
+              <div className="flex-1 box-right-padding">
                 <BuyOrders />
               </div>
-              <div className='flex-1'>
+              <div className="flex-1">
                 <SellOrders />
               </div>
             </div>

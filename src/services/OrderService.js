@@ -34,7 +34,7 @@ class OrderService {
   ) {
     return axios
       .post(
-        host + "/orders/" + id + "/limi",
+        host + "/orders/" + id + "/limit",
         {
           symbol,
           limitPrice,

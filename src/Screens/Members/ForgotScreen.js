@@ -5,11 +5,22 @@ import MainLayout from "../../components/layouts/MainLayout";
 import Box from "../../components/Ui/Common/Box";
 import FormInput from "../../components/Ui/Forms/FormInput";
 import FormButton from "../../components/Ui/Forms/FormButton";
+import Logo from "../../assets/Logo/logo.svg";
 
 const ForgotScreen = () => {
   const [formValues, setFormValues] = useState({
-    phone: "",
+    email: "",
   });
+
+  const [errors, setErrors] = useState({
+    email: "",
+  });
+
+  const handleClear = () => {
+    setFormValues({
+      email: "",
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,63 +31,89 @@ const ForgotScreen = () => {
     });
   };
 
+  const validateForm = () => {
+    let errors = {};
+
+    if (!formValues.email.trim()) {
+      errors.email = "Email is required";
+    } else {
+      if (!validEmailRegex.test(formValues.email)) {
+        errors.email = "Email is invalid";
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors);
+      return false;
+    } else {
+      setErrors({});
+      return true;
+    }
+  };
+
+  const validEmailRegex = RegExp(
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+  );
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Test!");
+    if (validateForm()) {
+      console.log("Send request!");
+    }
   };
 
   return (
     <MainLayout>
-      <div className='flex flex-center full-height'>
-        <div className='login no-select'>
+      <div className="flex flex-center full-height">
+        <div className="login no-select">
           <Box>
-            <div className='box-vertical-padding box-horizontal-padding'>
+            <div className="box-vertical-padding box-horizontal-padding">
               <div>
-                <div className='form-logo center'>
-                  <img
-                    src='/images/logo.png'
-                    alt='Crypto Exchange'
-                    draggable='false'
-                  />
+                <div className="logo-404">
+                  <img src={Logo} alt="158 Forex Trading" draggable="false" />
+                  <span>158 Forex Trading</span>
                 </div>
-                <h1 className='form-title center'>Şifre sıfırlama</h1>
-                <p className='form-desc center'>
-                  Lütfen kayıtlı telefon numaranızı giriniz. Şifre sıfırlama
-                  bilgilerinizi göndereceğiz.
-                </p>
-                <form className='form' onSubmit={handleSubmit} noValidate>
-                  <div className='form-elements'>
-                    <div className='form-line'>
-                      <div className='full-width'>
-                        <label htmlFor='phone'>Telefon numaranız</label>
+                <h1 className="form-title center">Forgot Password</h1>
+                <form className="form" onSubmit={handleSubmit} noValidate>
+                  <div className="form-elements">
+                    <div className="form-line">
+                      <div className="full-width">
+                        <div className="forgot-label">
+                          <label htmlFor="email">Email Address</label>
+                          <span className="text-danger">
+                            <small>{errors.email}</small>
+                          </span>
+                        </div>
                         <FormInput
-                          type='text'
-                          name='phone'
-                          value={formValues.phone}
-                          placeholder='Telefon numaranızı girin'
+                          type="text"
+                          name="email"
+                          value={formValues.email}
+                          placeholder="Enter Email Address"
                           onChange={handleChange}
+                          error={errors.email}
                         />
                       </div>
                     </div>
-                    <div className='form-line'>
-                      <div className='full-width right'>
-                        <Link to='/'>Giriş yap</Link>
+                    <div className="form-line">
+                      <div className="full-width right">
+                        <Link to="/">Login</Link>
                       </div>
                     </div>
-                    <div className='form-line'>
-                      <div className='buttons'>
+                    <div className="form-line">
+                      <div className="buttons">
                         <FormButton
-                          type='submit'
-                          text='Gönder'
+                          type="submit"
+                          text="Send Reset Code"
                           onClick={handleSubmit}
                         />
                       </div>
                     </div>
-                    <div className='form-line'>
-                      <div className='center'>
+                    <div className="form-line">
+                      <div className="center">
                         <p>
-                          Hesabınız yoksa{" "}
-                          <Link to='/members/signup'>yeni hesap</Link>{" "}
-                          oluşturun.
+                          <Link to="/">Register</Link> if you do not have an
+                          account.
                         </p>
                       </div>
                     </div>

@@ -275,15 +275,15 @@ const CandleStick = memo(() => {
 
   return (
     <Box>
-      <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
+      <div className="candlestick-title candlestick-vertical-padding box-horizontal-padding no-select">
         Market History
       </div>
-      <div className='box-content box-content-height-nobutton'>
+      <div className="box-content candlestick-content-height">
         {state && (
           <ReactApexChart
             options={state.options}
             series={state.series}
-            type='candlestick'
+            type="candlestick"
             height={470}
           />
         )}

@@ -9,7 +9,7 @@ import AuthService from "../../../../services/AuthService";
 import UserService from "../../../../services/UserService";
 import { toast } from "react-toastify";
 
-const BuySell = memo(({ item }) => {
+const ExoticBuySell = memo(({ item }) => {
   const [primaryTab, setPrimaryTab] = useState(0);
   const [secondaryTab, setSecondaryTab] = useState(0);
   const [value, setValue] = useState(0.0);
@@ -179,7 +179,7 @@ const BuySell = memo(({ item }) => {
     <Box>
       <div className="buy-sell-title buy-sell-top-padding box-horizontal-padding no-select">
         <div className="flex flex-center flex-space-between">
-          <p>Buy and Sell</p>
+          <p>Exotic Currencies</p>
         </div>
       </div>
       <div className="box-horizontal-padding buy-sell-height">
@@ -277,7 +277,7 @@ const BuySell = memo(({ item }) => {
                     className="button button-green buy-sell-button-small button-block"
                     onClick={handleOrder}
                   >
-                    Buy
+                    Auto Buy
                   </button>
                 </div>
               </>
@@ -368,7 +368,7 @@ const BuySell = memo(({ item }) => {
                     className="button button-green buy-sell-button-small button-block"
                     onClick={handleOrder}
                   >
-                    Buy
+                    Auto Buy
                   </button>
                 </div>
               </>
@@ -455,7 +455,7 @@ const BuySell = memo(({ item }) => {
                     className="button button-red buy-sell-button-small button-block"
                     onClick={handleOrder}
                   >
-                    Sell
+                    Auto Sell
                   </button>
                 </div>
               </>
@@ -546,7 +546,7 @@ const BuySell = memo(({ item }) => {
                     className="button button-red buy-sell-button-small button-block"
                     onClick={handleOrder}
                   >
-                    Sell
+                    Auto Sell
                   </button>
                 </div>
               </>
@@ -560,4 +560,4 @@ const BuySell = memo(({ item }) => {
   );
 });
 
-export default BuySell;
+export default ExoticBuySell;

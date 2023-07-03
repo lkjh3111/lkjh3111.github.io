@@ -16,6 +16,7 @@ import AuthVerify from "../commons/AuthVerify";
 // import SigninScreen from '../Screens/Members/SigninScreen';
 // import SignupScreen from '../Screens/Members/SignupScreen';
 import ForgotScreen from "../Screens/Members/ForgotScreen";
+import ResetPasswordScreen from "../Screens/Members/ResetPasswordScreen";
 // import ProfileScreen from "../Screens/Members/ProfileScreen";
 // import SiteLayout from "../components/layouts/SiteLayout";
 
@@ -53,6 +54,7 @@ const Navigation = () => {
           element={<PrivateRoute Component={TransactionsScreen} />}
         />
         <Route path="/forgot-password" element={<ForgotScreen />} />
+        <Route path="/reset-password" element={<ResetPasswordScreen />} />
         {/* <Route path='/wallet' element={<PrivateRoute Component={WalletScreen} />} /> */}
         {/* <Route path='/forgot-password' element={<ForgotScreen />} /> */}
         {/* <SiteLayout /> */}

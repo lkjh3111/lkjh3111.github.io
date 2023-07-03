@@ -127,6 +127,7 @@ const SignUp = (props) => {
       );
     }
   };
+
   return (
     <Modal onSignUp={props.onSignUp}>
       <div className={classes.signup_modal_content} ref={modalRef}>
