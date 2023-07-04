@@ -46,6 +46,22 @@ class AdminService {
         return response.data.result;
       });
   }
+
+  getTransacions(pageNumber, pageSize, from, to) {
+    return axios
+      .get(host + "/admin/transactions", {
+        headers: authHeader(),
+        params: {
+          page: pageNumber,
+          size: pageSize,
+          from: from,
+          to: to,
+        },
+      })
+      .then((response) => {
+        return response.data.result;
+      });
+  }
 }
 
 export default new AdminService();

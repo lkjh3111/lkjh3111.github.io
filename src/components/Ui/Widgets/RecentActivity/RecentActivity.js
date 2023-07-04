@@ -15,81 +15,26 @@ const RecentActivity = memo(() => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   const dataArray = [
-  //     {
-  //       id: 1,
-  //       type: 1,
-  //       time: "06:25:57",
-  //       amount: "212,50",
-  //       currency: "USD",
-  //       status: 1,
-  //     },
-  //     {
-  //       id: 2,
-  //       type: 1,
-  //       time: "08:30:25",
-  //       amount: "1.465,85",
-  //       currency: "USD",
-  //       status: 1,
-  //     },
-  //     {
-  //       id: 3,
-  //       type: 2,
-  //       time: "09:16:11",
-  //       amount: "6.000,00",
-  //       currency: "USD",
-  //       status: 2,
-  //     },
-  //     {
-  //       id: 4,
-  //       type: 1,
-  //       time: "12:05:03",
-  //       amount: "2.225,35",
-  //       currency: "USD",
-  //       status: 1,
-  //     },
-  //     {
-  //       id: 5,
-  //       type: 1,
-  //       time: "14:46:53",
-  //       amount: "128,01",
-  //       currency: "USD",
-  //       status: 3,
-  //     },
-  //     {
-  //       id: 6,
-  //       type: 2,
-  //       time: "18:01:03",
-  //       amount: "350,00",
-  //       currency: "USD",
-  //       status: 2,
-  //     },
-  //   ];
-
-  //   setData(props.transactions);
-  // }, []);
-
   return (
     <Box>
-      <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
-        <div className='flex flex-center flex-space-between'>
+      <div className="box-title box-vertical-padding box-horizontal-padding no-select">
+        <div className="flex flex-center flex-space-between">
           <div>
             <p>Recent Transactions</p>
           </div>
           <ul>
             <li>
-              <button type='button'>Yesterday</button>
+              <button type="button">Yesterday</button>
             </li>
             <li>
-              <button type='button' className='active'>
+              <button type="button" className="active">
                 Today
               </button>
             </li>
           </ul>
         </div>
       </div>
-      <div className='box-content box-content-height-nobutton'>
+      <div className="box-content box-content-height-nobutton">
         {data &&
           data.map((item) => (
             <RecentActivityRow key={item.id.toString()} item={item} />

@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 const ProcessType = memo(({ type }) => {
   if (type === "DEPOSIT") {
     return (
-      <div className='nowrap'>
-        <div className='icon green'>
-          <i className='material-icons'>arrow_upward</i>
+      <div className="activity-row-div-20 nowrap">
+        <div className="icon green">
+          <i className="material-icons">arrow_upward</i>
         </div>
         <strong>Deposit</strong>
       </div>
@@ -14,9 +14,9 @@ const ProcessType = memo(({ type }) => {
   }
 
   return (
-    <div className='nowrap'>
-      <div className='icon red'>
-        <i className='material-icons'>arrow_downward</i>
+    <div className="activity-row-div-20 nowrap">
+      <div className="icon red">
+        <i className="material-icons">arrow_downward</i>
       </div>
       <strong>Withdrawal</strong>
     </div>

@@ -1,18 +1,18 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
 const Icon = memo(({ type }) => {
-  if (type === 1) {
+  if (type === "DEPOSIT") {
     return (
-      <div className='operation red'>
-        <i className='material-icons'>arrow_upward</i>
+      <div className="operation green">
+        <i className="material-icons">arrow_upward</i>
       </div>
     );
   }
 
   return (
-    <div className='operation green'>
-      <i className='material-icons'>arrow_downward</i>
+    <div className="operation red">
+      <i className="material-icons">arrow_downward</i>
     </div>
   );
 });

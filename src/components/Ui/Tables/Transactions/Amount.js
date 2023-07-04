@@ -1,12 +1,12 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
-const Amount = memo(({ type, amount }) => {
-  if (type === 1) {
-    return <strong className='red'>{amount}</strong>;
+const Amount = memo(({ type, amount, asset }) => {
+  if (type === "DEPOSIT") {
+    return <strong className="green">{amount + " " + asset}</strong>;
   }
 
-  return <strong className='green'>{amount}</strong>;
+  return <strong className="red">{amount + " " + asset}</strong>;
 });
 
 Amount.propTypes = {

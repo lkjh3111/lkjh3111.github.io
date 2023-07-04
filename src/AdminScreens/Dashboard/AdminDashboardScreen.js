@@ -70,7 +70,6 @@ const AdminDashboardScreen = () => {
               </tbody>
             )}
           </table>
-          {/* <div className="pagination-bar"> */}
           <Pagination
             className="pagination-bar"
             currentPage={pageNumber}
@@ -78,7 +77,6 @@ const AdminDashboardScreen = () => {
             pageSize={pageSize}
             onPageChange={(page) => setPageNumber(page)}
           />
-          {/* </div> */}
         </>
       </div>
     </SiteLayout>

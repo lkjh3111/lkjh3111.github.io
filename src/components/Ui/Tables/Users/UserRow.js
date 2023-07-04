@@ -94,12 +94,6 @@ const UserRow = memo(({ item, index, trigger }) => {
                   />
                 )}
               </li>
-              {/* <li>
-                <button type="button">
-                  <i className="material-icons">info</i>
-                  Button 3
-                </button>
-              </li> */}
             </ul>
           </div>
         )}
