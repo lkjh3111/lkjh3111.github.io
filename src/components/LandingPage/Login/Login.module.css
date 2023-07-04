@@ -1,73 +1,4 @@
-/* .items {
-  padding: 0px 20px 20px 20px;
-}
-
-.items .item_group {
-  max-height: 300px;
-  overflow: auto;
-}
-
-.buttons {
-  text-align: right;
-}
-
-.buttons .btn_style {
-  background-color: var(--light);
-  border: 1px solid var(--primaryitemcolor);
-  color: var(--primaryitemcolor);
-  transition: 0.3s;
-}
-
-.buttons .btn_style2 {
-  border: 1px solid var(--primaryitemcolor);
-}
-
-.buttons .btn_style:hover {
-  background-color: var(--primaryitemcolor);
-  color: var(--light);
-}
-
-.amount {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.amount p {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-@media only screen and (max-width: 576px) {
-  .amount p {
-    font-size: 22px;
-    font-weight: 700;
-  }
-} */
-
-/* .login-modal {
-  display: flex;
-  justify-content: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-.login-modal.open {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
 .login_modal_content {
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center; */
   background-color: #fff;
   padding-top: 20px;
   padding-bottom: 40px;
@@ -75,7 +6,6 @@
   padding-right: 70px;
   border-radius: 5px;
   text-align: center;
-  /* margin: 10px; */
 }
 
 .login_modal_content label {
@@ -83,7 +13,6 @@
   float: left;
   font-weight: 500;
   margin-left: 2px;
-  /* margin-bottom: 30px; */
 }
 
 .remember__label {

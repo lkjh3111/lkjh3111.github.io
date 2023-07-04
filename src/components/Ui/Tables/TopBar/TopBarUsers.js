@@ -1,0 +1,39 @@
+import { memo } from "react";
+import PropTypes from "prop-types";
+
+const TopBarUsers = memo(({ searchValue, searchOnChange, searchSubmit }) => (
+  <div className="top-buttons flex flex-destroy flex-center flex-space-between">
+    <div>
+      <div className="top-search no-select nowrap">
+        <form onSubmit={searchSubmit} noValidate>
+          <input
+            type="text"
+            id="search"
+            name="search"
+            autoComplete="off"
+            placeholder="Search"
+            onChange={searchOnChange}
+            value={searchValue}
+          />
+          <button type="submit" className="pointer" onClick={searchSubmit}>
+            <i className="material-icons">search</i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div>
+      <button type="button" className="button button-purple button-large">
+        <i className="material-icons button-icon-left">download</i>
+        Download CSV
+      </button>
+    </div>
+  </div>
+));
+
+TopBarUsers.propTypes = {
+  searchValue: PropTypes.string.isRequired,
+  searchSubmit: PropTypes.func.isRequired,
+  searchOnChange: PropTypes.func.isRequired,
+};
+
+export default TopBarUsers;

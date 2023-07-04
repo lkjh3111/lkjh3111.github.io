@@ -7,6 +7,10 @@ import DashboardScreen from "../Screens/Dashboard/DashboardScreen";
 import TransactionsScreen from "../Screens/Transactions/TransactionsScreen";
 import ProfileScreen from "../Screens/Members/ProfileScreen";
 
+import AdminDashboardScreen from "../AdminScreens/Dashboard/AdminDashboardScreen";
+import AdminOrdersScreen from "../AdminScreens/Orders/AdminOrdersScreen";
+import AdminTransactionsScreen from "../AdminScreens/Transactions/AdminTransactionsScreen";
+
 import NotFoundScreen from "../Screens/NotFound/NotFoundScreen";
 import { PrivateRoute } from "../routes/PrivateRoute";
 import AuthService from "../services/AuthService";
@@ -52,6 +56,18 @@ const Navigation = () => {
         <Route
           path="/transactions"
           element={<PrivateRoute Component={TransactionsScreen} />}
+        />
+        <Route
+          path="/admin/dashboard"
+          element={<PrivateRoute Component={AdminDashboardScreen} />}
+        />
+        <Route
+          path="/admin/transactions"
+          element={<PrivateRoute Component={AdminTransactionsScreen} />}
+        />
+        <Route
+          path="/admin/orders"
+          element={<PrivateRoute Component={AdminOrdersScreen} />}
         />
         <Route path="/forgot-password" element={<ForgotScreen />} />
         <Route path="/reset-password" element={<ResetPasswordScreen />} />
