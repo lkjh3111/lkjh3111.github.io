@@ -57,6 +57,9 @@ class UserService {
   getUserTransactions(id) {
     let config = {
       headers: authHeader(),
+      params: {
+        size: 50,
+      },
     };
     return axios
       .get(host + "/users/" + id + "/transactions", config)

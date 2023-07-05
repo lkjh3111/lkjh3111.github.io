@@ -10,8 +10,8 @@ const RecentActivity = memo(() => {
   const userId = AuthService.getCurrentUser().id;
 
   useEffect(() => {
-    UserService.getUserWallet(userId).then((response) => {
-      setData(response.data.result.transactions);
+    UserService.getUserTransactions(userId).then((response) => {
+      setData(response.data);
     });
   }, []);
 
@@ -23,9 +23,9 @@ const RecentActivity = memo(() => {
             <p>Recent Transactions</p>
           </div>
           <ul>
-            <li>
+            {/* <li>
               <button type="button">Yesterday</button>
-            </li>
+            </li> */}
             <li>
               <button type="button" className="active">
                 Today

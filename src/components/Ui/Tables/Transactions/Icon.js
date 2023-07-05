@@ -18,7 +18,7 @@ const Icon = memo(({ type }) => {
 });
 
 Icon.propTypes = {
-  type: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default Icon;

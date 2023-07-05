@@ -5,15 +5,13 @@ import EditUser from "../../../../AdminScreens/Dashboard/EditUser/EditUser";
 import { toast } from "react-toastify";
 
 const UserRow = memo(({ item, index, trigger }) => {
-  const [color, setColor] = useState("");
   const [menuOpened, setMenuOpened] = useState(false);
+  const [hideMenu, setHideMenu] = useState(false);
   const [editUserIsShown, setEditUserIsShown] = useState(false);
 
   useEffect(() => {
-    if (item.status === 1) {
-      setColor("green");
-    } else {
-      setColor("red");
+    if (item.roles.find((e) => e === "ADMIN")) {
+      setHideMenu(true);
     }
   }, []);
 
@@ -63,41 +61,43 @@ const UserRow = memo(({ item, index, trigger }) => {
       <td className="center">{item.username}</td>
       <td className="center">{item.email}</td>
       <td className="center responsive-hide2">{item.roles.toString()}</td>
-      <td className="right">
-        <button
-          type="button"
-          className="pointer"
-          onClick={() => handleMenuOpen()}
-        >
-          <i className="material-icons">more_vert</i>
-        </button>
+      {!hideMenu && (
+        <td className="right">
+          <button
+            type="button"
+            className="pointer"
+            onClick={() => handleMenuOpen()}
+          >
+            <i className="material-icons">more_vert</i>
+          </button>
 
-        {menuOpened && (
-          <div className="box-dropdown">
-            <ul>
-              <li>
-                <button type="button" onClick={handleDelete}>
-                  <i className="material-icons">delete</i>
-                  Delete
-                </button>
-              </li>
-              <li>
-                <button type="button" onClick={onShowEditUserHandler}>
-                  <i className="material-icons">edit</i>
-                  Edit
-                </button>
-                {editUserIsShown && (
-                  <EditUser
-                    onEditUser={onCloseEditUserHandler}
-                    item={item}
-                    trigger={trigger}
-                  />
-                )}
-              </li>
-            </ul>
-          </div>
-        )}
-      </td>
+          {menuOpened && (
+            <div className="box-dropdown">
+              <ul>
+                <li>
+                  <button type="button" onClick={handleDelete}>
+                    <i className="material-icons">delete</i>
+                    Delete
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onClick={onShowEditUserHandler}>
+                    <i className="material-icons">edit</i>
+                    Edit
+                  </button>
+                  {editUserIsShown && (
+                    <EditUser
+                      onEditUser={onCloseEditUserHandler}
+                      item={item}
+                      trigger={trigger}
+                    />
+                  )}
+                </li>
+              </ul>
+            </div>
+          )}
+        </td>
+      )}
     </tr>
   );
 });

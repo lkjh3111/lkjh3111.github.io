@@ -1,24 +1,32 @@
-import { memo, useState } from "react";
+import { memo, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 import Icon from "./Icon";
 import Amount from "./Amount";
 import Status from "./Status";
+import EditTransaction from "../../../../AdminScreens/Transactions/EditTransaction/EditTransaction";
 
-const TransactionRow = memo(({ item }) => {
+const TransactionRow = memo(({ item, trigger }) => {
   const [menuOpened, setMenuOpened] = useState(false);
-  const [editUserIsShown, setEditUserIsShown] = useState(false);
+  const [hideMenu, setHideMenu] = useState(false);
+  const [editTransactionIsShown, setEditTransactionIsShown] = useState(false);
+
+  useEffect(() => {
+    if (item.status !== "PENDING") {
+      setHideMenu(true);
+    }
+  }, [item.status]);
 
   const handleMenuOpen = () => {
     setMenuOpened(!menuOpened);
   };
 
-  const onShowEditUserHandler = () => {
-    setEditUserIsShown(true);
+  const onShowEditTransactionHandler = () => {
+    setEditTransactionIsShown(true);
   };
 
-  const onCloseEditUserHandler = () => {
-    setEditUserIsShown(false);
+  const onCloseEditTransactionHandler = () => {
+    setEditTransactionIsShown(false);
   };
 
   const timestamp =
@@ -34,49 +42,43 @@ const TransactionRow = memo(({ item }) => {
       <td className="responsive-hide">{item.id}</td>
       <td className="left responsive-hide">{timestamp}</td>
       <td className="left">{item.from}</td>
-      {/* <td className='nowrap'>
-      <div className='icon cover' style={{ backgroundImage: `url('${item.toPicture}')` }} />
-      {item.to}
-    </td> */}
-      {/* <td className='nowrap'>
-      <div className='icon cover' style={{ backgroundImage: `url('${item.icon}')` }} />
-      <strong>{item.coin}</strong>
-    </td> */}
       <td className="center">
         <Amount type={item.type} amount={item.amount} asset={item.asset} />
       </td>
       <td className="center">
         <Status status={item.status} />
       </td>
-      <td className="right">
-        <button
-          type="button"
-          className="pointer"
-          onClick={() => handleMenuOpen()}
-        >
-          <i className="material-icons">more_vert</i>
-        </button>
+      {!hideMenu && (
+        <td className="right">
+          <button
+            type="button"
+            className="pointer"
+            onClick={() => handleMenuOpen()}
+          >
+            <i className="material-icons">more_vert</i>
+          </button>
 
-        {menuOpened && (
-          <div className="box-dropdown">
-            <ul>
-              <li>
-                <button type="button" onClick={onShowEditUserHandler}>
-                  <i className="material-icons">edit</i>
-                  Edit
-                </button>
-                {/* {editUserIsShown && (
-                  <EditUser
-                    onEditUser={onCloseEditUserHandler}
-                    item={item}
-                    trigger={trigger}
-                  />
-                )} */}
-              </li>
-            </ul>
-          </div>
-        )}
-      </td>
+          {menuOpened && (
+            <div className="box-dropdown">
+              <ul>
+                <li>
+                  <button type="button" onClick={onShowEditTransactionHandler}>
+                    <i className="material-icons">edit</i>
+                    Edit
+                  </button>
+                  {editTransactionIsShown && (
+                    <EditTransaction
+                      onEditTransaction={onCloseEditTransactionHandler}
+                      item={item}
+                      trigger={trigger}
+                    />
+                  )}
+                </li>
+              </ul>
+            </div>
+          )}
+        </td>
+      )}
     </tr>
   );
 });

@@ -47,7 +47,7 @@ class AdminService {
       });
   }
 
-  getTransacions(pageNumber, pageSize, from, to) {
+  getTransacions(pageNumber, pageSize, from, to, keyword) {
     return axios
       .get(host + "/admin/transactions", {
         headers: authHeader(),
@@ -56,8 +56,25 @@ class AdminService {
           size: pageSize,
           from: from,
           to: to,
+          search: keyword,
         },
       })
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
+  editTransaction(id, timestamp, amount, status) {
+    let config = {
+      headers: authHeader(),
+      params: {
+        isApproved: status,
+        amount: amount,
+        timestamp: timestamp,
+      },
+    };
+    return axios
+      .patch(host + "/admin/transactions/" + id, null, config)
       .then((response) => {
         return response.data.result;
       });

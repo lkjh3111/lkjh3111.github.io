@@ -15,20 +15,37 @@ const AdminTransactionsScreen = () => {
   const [to, setTo] = useState("");
   const [totalItems, setTotalItems] = useState(0);
 
+  const [fetchData, setFetchData] = useState(true);
+  const triggerDataFetch = () => setFetchData((t) => !t);
+
   useEffect(() => {
-    AdminService.getTransacions(pageNumber, pageSize, from, to).then(
-      (response) => {
-        console.log(response);
-        setData(response.data);
-        setTotalItems(response.totalItems);
-      }
-    );
-  }, [pageNumber, pageSize]);
+    const newFrom = from ? new Date(from).toISOString().slice(0, 22) : from;
+    const newTo = to ? new Date(to).toISOString().slice(0, 22) : to;
+    AdminService.getTransacions(
+      pageNumber,
+      pageSize,
+      newFrom,
+      newTo,
+      keyword
+    ).then((response) => {
+      setData(response.data);
+      setTotalItems(response.totalItems);
+    });
+  }, [pageNumber, pageSize, fetchData, from, to, keyword]);
 
   const handleSearchValue = (e) => {
     const { value } = e.target;
-
     setKeyword(value);
+  };
+
+  const handleFromChange = (e) => {
+    const { value } = e.target;
+    setFrom(value);
+  };
+
+  const handleToChange = (e) => {
+    const { value } = e.target;
+    setTo(value);
   };
 
   const handleSearchSubmit = (e) => {
@@ -42,6 +59,10 @@ const AdminTransactionsScreen = () => {
         searchValue={keyword}
         searchOnChange={handleSearchValue}
         searchSubmit={handleSearchSubmit}
+        fromValue={from}
+        fromOnChange={handleFromChange}
+        toValue={to}
+        toOnChange={handleToChange}
       />
 
       <table className="data-table">
@@ -51,8 +72,6 @@ const AdminTransactionsScreen = () => {
             <th className="left responsive-hide">ID</th>
             <th className="left responsive-hide">Timestamp</th>
             <th className="left">From</th>
-            {/* <th className="left">To</th> */}
-            {/* <th className="left">Coin</th> */}
             <th className="center">Amount</th>
             <th className="center">Status</th>
             <th className="right">&nbsp;</th>
@@ -61,7 +80,11 @@ const AdminTransactionsScreen = () => {
         {data && data.length > 0 && (
           <tbody>
             {data.map((item) => (
-              <TransactionRow key={item.id.toString()} item={item} />
+              <TransactionRow
+                key={item.id.toString()}
+                item={item}
+                trigger={triggerDataFetch}
+              />
             ))}
           </tbody>
         )}

@@ -28,7 +28,6 @@ const EditUser = (props) => {
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        console.log("test modal");
         props.onEditUser();
       }
     };
@@ -128,7 +127,6 @@ const EditUser = (props) => {
         </div>
         <div>
           <form onSubmit={handleEditUser}>
-            {/* <div className={classes.edit_user_input}> */}
             <div className={classes.edit_user_label}>
               <label>First Name</label>
               <span className="text-danger">
@@ -197,7 +195,6 @@ const EditUser = (props) => {
                 errors.email ? "is-invalid form-control" : "form-control"
               }
             />
-            {/* </div> */}
             <div className={classes.button_modal_div}>
               <TheButton
                 type="submit"

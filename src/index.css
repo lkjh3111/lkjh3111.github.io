@@ -1149,6 +1149,31 @@ header .header-right .header-user .signout i {
   color: #da0000;
 }
 
+/* Top bar */
+.top-bar-label {
+  display: flex;
+  align-self: center;
+  padding-right: 10px;
+}
+
+.top-bar-label label {
+  font-size: 15px;
+  float: left;
+  font-weight: 500;
+}
+
+.top-bar-input {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  height: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
 /* Content */
 
 .content {
@@ -1750,9 +1775,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 form .reset-pass-element .form-line label {
-  font-size: 1em;
+  font-size: 15px;
   font-weight: 500;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   display: block;
   cursor: default;
   user-select: none;
@@ -1824,9 +1849,9 @@ form .reset-pass-element .form-line label {
 }
 
 .form .form-elements .form-line label {
-  font-size: 1em;
+  font-size: 15px;
   font-weight: 500;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   display: block;
   cursor: default;
   user-select: none;
