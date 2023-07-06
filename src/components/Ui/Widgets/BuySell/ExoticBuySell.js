@@ -179,7 +179,7 @@ const ExoticBuySell = memo(({ item }) => {
     <Box>
       <div className="buy-sell-title buy-sell-top-padding box-horizontal-padding no-select">
         <div className="flex flex-center flex-space-between">
-          <p>Exotic Currencies</p>
+          <p>Auto Buy and Sell</p>
         </div>
       </div>
       <div className="box-horizontal-padding buy-sell-height">

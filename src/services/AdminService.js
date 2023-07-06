@@ -79,6 +79,42 @@ class AdminService {
         return response.data.result;
       });
   }
+
+  getOrders(pageNumber, pageSize, from, to, keyword) {
+    return axios
+      .get(host + "/admin/orders", {
+        headers: authHeader(),
+        params: {
+          page: pageNumber,
+          size: pageSize,
+          from: from,
+          to: to,
+          search: keyword,
+        },
+      })
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
+  editOrder(id, timestamp, price, volume, status) {
+    let config = {
+      headers: authHeader(),
+      params: {
+        isApproved: status,
+      },
+    };
+    let body = {
+      price: price,
+      volume: volume,
+      timestamp: timestamp,
+    };
+    return axios
+      .patch(host + "/admin/orders/" + id, body, config)
+      .then((response) => {
+        return response.data.result;
+      });
+  }
 }
 
 export default new AdminService();

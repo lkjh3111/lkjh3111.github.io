@@ -24,16 +24,15 @@ const DashboardScreen = () => {
     });
   }, []);
 
-  const balance = state.balance + " " + state.currency;
   return (
     <SiteLayout>
-      <h3 className='title'>Dashboard</h3>
-      <div className='flex flex-destroy flex-space-between'>
-        <div className='flex-1 box-right-padding'>
+      <h3 className="title">Dashboard</h3>
+      <div className="flex flex-destroy flex-space-between">
+        <div className="flex-1 box-right-padding">
           <RecentActivity />
         </div>
-        <div className='flex-1'>
-          <Wallet balance={balance} />
+        <div className="flex-1">
+          <Wallet balance={state.balance} currency={state.currency} />
           <BankProcess />
         </div>
       </div>

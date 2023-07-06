@@ -23,15 +23,15 @@ const WalletScreen = () => {
     });
   }, []);
 
-  const balance = state.balance + " " + state.currency;
+  // const balance = state.balance + " " + state.currency;
   return (
     <SiteLayout>
-      <h3 className='title'>My Wallet</h3>
-      <div className='flex flex-destroy flex-space-between'>
-        <div className='content-30 box-right-padding'>
-          <Wallet balance={balance} />
+      <h3 className="title">My Wallet</h3>
+      <div className="flex flex-destroy flex-space-between">
+        <div className="content-30 box-right-padding">
+          <Wallet balance={state.balance} currency={state.currency} />
         </div>
-        <div className='content-70 flex-1'>
+        <div className="content-70 flex-1">
           <RecentActivity />
         </div>
       </div>

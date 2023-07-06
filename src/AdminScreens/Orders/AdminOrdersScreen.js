@@ -2,64 +2,46 @@ import { useState, useEffect } from "react";
 
 import SiteLayout from "../../components/layouts/SiteLayout";
 import TopBar from "../../components/Ui/Tables/TopBar/TopBar";
-import TransactionRow from "../../components/Ui/Tables/Transactions/TransactionRow";
+import OrderRow from "../../components/Ui/Tables/Orders/OrderRow";
+import AdminService from "../../services/AdminService";
+import Pagination from "../../components/Ui/Tables/Pagination/Pagination";
 
 const AdminOrdersScreen = () => {
   const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState("");
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [totalItems, setTotalItems] = useState(0);
+
+  const [fetchData, setFetchData] = useState(true);
+  const triggerDataFetch = () => setFetchData((t) => !t);
 
   useEffect(() => {
-    const dataArray = [
-      {
-        id: 1,
-        type: 2,
-        transaction: "12415346563475",
-        date: "2/5/2020 06:24:45",
-        from: "Tarık",
-        to: "Cenk",
-        toPicture:
-          "https://pbs.twimg.com/profile_images/1265581417364369408/b7CxjEfi_400x400.jpg",
-        coin: "Bitcoin",
-        icon: "https://icons-for-free.com/iconfiles/png/512/btc+coin+crypto+icon-1320162856490699468.png",
-        amount: "5.553",
-        status: 1,
-      },
-      {
-        id: 2,
-        type: 2,
-        transaction: "12453465987451",
-        date: "3/5/2020 18:35:12",
-        from: "Tarık",
-        to: "Cenk",
-        toPicture:
-          "https://pbs.twimg.com/profile_images/1265581417364369408/b7CxjEfi_400x400.jpg",
-        coin: "Etherium",
-        icon: "https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/1024/Ethereum-ETH-icon.png",
-        amount: "3.000",
-        status: 2,
-      },
-      {
-        id: 3,
-        type: 1,
-        transaction: "24153459987415",
-        date: "4/5/2020 13:42:01",
-        from: "Cenk",
-        to: "Tarık",
-        toPicture: "",
-        coin: "Tether",
-        icon: "https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/1024/Tether-USDT-icon.png",
-        amount: "158",
-        status: 3,
-      },
-    ];
-
-    setData(dataArray);
-  }, []);
+    const newFrom = from ? new Date(from).toISOString().slice(0, 22) : from;
+    const newTo = to ? new Date(to).toISOString().slice(0, 22) : to;
+    AdminService.getOrders(pageNumber, pageSize, newFrom, newTo, keyword).then(
+      (response) => {
+        setData(response.data);
+        setTotalItems(response.totalItems);
+      }
+    );
+  }, [pageNumber, pageSize, fetchData, from, to, keyword]);
 
   const handleSearchValue = (e) => {
     const { value } = e.target;
-
     setKeyword(value);
+  };
+
+  const handleFromChange = (e) => {
+    const { value } = e.target;
+    setFrom(value);
+  };
+
+  const handleToChange = (e) => {
+    const { value } = e.target;
+    setTo(value);
   };
 
   const handleSearchSubmit = (e) => {
@@ -68,34 +50,52 @@ const AdminOrdersScreen = () => {
 
   return (
     <SiteLayout>
-      <h3 className="title">Transactions</h3>
+      <h3 className="title">Orders</h3>
       <TopBar
         searchValue={keyword}
         searchOnChange={handleSearchValue}
         searchSubmit={handleSearchSubmit}
+        fromValue={from}
+        fromOnChange={handleFromChange}
+        toValue={to}
+        toOnChange={handleToChange}
       />
 
-      {data && data.length > 0 && (
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th className="left">&nbsp;</th>
-              <th className="left responsive-hide">Process</th>
-              <th className="left responsive-hide">History</th>
-              <th className="left">From</th>
-              <th className="left">To</th>
-              <th className="left">Coin</th>
-              <th className="center">Amount</th>
-              <th className="center">Status</th>
-            </tr>
-          </thead>
+      <table className="data-table">
+        <thead>
+          <tr>
+            {/* <th className="left">&nbsp;</th> */}
+            <th className="left responsive-hide">ID</th>
+            <th className="center responsive-hide">Timestamp</th>
+            <th className="left">From</th>
+            <th className="center">Pairs</th>
+            <th className="center">Price</th>
+            <th className="center">Volume</th>
+            <th className="center">Side</th>
+            <th className="center">Type</th>
+            <th className="center">Status</th>
+            <th className="right">&nbsp;</th>
+          </tr>
+        </thead>
+        {data && data.length > 0 && (
           <tbody>
             {data.map((item) => (
-              <TransactionRow key={item.id.toString()} item={item} />
+              <OrderRow
+                key={item.id.toString()}
+                item={item}
+                trigger={triggerDataFetch}
+              />
             ))}
           </tbody>
-        </table>
-      )}
+        )}
+      </table>
+      <Pagination
+        className="pagination-bar"
+        currentPage={pageNumber}
+        totalCount={totalItems}
+        pageSize={pageSize}
+        onPageChange={(page) => setPageNumber(page)}
+      />
     </SiteLayout>
   );
 };

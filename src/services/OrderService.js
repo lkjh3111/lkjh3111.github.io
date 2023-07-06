@@ -3,14 +3,24 @@ import { authHeader } from "./AuthHeader";
 import { host } from "../url";
 
 class OrderService {
-  createMarketOrder(id, symbol, currentPrice, volume, side, position, market) {
+  createMarketOrder(
+    id,
+    symbol,
+    asset,
+    currentPrice,
+    volume,
+    side,
+    position,
+    market
+  ) {
     return axios
       .post(
         host + "/orders/" + id + "/market",
         {
-          symbol,
           currentPrice,
+          asset,
           volume,
+          symbol,
           side,
           position,
           market,
@@ -25,6 +35,7 @@ class OrderService {
   createLimitOrder(
     id,
     symbol,
+    asset,
     limitPrice,
     currentPrice,
     volume,
@@ -36,10 +47,11 @@ class OrderService {
       .post(
         host + "/orders/" + id + "/limit",
         {
-          symbol,
           limitPrice,
           currentPrice,
+          asset,
           volume,
+          symbol,
           side,
           position,
           market,

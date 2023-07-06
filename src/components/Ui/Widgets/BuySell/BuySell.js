@@ -17,12 +17,13 @@ const BuySell = memo(({ item }) => {
   const [orderType, setOrdertype] = useState("");
   const [wallet, setWallet] = useState({
     balance: 0,
-    currency: "USDT",
+    currency: "USD",
   });
 
   const [order, setOrder] = useState({
     symbol: item.symbol,
-    limitPrice: "",
+    asset: wallet.currency,
+    limitPrice: item.amount.toString(),
     currentPrice: item.amount,
     volume: "",
     side: "BUY",
@@ -126,6 +127,7 @@ const BuySell = memo(({ item }) => {
         OrderService.createLimitOrder(
           userId,
           order.symbol,
+          order.asset,
           parseFloat(order.limitPrice),
           item.amount,
           parseFloat(order.volume),
@@ -151,6 +153,7 @@ const BuySell = memo(({ item }) => {
         OrderService.createMarketOrder(
           userId,
           item.symbol,
+          order.asset,
           order.currentPrice,
           parseFloat(order.volume),
           order.side,
@@ -309,7 +312,7 @@ const BuySell = memo(({ item }) => {
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>USD</strong>
+                    <strong>{order.asset}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-line flex flex-center flex-space-between no-select">
@@ -487,7 +490,7 @@ const BuySell = memo(({ item }) => {
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>USD</strong>
+                    <strong>{order.asset}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-line flex flex-center flex-space-between no-select">
