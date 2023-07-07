@@ -15,14 +15,16 @@ const ExoticBuySell = memo(({ item }) => {
   const [value, setValue] = useState(0.0);
   const userId = AuthService.getCurrentUser().id;
   const [orderType, setOrdertype] = useState("");
+  const [volume, setVolume] = useState("");
   const [wallet, setWallet] = useState({
     balance: 0,
-    currency: "USDT",
+    currency: "",
   });
 
   const [order, setOrder] = useState({
     symbol: item.symbol,
-    limitPrice: "",
+    asset: item.currency,
+    limitPrice: item.amount.toString(),
     currentPrice: item.amount,
     volume: "",
     side: "BUY",
@@ -48,22 +50,37 @@ const ExoticBuySell = memo(({ item }) => {
     }
   };
 
+  const handleVolumeChange = (e) => {
+    if (!e.target.value || e.target.value.match(/^\d{1,}(\.\d{0,8})?$/)) {
+      setVolume(e.target.value);
+    }
+  };
+
   const handleClear = () => {
     setOrder({
       ...order,
-      limitPrice: "",
-      volume: "",
+      limitPrice: "0",
+      volume: "0",
     });
+    setVolume("0");
   };
 
   useEffect(() => {
-    UserService.getUserWallet(userId).then((response) => {
+    const currency = primaryTab === 0 ? order.asset : order.symbol;
+    UserService.getUserWallet(userId, currency).then((response) => {
       setWallet({
-        balance: response.data.result.balance,
-        currency: response.data.result.currency,
+        balance: response.balance,
+        currency: response.currency,
       });
     });
-  }, []);
+
+    setValue(0.0);
+    setOrder({
+      ...order,
+      volume: "0",
+    });
+    setVolume("0");
+  }, [primaryTab]);
 
   useEffect(() => {
     setOrder({
@@ -85,10 +102,15 @@ const ExoticBuySell = memo(({ item }) => {
 
   const handleSliderValue = (e) => {
     setValue(e);
+    const volume =
+      primaryTab === 0
+        ? String(parseFloat(e) * (wallet.balance / item.amount))
+        : String(parseFloat(e) * wallet.balance);
     setOrder({
       ...order,
-      volume: String(parseFloat(e) * (wallet.balance / item.amount)),
+      volume: volume,
     });
+    setVolume(volume);
   };
 
   const sliderProps = {
@@ -126,9 +148,10 @@ const ExoticBuySell = memo(({ item }) => {
         OrderService.createLimitOrder(
           userId,
           order.symbol,
+          order.asset,
           parseFloat(order.limitPrice),
           item.amount,
-          parseFloat(order.volume),
+          parseFloat(volume),
           order.side,
           order.position,
           order.market
@@ -151,8 +174,9 @@ const ExoticBuySell = memo(({ item }) => {
         OrderService.createMarketOrder(
           userId,
           item.symbol,
+          order.asset,
           order.currentPrice,
-          parseFloat(order.volume),
+          parseFloat(volume),
           order.side,
           order.position,
           order.market
@@ -236,9 +260,9 @@ const ExoticBuySell = memo(({ item }) => {
                       type="text"
                       id="volume"
                       name="volume"
-                      value={order.volume.replace(/^0+(?!\.|$)/, "")}
+                      value={volume.replace(/^0+(?!\.|$)/, "")}
                       placeholder="0"
-                      onChange={handleAmountChange}
+                      onChange={handleVolumeChange}
                       className={
                         errors.volume
                           ? "buy-sell-line-input-error"
@@ -327,9 +351,9 @@ const ExoticBuySell = memo(({ item }) => {
                       type="text"
                       id="volume"
                       name="volume"
-                      value={order.volume.replace(/^0+(?!\.|$)/, "")}
+                      value={volume.replace(/^0+(?!\.|$)/, "")}
                       placeholder="0"
-                      onChange={handleAmountChange}
+                      onChange={handleVolumeChange}
                       className={
                         errors.volume
                           ? "buy-sell-line-input-error"
@@ -414,7 +438,7 @@ const ExoticBuySell = memo(({ item }) => {
                       type="text"
                       id="volume"
                       name="volume"
-                      value={order.volume.replace(/^0+(?!\.|$)/, "")}
+                      value={volume.replace(/^0+(?!\.|$)/, "")}
                       placeholder="0"
                       onChange={handleAmountChange}
                       className={
@@ -505,9 +529,9 @@ const ExoticBuySell = memo(({ item }) => {
                       type="text"
                       id="volume"
                       name="volume"
-                      value={order.volume.replace(/^0+(?!\.|$)/, "")}
+                      value={volume.replace(/^0+(?!\.|$)/, "")}
                       placeholder="0"
-                      onChange={handleAmountChange}
+                      onChange={handleVolumeChange}
                       className={
                         errors.volume
                           ? "buy-sell-line-input-error"

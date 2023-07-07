@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import SiteLayout from "../../components/layouts/SiteLayout";
 import TopBar from "../../components/Ui/Tables/TopBar/TopBar";
-import TransactionRow from "../../components/Ui/Tables/Transactions/TransactionRow";
+import AdminTransactionRow from "../../components/Ui/Tables/Transactions/AdminTransactionRow";
 import AdminService from "../../services/AdminService";
 import Pagination from "../../components/Ui/Tables/Pagination/Pagination";
 
@@ -31,7 +31,7 @@ const AdminTransactionsScreen = () => {
       setData(response.data);
       setTotalItems(response.totalItems);
     });
-  }, [pageNumber, pageSize, fetchData, from, to, keyword]);
+  }, [pageNumber, pageSize, fetchData, from, to]);
 
   const handleSearchValue = (e) => {
     const { value } = e.target;
@@ -50,6 +50,18 @@ const AdminTransactionsScreen = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
+    const newFrom = from ? new Date(from).toISOString().slice(0, 22) : from;
+    const newTo = to ? new Date(to).toISOString().slice(0, 22) : to;
+    AdminService.getTransacions(
+      pageNumber,
+      pageSize,
+      newFrom,
+      newTo,
+      keyword
+    ).then((response) => {
+      setData(response.data);
+      setTotalItems(response.totalItems);
+    });
   };
 
   return (
@@ -80,7 +92,7 @@ const AdminTransactionsScreen = () => {
         {data && data.length > 0 && (
           <tbody>
             {data.map((item) => (
-              <TransactionRow
+              <AdminTransactionRow
                 key={item.id.toString()}
                 item={item}
                 trigger={triggerDataFetch}

@@ -5,6 +5,7 @@ import MarketScreen from "../Screens/Market/MarketScreen";
 import CapitalScreen from "../Screens/Capital/CapitalScreen";
 import DashboardScreen from "../Screens/Dashboard/DashboardScreen";
 import TransactionsScreen from "../Screens/Transactions/TransactionsScreen";
+import OrdersScreen from "../Screens/Orders/OrdersScreen";
 import ProfileScreen from "../Screens/Members/ProfileScreen";
 
 import AdminDashboardScreen from "../AdminScreens/Dashboard/AdminDashboardScreen";
@@ -13,9 +14,10 @@ import AdminTransactionsScreen from "../AdminScreens/Transactions/AdminTransacti
 
 import NotFoundScreen from "../Screens/NotFound/NotFoundScreen";
 import { PrivateRoute } from "../routes/PrivateRoute";
+import { AdminRoute } from "../routes/AdminRoute";
 import AuthService from "../services/AuthService";
 import AuthVerify from "../commons/AuthVerify";
-// import WalletScreen from "../Screens/Wallet/WalletScreen";
+import WalletScreen from "../Screens/Wallet/WalletScreen";
 
 // import SigninScreen from '../Screens/Members/SigninScreen';
 // import SignupScreen from '../Screens/Members/SignupScreen';
@@ -58,20 +60,28 @@ const Navigation = () => {
           element={<PrivateRoute Component={TransactionsScreen} />}
         />
         <Route
+          path="/orders"
+          element={<PrivateRoute Component={OrdersScreen} />}
+        />
+        <Route
+          path="/wallets"
+          element={<PrivateRoute Component={WalletScreen} />}
+        />
+        <Route
           path="/admin/dashboard"
-          element={<PrivateRoute Component={AdminDashboardScreen} />}
+          element={<AdminRoute Component={AdminDashboardScreen} />}
         />
         <Route
           path="/admin/transactions"
-          element={<PrivateRoute Component={AdminTransactionsScreen} />}
+          element={<AdminRoute Component={AdminTransactionsScreen} />}
         />
         <Route
           path="/admin/orders"
-          element={<PrivateRoute Component={AdminOrdersScreen} />}
+          element={<AdminRoute Component={AdminOrdersScreen} />}
         />
         <Route path="/forgot-password" element={<ForgotScreen />} />
         <Route path="/reset-password" element={<ResetPasswordScreen />} />
-        {/* <Route path='/wallet' element={<PrivateRoute Component={WalletScreen} />} /> */}
+
         {/* <Route path='/forgot-password' element={<ForgotScreen />} /> */}
         {/* <SiteLayout /> */}
         {/* <Route path='/members/signup' element={<SignupScreen />} /> */}

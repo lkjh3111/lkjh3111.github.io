@@ -22,7 +22,7 @@ const EditUser = (props) => {
 
   const modalRef = useRef();
 
-  const successNotification = () => toast.success("User edited successfully.");
+  const successNotification = () => toast.success("User updated successfully.");
   const failNotification = (e) => toast.error(e);
 
   useEffect(() => {

@@ -15,7 +15,8 @@ const EditOrder = ({ onEditOrder, item, trigger }) => {
 
   const modalRef = useRef();
 
-  const successNotification = () => toast.success("Order edited successfully.");
+  const successNotification = () =>
+    toast.success("Order updated successfully.");
   const failNotification = (e) => toast.error(e);
 
   useEffect(() => {

@@ -1,38 +1,14 @@
-import { memo, useState, useEffect } from "react";
+import { memo } from "react";
 import PropTypes from "prop-types";
 
-// import Icon from "./Icon";
 import Amount from "./Amount";
 import Status from "./Status";
-import EditOrder from "../../../../AdminScreens/Orders/EditOrders/EditOrder";
 
-const OrderRow = memo(({ item, trigger }) => {
-  const [menuOpened, setMenuOpened] = useState(false);
-  const [hideMenu, setHideMenu] = useState(false);
-  const [editOrderIsShown, setEditOrderIsShown] = useState(false);
-
-  useEffect(() => {
-    if (item.status !== "ACTIVE") {
-      setHideMenu(true);
-    }
-  }, [item.status]);
-
+const OrderRow = memo(({ item }) => {
   const handleAmount = (value) => {
     const numberAmount = Number(value);
     const rounded = Math.round(numberAmount * 1e8) / 1e8;
     return rounded;
-  };
-
-  const handleMenuOpen = () => {
-    setMenuOpened(!menuOpened);
-  };
-
-  const onShowEditOrderHandler = () => {
-    setEditOrderIsShown(true);
-  };
-
-  const onCloseEditOrderHandler = () => {
-    setEditOrderIsShown(false);
   };
 
   const timestamp =
@@ -42,12 +18,8 @@ const OrderRow = memo(({ item, trigger }) => {
 
   return (
     <tr>
-      {/* <td>
-        <Icon type={item.type} />
-      </td> */}
       <td className="responsive-hide">{item.id}</td>
       <td className="left responsive-hide">{timestamp}</td>
-      <td className="left">{item.from}</td>
       <td className="center">
         <strong>{item.symbol + "/" + item.asset}</strong>
       </td>
@@ -64,37 +36,6 @@ const OrderRow = memo(({ item, trigger }) => {
       <td className="center">
         <Status status={item.status} />
       </td>
-      {!hideMenu && (
-        <td className="right">
-          <button
-            type="button"
-            className="pointer"
-            onClick={() => handleMenuOpen()}
-          >
-            <i className="material-icons">more_vert</i>
-          </button>
-
-          {menuOpened && (
-            <div className="box-dropdown">
-              <ul>
-                <li>
-                  <button type="button" onClick={onShowEditOrderHandler}>
-                    <i className="material-icons">edit</i>
-                    Edit
-                  </button>
-                  {editOrderIsShown && (
-                    <EditOrder
-                      onEditOrder={onCloseEditOrderHandler}
-                      item={item}
-                      trigger={trigger}
-                    />
-                  )}
-                </li>
-              </ul>
-            </div>
-          )}
-        </td>
-      )}
     </tr>
   );
 });

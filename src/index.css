@@ -1020,20 +1020,25 @@ header .header-right .header-user .profile-picture {
   width: 35px;
   height: 35px;
   display: block;
-  margin: 0 15px;
+  margin-right: 15px;
   border-radius: 50em;
   background-color: #999999;
+}
+
+.header-name {
+  /* display: block; */
+  margin: 0 15px;
 }
 
 header .header-right .header-user .signout {
   width: 35px;
   height: 35px;
   display: block;
-  color: #e28580;
+  color: #777777;
   padding-top: 5px;
   text-align: center;
   border-radius: 50em;
-  background-color: #fceced;
+  background-color: #d3d3d3;
 }
 
 header .header-right .header-user .signout i {
@@ -1520,6 +1525,14 @@ header .header-right .header-user .signout i {
 
 .activity-row-div-20 {
   width: 15%;
+}
+
+.activity-row-div-80 {
+  width: 100px;
+}
+
+.activity-left-padding {
+  padding-left: 10px;
 }
 
 .activity-row:hover {

@@ -5,7 +5,7 @@ import AuthService from "../../../../services/AuthService";
 import UserService from "../../../../services/UserService";
 import { toast } from "react-toastify";
 
-const BankProcess = memo(() => {
+const BankProcess = memo(({ currencyOnChange }) => {
   const [tab, setTab] = useState(0);
   const [depositAmount, setDepositAmount] = useState("");
   const [depositCurrency, setDepositCurrency] = useState("");
@@ -26,6 +26,7 @@ const BankProcess = memo(() => {
 
   const handleDepositCurrencyChange = (e) => {
     setDepositCurrency(e.target.value);
+    currencyOnChange(e.target.value);
   };
 
   const handleWithdrawAmountChange = (e) => {
@@ -36,6 +37,7 @@ const BankProcess = memo(() => {
 
   const handleWithdrawCurrencyChange = (e) => {
     setWithdrawCurrency(e.target.value);
+    currencyOnChange(e.target.value);
   };
 
   const depositNotification = () => toast.success("Deposit request sent.");
@@ -185,9 +187,9 @@ const BankProcess = memo(() => {
                     onChange={handleDepositCurrencyChange}
                     value={depositCurrency}
                   >
-                    <option value="usd">USD</option>
+                    <option value="USD">USD</option>
 
-                    {/* <option value='php'>PHP</option> */}
+                    <option value="PHP">PHP</option>
                   </select>
                 </div>
               </div>
@@ -245,7 +247,8 @@ const BankProcess = memo(() => {
                     onChange={handleWithdrawCurrencyChange}
                     value={withdrawCurrency}
                   >
-                    <option value="usd">USD</option>
+                    <option value="USD">USD</option>
+                    <option value="PHP">PHP</option>
                   </select>
                 </div>
               </div>

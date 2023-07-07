@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 
 import SiteLayout from "../../components/layouts/SiteLayout";
 import TopBar from "../../components/Ui/Tables/TopBar/TopBar";
-import TransactionRow from "../../components/Ui/Tables/Transactions/TransactionRow";
+import OrderRow from "../../components/Ui/Tables/Orders/OrderRow";
 import UserService from "../../services/UserService";
-import Pagination from "../../components/Ui/Tables/Pagination/Pagination";
 import AuthService from "../../services/AuthService";
+import Pagination from "../../components/Ui/Tables/Pagination/Pagination";
 
-const TransactionsScreen = () => {
+const OrdersScreen = () => {
   const [data, setData] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
@@ -23,7 +23,7 @@ const TransactionsScreen = () => {
   useEffect(() => {
     const newFrom = from ? new Date(from).toISOString().slice(0, 22) : from;
     const newTo = to ? new Date(to).toISOString().slice(0, 22) : to;
-    UserService.getUserTransactions(
+    UserService.getUserOrders(
       userId,
       pageNumber,
       pageSize,
@@ -55,7 +55,7 @@ const TransactionsScreen = () => {
     e.preventDefault();
     const newFrom = from ? new Date(from).toISOString().slice(0, 22) : from;
     const newTo = to ? new Date(to).toISOString().slice(0, 22) : to;
-    UserService.getUserTransactions(
+    UserService.getUserOrders(
       userId,
       pageNumber,
       pageSize,
@@ -70,7 +70,7 @@ const TransactionsScreen = () => {
 
   return (
     <SiteLayout>
-      <h3 className="title">Transactions</h3>
+      <h3 className="title">Orders</h3>
       <TopBar
         searchValue={keyword}
         searchOnChange={handleSearchValue}
@@ -84,17 +84,21 @@ const TransactionsScreen = () => {
       <table className="data-table">
         <thead>
           <tr>
-            <th className="left">&nbsp;</th>
+            {/* <th className="left">&nbsp;</th> */}
             <th className="left responsive-hide">ID</th>
-            <th className="left">Timestamp</th>
-            <th className="center">Amount</th>
+            <th className="center responsive-hide">Timestamp</th>
+            <th className="center">Pairs</th>
+            <th className="center">Price</th>
+            <th className="center">Volume</th>
+            <th className="center">Side</th>
+            <th className="center">Type</th>
             <th className="center">Status</th>
           </tr>
         </thead>
         {data && data.length > 0 && (
           <tbody>
             {data.map((item) => (
-              <TransactionRow
+              <OrderRow
                 key={item.id.toString()}
                 item={item}
                 trigger={triggerDataFetch}
@@ -114,4 +118,4 @@ const TransactionsScreen = () => {
   );
 };
 
-export default TransactionsScreen;
+export default OrdersScreen;

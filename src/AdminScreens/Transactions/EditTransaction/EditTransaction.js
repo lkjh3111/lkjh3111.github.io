@@ -15,7 +15,7 @@ const EditTransaction = ({ onEditTransaction, item, trigger }) => {
   const modalRef = useRef();
 
   const successNotification = () =>
-    toast.success("Transaction edited successfully.");
+    toast.success("Transaction updated successfully.");
   const failNotification = (e) => toast.error(e);
 
   useEffect(() => {

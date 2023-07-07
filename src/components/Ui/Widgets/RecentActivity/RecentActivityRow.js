@@ -18,7 +18,7 @@ const RecentActivityRow = memo(({ item }) => {
           {item.amount} {item.asset}
         </strong>
       </div>
-      <div className="cemter activity-row-div-20 nowrap">
+      <div className="center activity-row-div-20 nowrap">
         <StatusName status={item.status} />
       </div>
     </div>

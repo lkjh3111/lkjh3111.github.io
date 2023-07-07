@@ -47,18 +47,40 @@ class UserService {
       });
   }
 
-  getUserWallet(id) {
-    let config = {
-      headers: authHeader(),
-    };
-    return axios.get(host + "/users/" + id + "/wallet", config);
-  }
-
-  getUserTransactions(id) {
+  getUserWallet(id, currency) {
     let config = {
       headers: authHeader(),
       params: {
-        size: 50,
+        currency: currency,
+      },
+    };
+    return axios
+      .get(host + "/users/" + id + "/wallet", config)
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
+  getUserWallets(id) {
+    let config = {
+      headers: authHeader(),
+    };
+    return axios
+      .get(host + "/users/" + id + "/wallets", config)
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
+  getUserTransactions(id, pageNumber, pageSize, from, to, keyword) {
+    let config = {
+      headers: authHeader(),
+      params: {
+        page: pageNumber,
+        size: pageSize,
+        from: from,
+        to: to,
+        search: keyword,
       },
     };
     return axios
@@ -68,9 +90,27 @@ class UserService {
       });
   }
 
+  getUserOrders(id, pageNumber, pageSize, from, to, keyword) {
+    let config = {
+      headers: authHeader(),
+      params: {
+        page: pageNumber,
+        size: pageSize,
+        from: from,
+        to: to,
+        search: keyword,
+      },
+    };
+    return axios
+      .get(host + "/users/" + id + "/orders", config)
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
   deposit(id, amount, currency) {
     return axios
-      .post(host + "/users/" + id + "/wallet/deposit", null, {
+      .post(host + "/users/" + id + "/wallets/deposit", null, {
         headers: authHeader(),
         params: { amount: amount, currency: currency },
       })
@@ -81,7 +121,7 @@ class UserService {
 
   withdraw(id, amount, currency) {
     return axios
-      .post(host + "/users/" + id + "/wallet/withdraw", null, {
+      .post(host + "/users/" + id + "/wallets/withdraw", null, {
         headers: authHeader(),
         params: { amount: amount, currency: currency },
       })

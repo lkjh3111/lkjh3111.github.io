@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import SiteLayout from "../../components/layouts/SiteLayout";
 import TopBar from "../../components/Ui/Tables/TopBar/TopBar";
-import OrderRow from "../../components/Ui/Tables/Orders/OrderRow";
+import AdminOrderRow from "../../components/Ui/Tables/Orders/AdminOrderRow";
 import AdminService from "../../services/AdminService";
 import Pagination from "../../components/Ui/Tables/Pagination/Pagination";
 
@@ -27,7 +27,7 @@ const AdminOrdersScreen = () => {
         setTotalItems(response.totalItems);
       }
     );
-  }, [pageNumber, pageSize, fetchData, from, to, keyword]);
+  }, [pageNumber, pageSize, fetchData, from, to]);
 
   const handleSearchValue = (e) => {
     const { value } = e.target;
@@ -46,6 +46,14 @@ const AdminOrdersScreen = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
+    const newFrom = from ? new Date(from).toISOString().slice(0, 22) : from;
+    const newTo = to ? new Date(to).toISOString().slice(0, 22) : to;
+    AdminService.getOrders(pageNumber, pageSize, newFrom, newTo, keyword).then(
+      (response) => {
+        setData(response.data);
+        setTotalItems(response.totalItems);
+      }
+    );
   };
 
   return (
@@ -80,7 +88,7 @@ const AdminOrdersScreen = () => {
         {data && data.length > 0 && (
           <tbody>
             {data.map((item) => (
-              <OrderRow
+              <AdminOrderRow
                 key={item.id.toString()}
                 item={item}
                 trigger={triggerDataFetch}
