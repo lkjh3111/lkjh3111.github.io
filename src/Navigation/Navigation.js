@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import LandingPage from "../components/LandingPage/LandingPage";
 
 import MarketScreen from "../Screens/Market/MarketScreen";
-import CapitalScreen from "../Screens/Capital/CapitalScreen";
+import PairsScreen from "../Screens/Pairs/PairsScreen";
 import DashboardScreen from "../Screens/Dashboard/DashboardScreen";
 import TransactionsScreen from "../Screens/Transactions/TransactionsScreen";
 import OrdersScreen from "../Screens/Orders/OrdersScreen";
@@ -48,8 +48,8 @@ const Navigation = () => {
           element={<PrivateRoute Component={ProfileScreen} />}
         />
         <Route
-          path="/capital"
-          element={<PrivateRoute Component={CapitalScreen} />}
+          path="/pairs"
+          element={<PrivateRoute Component={PairsScreen} />}
         />
         <Route
           path="/dashboard"

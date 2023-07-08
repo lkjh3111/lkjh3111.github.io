@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import { usePagination, DOTS } from "./usePagination";
+import { usePagination, DOTS, DOTS2 } from "./usePagination";
 
 const Pagination = (props) => {
   const {
@@ -46,7 +46,19 @@ const Pagination = (props) => {
         </li>
         {paginationRange.map((pageNumber) => {
           if (pageNumber === DOTS) {
-            return <li className="pagination-item dots">&#8230;</li>;
+            return (
+              <li className="pagination-item dots" key={lastPage + 2}>
+                &#8230;
+              </li>
+            );
+          }
+
+          if (pageNumber === DOTS2) {
+            return (
+              <li className="pagination-item dots" key={lastPage + 3}>
+                &#8230;
+              </li>
+            );
           }
 
           return (
@@ -65,7 +77,7 @@ const Pagination = (props) => {
           className={classnames("pagination-item", {
             disabled: currentPage === lastPage,
           })}
-          key={props.lastPage + 1}
+          key={lastPage + 1}
           onClick={onNext}
         >
           <div className="arrow right" />

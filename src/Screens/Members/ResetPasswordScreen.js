@@ -121,8 +121,8 @@ const ResetPasswordScreen = () => {
                               <i
                                 className={
                                   showNewPassword
-                                    ? "bi bi-eye"
-                                    : "bi bi-eye-slash"
+                                    ? "bi bi-eye-slash"
+                                    : "bi bi-eye"
                                 }
                               ></i>
                             </button>
@@ -155,8 +155,8 @@ const ResetPasswordScreen = () => {
                               <i
                                 className={
                                   showConfirmPassword
-                                    ? "bi bi-eye"
-                                    : "bi bi-eye-slash"
+                                    ? "bi bi-eye-slash"
+                                    : "bi bi-eye"
                                 }
                               ></i>
                             </button>

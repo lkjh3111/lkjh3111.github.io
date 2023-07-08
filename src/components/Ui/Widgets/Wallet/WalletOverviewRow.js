@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const WalletOverviewRow = memo(({ item, currencyChange }) => {
   const handleAmount = (value) => {
     const numberAmount = Number(value);
-    const rounded = Math.round(numberAmount * 1e8) / 1e8;
+    const rounded = Math.round(numberAmount * 1e4) / 1e4;
     return rounded;
   };
 
@@ -16,8 +16,8 @@ const WalletOverviewRow = memo(({ item, currencyChange }) => {
       <div className="left activity-row-div-30">
         <strong>{item.currency}</strong>
       </div>
-      <div className="left activity-row-div-30">
-        <strong>{handleAmount(item.balance)}</strong>
+      <div className="right activity-row-div-30">
+        {handleAmount(item.balance)}
       </div>
     </div>
   );

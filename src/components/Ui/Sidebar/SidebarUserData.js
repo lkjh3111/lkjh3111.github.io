@@ -25,8 +25,8 @@ export const SidebarUserData = [
     icon: "list",
   },
   {
-    title: "Capital",
-    path: "/capital",
+    title: "Pairs",
+    path: "/pairs",
     icon: "equalizer",
   },
   {

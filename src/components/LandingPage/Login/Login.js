@@ -157,7 +157,7 @@ const Login = (props) => {
                     onClick={togglePassword}
                   >
                     <i
-                      className={showPassword ? "bi bi-eye" : "bi bi-eye-slash"}
+                      className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}
                     ></i>
                   </button>
                 </div>
