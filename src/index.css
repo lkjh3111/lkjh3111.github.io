@@ -346,6 +346,11 @@ body {
   justify-content: flex-start;
 }
 
+.flex-end {
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .flex-space-between {
   justify-content: space-between;
 }
@@ -419,6 +424,11 @@ a i {
 
 .box .box-content-height {
   height: 400px;
+  overflow: auto;
+}
+
+.box .box-content-height-tall {
+  height: 597px;
   overflow: auto;
 }
 
@@ -1237,6 +1247,10 @@ header .header-right .header-user .signout i {
   height: 50px;
 }
 
+.market-row:hover {
+  border: 1px solid #ebebeb;
+}
+
 /* Trading history widget */
 
 .trade-history-row {
@@ -1733,8 +1747,53 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .candlestick-content-height {
-  height: 542px;
+  height: 505px;
   overflow: auto;
+}
+
+.candlestick-filter-dropdown {
+  padding: 5px;
+  width: 120px;
+  border-radius: 0.2em;
+  /* border: 1px solid #acacac; */
+  color: #333333;
+
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+}
+
+.candlestick-filter-button {
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+  text-align: center;
+  border-radius: 0.2em;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-user-select: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.candlestick-filter-button i {
+  vertical-align: middle;
+}
+
+.candlestick-filter-button-white {
+  color: #333333;
+  background-color: #f1f1f1;
+}
+
+.candlestick-filter-button-white:hover {
+  background-color: #dadada;
+}
+
+.candlestick-filter-button-small {
+  font-size: 0.9em;
+  padding: 8px 20px;
 }
 
 /* 404 */

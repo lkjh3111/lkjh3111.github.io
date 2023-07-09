@@ -1,5 +1,5 @@
 import { memo, useState, useEffect } from "react";
-
+import PropTypes from "prop-types";
 import Box from "../../Common/Box";
 
 import Slider from "rc-slider";
@@ -15,6 +15,7 @@ const ExoticBuySell = memo(({ item }) => {
   const [value, setValue] = useState(0.0);
   const userId = AuthService.getCurrentUser().id;
   const [orderType, setOrdertype] = useState("");
+  const [limitPrice, setLimitPrice] = useState(item.lastPrice.toString());
   const [volume, setVolume] = useState("");
   const [wallet, setWallet] = useState({
     balance: 0,
@@ -22,11 +23,9 @@ const ExoticBuySell = memo(({ item }) => {
   });
 
   const [order, setOrder] = useState({
-    symbol: item.symbol,
-    asset: item.currency,
-    limitPrice: item.amount.toString(),
-    currentPrice: item.amount,
-    volume: "",
+    symbol: item.baseCurrency,
+    asset: item.quoteCurrency,
+    currentPrice: item.lastPrice,
     side: "BUY",
     position: "LONG",
     market: "FOREX",
@@ -40,13 +39,9 @@ const ExoticBuySell = memo(({ item }) => {
   const successNotification = () => toast.success("Order request sent.");
   const failNotification = (e) => toast.error(e);
 
-  const handleAmountChange = (e) => {
+  const handleLimitPriceChange = (e) => {
     if (!e.target.value || e.target.value.match(/^\d{1,}(\.\d{0,8})?$/)) {
-      let orderUpdated = {
-        ...order,
-        [e.target.name]: e.target.value,
-      };
-      setOrder(orderUpdated);
+      setLimitPrice(e.target.value);
     }
   };
 
@@ -59,20 +54,35 @@ const ExoticBuySell = memo(({ item }) => {
   const handleClear = () => {
     setOrder({
       ...order,
-      limitPrice: "0",
+      limitPrice: item.lastPrice.toString(),
       volume: "0",
     });
     setVolume("0");
   };
 
   useEffect(() => {
-    const currency = primaryTab === 0 ? order.asset : order.symbol;
-    UserService.getUserWallet(userId, currency).then((response) => {
-      setWallet({
-        balance: response.balance,
-        currency: response.currency,
-      });
-    });
+    const currency = primaryTab === 0 ? item.quoteCurrency : item.baseCurrency;
+    UserService.getUserWallet(userId, currency).then(
+      (response) => {
+        if (response) {
+          setWallet({
+            balance: response.balance,
+            currency: response.currency,
+          });
+        } else {
+          setWallet({
+            balance: 0,
+            currency: "",
+          });
+        }
+      },
+      (error) => {
+        setWallet({
+          balance: 0,
+          currency: "",
+        });
+      }
+    );
 
     setValue(0.0);
     setOrder({
@@ -85,6 +95,16 @@ const ExoticBuySell = memo(({ item }) => {
   useEffect(() => {
     setOrder({
       ...order,
+      symbol: item.baseCurrency,
+      asset: item.quoteCurrency,
+      currentPrice: item.lastPrice,
+    });
+    setLimitPrice(item.lastPrice.toString());
+  }, [item]);
+
+  useEffect(() => {
+    setOrder({
+      ...order,
       side: primaryTab === 0 ? "BUY" : "SELL",
     });
     setOrdertype(secondaryTab === 0 ? "MARKET" : "LIMIT");
@@ -92,7 +112,6 @@ const ExoticBuySell = memo(({ item }) => {
 
   const handlePrimaryTab = (tabNum) => {
     setPrimaryTab(tabNum);
-
     setSecondaryTab(0);
   };
 
@@ -104,7 +123,7 @@ const ExoticBuySell = memo(({ item }) => {
     setValue(e);
     const volume =
       primaryTab === 0
-        ? String(parseFloat(e) * (wallet.balance / item.amount))
+        ? String(parseFloat(e) * (wallet.balance / item.lastPrice))
         : String(parseFloat(e) * wallet.balance);
     setOrder({
       ...order,
@@ -123,12 +142,12 @@ const ExoticBuySell = memo(({ item }) => {
   const validateForm = () => {
     let errors = {};
     if (orderType === "LIMIT") {
-      if (parseFloat(order.limitPrice) <= 0 || !order.limitPrice) {
+      if (parseFloat(limitPrice) <= 0 || !limitPrice) {
         errors.limitPrice = true;
       }
     }
 
-    if (parseFloat(order.volume) <= 0 || !order.volume) {
+    if (parseFloat(volume) <= 0 || !volume) {
       errors.volume = true;
     }
 
@@ -147,10 +166,10 @@ const ExoticBuySell = memo(({ item }) => {
       if (orderType === "LIMIT") {
         OrderService.createLimitOrder(
           userId,
-          order.symbol,
-          order.asset,
-          parseFloat(order.limitPrice),
-          item.amount,
+          item.baseCurrency,
+          item.quoteCurrency,
+          parseFloat(limitPrice),
+          order.currentPrice,
           parseFloat(volume),
           order.side,
           order.position,
@@ -173,8 +192,8 @@ const ExoticBuySell = memo(({ item }) => {
       } else {
         OrderService.createMarketOrder(
           userId,
-          item.symbol,
-          order.asset,
+          item.baseCurrency,
+          item.quoteCurrency,
           order.currentPrice,
           parseFloat(volume),
           order.side,
@@ -269,7 +288,7 @@ const ExoticBuySell = memo(({ item }) => {
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>{item.symbol}</strong>
+                    <strong>{item.baseCurrency}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-percentage flex flex-center flex-space-between no-select">
@@ -324,16 +343,16 @@ const ExoticBuySell = memo(({ item }) => {
                       type="text"
                       id="limitPrice"
                       name="limitPrice"
-                      value={order.limitPrice.replace(/^0+(?!\.|$)/, "")}
+                      value={limitPrice.replace(/^0+(?!\.|$)/, "")}
                       placeholder="0"
-                      onChange={handleAmountChange}
+                      onChange={handleLimitPriceChange}
                       className={
                         errors.limitPrice
                           ? "buy-sell-line-input-error"
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>USD</strong>
+                    <strong>{item.quoteCurrency}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-line flex flex-center flex-space-between no-select">
@@ -360,7 +379,7 @@ const ExoticBuySell = memo(({ item }) => {
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>{item.symbol}</strong>
+                    <strong>{item.baseCurrency}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-percentage flex flex-center flex-space-between no-select">
@@ -440,14 +459,14 @@ const ExoticBuySell = memo(({ item }) => {
                       name="volume"
                       value={volume.replace(/^0+(?!\.|$)/, "")}
                       placeholder="0"
-                      onChange={handleAmountChange}
+                      onChange={handleVolumeChange}
                       className={
                         errors.volume
                           ? "buy-sell-line-input-error"
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>{item.symbol}</strong>
+                    <strong>{item.baseCurrency}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-percentage flex flex-center flex-space-between no-select">
@@ -502,16 +521,16 @@ const ExoticBuySell = memo(({ item }) => {
                       type="text"
                       id="limitPrice"
                       name="limitPrice"
-                      value={order.limitPrice.replace(/^0+(?!\.|$)/, "")}
+                      value={limitPrice.replace(/^0+(?!\.|$)/, "")}
                       placeholder="0"
-                      onChange={handleAmountChange}
+                      onChange={handleLimitPriceChange}
                       className={
                         errors.limitPrice
                           ? "buy-sell-line-input-error"
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>USD</strong>
+                    <strong>{item.quoteCurrency}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-line flex flex-center flex-space-between no-select">
@@ -538,7 +557,7 @@ const ExoticBuySell = memo(({ item }) => {
                           : "buy-sell-line-input"
                       }
                     />
-                    <strong>{item.symbol}</strong>
+                    <strong>{item.baseCurrency}</strong>
                   </div>
                 </div>
                 <div className="buy-sell-percentage flex flex-center flex-space-between no-select">
@@ -583,5 +602,10 @@ const ExoticBuySell = memo(({ item }) => {
     </Box>
   );
 });
+
+ExoticBuySell.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  item: PropTypes.object.isRequired,
+};
 
 export default ExoticBuySell;
