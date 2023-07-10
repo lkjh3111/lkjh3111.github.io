@@ -30,7 +30,7 @@ const OrderRow = memo(({ item }) => {
         {handleAmount(item.volume)} {item.symbol}
       </td>
       <td className="center">
-        <Amount type={item.side} amount={item.volume} asset={item.symbol} />
+        <Amount type={item.side} />
       </td>
       <td className="left">{item.type}</td>
       <td className="center">

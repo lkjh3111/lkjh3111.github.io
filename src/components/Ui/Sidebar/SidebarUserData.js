@@ -14,11 +14,11 @@ export const SidebarUserData = [
     path: "/transactions",
     icon: "sync",
   },
-  {
-    title: "Wallet",
-    path: "/wallets",
-    icon: "wallet",
-  },
+  // {
+  //   title: "Wallet",
+  //   path: "/wallets",
+  //   icon: "wallet",
+  // },
   {
     title: "Orders",
     path: "/orders",

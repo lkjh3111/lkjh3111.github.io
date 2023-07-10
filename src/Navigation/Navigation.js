@@ -63,10 +63,10 @@ const Navigation = () => {
           path="/orders"
           element={<PrivateRoute Component={OrdersScreen} />}
         />
-        <Route
+        {/* <Route
           path="/wallets"
           element={<PrivateRoute Component={WalletScreen} />}
-        />
+        /> */}
         <Route
           path="/admin/dashboard"
           element={<AdminRoute Component={AdminDashboardScreen} />}

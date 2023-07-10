@@ -1549,6 +1549,10 @@ header .header-right .header-user .signout i {
   padding-left: 10px;
 }
 
+.activity-right-padding {
+  padding-right: 50px;
+}
+
 .activity-row:hover {
   border: 1px solid #ebebeb;
 }

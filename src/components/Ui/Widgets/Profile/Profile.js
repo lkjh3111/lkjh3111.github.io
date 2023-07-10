@@ -2,6 +2,7 @@ import { memo, useState } from "react";
 import AuthService from "../../../../services/AuthService";
 
 import Box from "../../Common/Box";
+import Image from "../../../../assets/image/blank-profile.png";
 
 const Profile = memo(() => {
   const user = AuthService.getCurrentUser();
@@ -60,7 +61,7 @@ const Profile = memo(() => {
               <div
                 className="icon cover pointer"
                 style={{
-                  backgroundImage: `url('https://pbs.twimg.com/profile_images/1265581417364369408/b7CxjEfi_400x400.jpg')`,
+                  backgroundImage: { Image },
                 }}
               />
               <div className="edit pointer">

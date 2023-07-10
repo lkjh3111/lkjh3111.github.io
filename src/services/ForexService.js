@@ -1,6 +1,6 @@
 import axios from "axios";
 import { authHeader } from "./AuthHeader";
-import { host } from "../url";
+import { host, currencyHost } from "../url";
 
 class ForexService {
   getForexPairs() {
@@ -33,6 +33,20 @@ class ForexService {
       })
       .then((response) => {
         return response.data.result;
+      });
+  }
+
+  convertCurrency(baseCurrency, quoteCurrency) {
+    return axios
+      .get(
+        currencyHost +
+          baseCurrency.toLowerCase() +
+          "/" +
+          quoteCurrency.toLowerCase() +
+          ".json"
+      )
+      .then((response) => {
+        return response.data;
       });
   }
 }

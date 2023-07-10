@@ -92,7 +92,7 @@ const BuySell = memo(({ item }) => {
       volume: "0",
     });
     setVolume("0");
-  }, [primaryTab]);
+  }, [primaryTab, item]);
 
   useEffect(() => {
     setOrder({

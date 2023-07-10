@@ -11,7 +11,6 @@ const Amount = memo(({ type }) => {
 
 Amount.propTypes = {
   type: PropTypes.string.isRequired,
-  amount: PropTypes.number.isRequired,
 };
 
 export default Amount;
