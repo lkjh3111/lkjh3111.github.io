@@ -1,4 +1,5 @@
 .login_modal_content {
+  position: relative;
   background-color: #fff;
   padding-top: 20px;
   padding-bottom: 40px;
@@ -6,6 +7,7 @@
   padding-right: 70px;
   border-radius: 5px;
   text-align: center;
+  z-index: 1200;
 }
 
 .login_modal_content label {
@@ -23,39 +25,26 @@
 
 .remember_forgot_div {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  justify-content: flex-end;
+  /* justify-content: space-between; */
+  /* margin-top: 20px; */
+  /* z-index: 1200; */
 }
 
 .login_modal_content h2 {
   color: var(--primaryitemcolor);
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 30px;
 }
 
-.login_modal_content input {
+.login_modal_content input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-}
-
-.checkbox_label {
-  display: flex;
-}
-
-.checkbox {
-  /* position: absolute; */
-  /* top: 0; */
-  /* left: 0 !important; */
-  height: 15px !important;
-  width: 15px !important;
-  /* vertical-align: middle !important; */
-  /* margin-right: 10px; */
-  /* margin-top: 8px; */
-  /* margin-bottom: 10px; */
 }
 
 .button_modal_div {

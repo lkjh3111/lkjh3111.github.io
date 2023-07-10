@@ -12,6 +12,7 @@ const SignUp = (props) => {
     username: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({
@@ -20,7 +21,11 @@ const SignUp = (props) => {
     username: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const modalRef = useRef();
 
@@ -57,7 +62,25 @@ const SignUp = (props) => {
       username: "",
       email: "",
       password: "",
+      confirmPassword: "",
     });
+  };
+
+  const togglePassword = (e) => {
+    if (showPassword) {
+      setShowPassword(false);
+    } else {
+      setShowPassword(true);
+    }
+    console.log(showPassword);
+  };
+
+  const toggleConfirmPassword = (e) => {
+    if (showConfirmPassword) {
+      setShowConfirmPassword(false);
+    } else {
+      setShowConfirmPassword(true);
+    }
   };
 
   const validateForm = () => {
@@ -86,6 +109,14 @@ const SignUp = (props) => {
       errors.password = "Password is required";
     } else if (state.password.length < 5) {
       errors.password = "Password is too short";
+    }
+
+    if (!state.confirmPassword.trim()) {
+      errors.confirmPassword = "Password is required";
+    } else if (state.confirmPassword.length < 5) {
+      errors.confirmPassword = "Password is too short";
+    } else if (state.password !== state.confirmPassword) {
+      errors.confirmPassword = "Password don't match";
     }
 
     if (Object.keys(errors).length > 0) {
@@ -222,17 +253,56 @@ const SignUp = (props) => {
                     <small>{errors.password}</small>
                   </span>
                 </div>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Enter Password"
-                  value={state.password}
-                  onChange={handleChange}
-                  autoComplete="on"
-                  className={
-                    errors.password ? "is-invalid form-control" : "form-control"
-                  }
-                />
+                <div className="password">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Enter Password"
+                    value={state.password}
+                    onChange={handleChange}
+                    autoComplete="on"
+                    className={
+                      errors.password
+                        ? "is-invalid form-control"
+                        : "form-control"
+                    }
+                  />
+                  <i
+                    className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}
+                    id="togglePassword"
+                    onClick={togglePassword}
+                  ></i>
+                </div>
+              </div>
+              <div className={classes.signup_content}>
+                <div className={classes.signup_label}>
+                  <label>Confirm Password</label>
+                  <span className="text-danger">
+                    <small>{errors.confirmPassword}</small>
+                  </span>
+                </div>
+                <div className="password">
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    name="confirmPassword"
+                    placeholder="Enter Password"
+                    value={state.confirmPassword}
+                    onChange={handleChange}
+                    autoComplete="on"
+                    className={
+                      errors.confirmPassword
+                        ? "is-invalid form-control"
+                        : "form-control"
+                    }
+                  />
+                  <i
+                    className={
+                      showConfirmPassword ? "bi bi-eye-slash" : "bi bi-eye"
+                    }
+                    id="toggleConfirmPassword"
+                    onClick={toggleConfirmPassword}
+                  ></i>
+                </div>
               </div>
             </div>
             <div className={classes.button_modal_div}>

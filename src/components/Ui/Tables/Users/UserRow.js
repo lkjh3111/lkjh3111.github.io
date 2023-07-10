@@ -19,6 +19,18 @@ const UserRow = memo(({ item, index, trigger }) => {
     setMenuOpened(!menuOpened);
   };
 
+  const getWallet = () => {
+    const wallet = item.wallets.find((data) => data.currency === "USD");
+    const balance = wallet ? wallet.balance : 0;
+    return balance;
+  };
+
+  const roundToFourDigits = (e) => {
+    const numberAmount = Number(e);
+    const rounded = Math.round(numberAmount * 1e4) / 1e4;
+    return rounded.toString();
+  };
+
   const onShowEditUserHandler = () => {
     setEditUserIsShown(true);
   };
@@ -51,9 +63,9 @@ const UserRow = memo(({ item, index, trigger }) => {
 
   return (
     <tr>
-      <td>
-        <div className="rank accent no-select">{index}</div>
-        {/* <div className="left">{item.id}</div> */}
+      <td className="left responsive-hide">
+        {/* <div className="rank accent no-select">{index}</div> */}
+        {item.id}
       </td>
       <td className="left">
         {item.firstName} {item.lastName}
@@ -61,6 +73,9 @@ const UserRow = memo(({ item, index, trigger }) => {
       <td className="center">{item.username}</td>
       <td className="center">{item.email}</td>
       <td className="center responsive-hide2">{item.roles.toString()}</td>
+      <td className="center">
+        {!hideMenu ? roundToFourDigits(getWallet()) + " USD" : ""}
+      </td>
       {!hideMenu && (
         <td className="right">
           <button
@@ -89,6 +104,7 @@ const UserRow = memo(({ item, index, trigger }) => {
                     <EditUser
                       onEditUser={onCloseEditUserHandler}
                       item={item}
+                      balance={getWallet()}
                       trigger={trigger}
                     />
                   )}

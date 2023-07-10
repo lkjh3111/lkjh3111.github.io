@@ -40,6 +40,7 @@ class ForexService {
     return axios
       .get(
         currencyHost +
+          "/" +
           baseCurrency.toLowerCase() +
           "/" +
           quoteCurrency.toLowerCase() +
@@ -48,6 +49,12 @@ class ForexService {
       .then((response) => {
         return response.data;
       });
+  }
+
+  getCurrencyList() {
+    return axios.get(currencyHost + ".json").then((response) => {
+      return response.data;
+    });
   }
 }
 

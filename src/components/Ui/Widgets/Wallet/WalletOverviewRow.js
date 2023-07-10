@@ -2,14 +2,16 @@ import { memo, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ForexService from "../../../../services/ForexService";
 
-const WalletOverviewRow = memo(({ item, currencyChange }) => {
+const WalletOverviewRow = memo(({ item, currencyChange, currencyList }) => {
   const [convertedValue, setConvertedValue] = useState(0);
+  const currencyName = currencyList[item.currency.toLowerCase()];
 
   useEffect(() => {
+    console.log(currencyName);
     ForexService.convertCurrency(item.currency, "usd").then((response) => {
       setConvertedValue(response.usd);
     });
-  });
+  }, []);
 
   const handleAmount = (value) => {
     const numberAmount = Number(value);
@@ -22,8 +24,8 @@ const WalletOverviewRow = memo(({ item, currencyChange }) => {
       className="activity-row flex flex-center flex-space-between no-select"
       onClick={() => currencyChange(item.currency)}
     >
-      <div className="center activity-row-div-30">
-        <strong>{item.currency}</strong>
+      <div className="left activity-left">
+        <strong>{item.currency}</strong> {currencyName}
       </div>
       <div className="center activity-right-padding">
         <strong>{handleAmount(item.balance)}</strong>

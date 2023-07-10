@@ -14,7 +14,7 @@ import UserService from "../../services/UserService";
 const ProfileScreen = () => {
   const [state, setState] = useState({
     balance: 0,
-    currency: "USDT",
+    currency: "USD",
   });
 
   const [currency, setCurrency] = useState("");

@@ -10,7 +10,7 @@
   padding-left: 70px;
   padding-right: 70px;
   border-radius: 5px;
-  /* text-align: center; */
+  text-align: center;
 }
 
 .edit_transaction_modal_content label {

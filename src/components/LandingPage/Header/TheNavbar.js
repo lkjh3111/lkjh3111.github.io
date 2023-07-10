@@ -7,6 +7,7 @@ import Logo from "../../../assets/Logo/logo.svg";
 import { useState } from "react";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
+import FormCheckbox from "../../Ui/Forms/FormCheckbox";
 
 const TheNavbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -53,7 +54,7 @@ const TheNavbar = () => {
   return (
     <>
       <Navbar
-        expand='xl'
+        expand="xl"
         className={
           navbar
             ? `${classes.navbar_active} fixed-top`
@@ -62,14 +63,14 @@ const TheNavbar = () => {
       >
         <Navbar.Brand className={classes.navbar_brand}>
           <Link
-            to='home'
+            to="home"
             spy={true}
             smooth={true}
             offset={-50}
             duration={500}
             style={{ textDecoration: "none" }}
           >
-            <img src={Logo} alt='My logo'></img>
+            <img src={Logo} alt="My logo"></img>
             <span
               className={
                 navbar ? classes.navbar__text__active : classes.navbar__text
@@ -81,11 +82,11 @@ const TheNavbar = () => {
         </Navbar.Brand>
 
         <Navbar.Toggle
-          aria-controls='basic-navbar-nav'
+          aria-controls="basic-navbar-nav"
           className={classes.toggle}
           onClick={handleToggle}
         />
-        <Navbar.Collapse id='basic-navbar-nav'>
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`${classes.nav__linkgroup} ms-auto`}>
             <Nav.Link className={`${classes.nav__link}`}>
               <div

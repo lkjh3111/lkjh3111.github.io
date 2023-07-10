@@ -11,6 +11,7 @@ const EditUser = (props) => {
     lastName: props.item.lastName,
     username: props.item.username,
     email: props.item.email,
+    balance: props.balance.toString(),
   });
 
   const [errors, setErrors] = useState({
@@ -18,6 +19,7 @@ const EditUser = (props) => {
     lastName: "",
     username: "",
     email: "",
+    balance: "",
   });
 
   const modalRef = useRef();
@@ -53,6 +55,7 @@ const EditUser = (props) => {
       lastName: "",
       username: "",
       email: "",
+      balance: "",
     });
   };
 
@@ -78,6 +81,10 @@ const EditUser = (props) => {
       }
     }
 
+    if (parseFloat(state.balance) <= 0 || !state.balance) {
+      errors.withdrawAmount = "Amount Required";
+    }
+
     if (Object.keys(errors).length > 0) {
       setErrors(errors);
       return false;
@@ -99,7 +106,8 @@ const EditUser = (props) => {
         state.firstName,
         state.lastName,
         state.username,
-        state.email
+        state.email,
+        state.balance
       ).then(
         (response) => {
           handleClear();
@@ -189,6 +197,23 @@ const EditUser = (props) => {
               name="email"
               placeholder={props.item.email}
               value={state.email}
+              onChange={handleChange}
+              autoComplete="on"
+              className={
+                errors.email ? "is-invalid form-control" : "form-control"
+              }
+            />
+            <div className={classes.edit_user_label}>
+              <label>Balance</label>
+              <span className="text-danger">
+                <small>{errors.balance}</small>
+              </span>
+            </div>
+            <input
+              type="text"
+              name="balance"
+              placeholder={props.balance.toString().replace(/^0+(?!\.|$)/, "")}
+              value={state.balance}
               onChange={handleChange}
               autoComplete="on"
               className={

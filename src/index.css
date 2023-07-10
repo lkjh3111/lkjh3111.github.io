@@ -1549,8 +1549,12 @@ header .header-right .header-user .signout i {
   padding-left: 10px;
 }
 
+.activity-left {
+  padding-left: 30px;
+}
+
 .activity-right-padding {
-  padding-right: 50px;
+  padding-right: 30px;
 }
 
 .activity-row:hover {
@@ -2045,6 +2049,8 @@ form .reset-pass-element .form-line label {
   user-select: none;
   font-weight: normal !important;
   line-height: 160%;
+  z-index: 100;
+  pointer-events: auto;
 }
 
 .radio-container input,
@@ -2054,6 +2060,7 @@ form .reset-pass-element .form-line label {
   cursor: pointer;
   height: 0;
   width: 0;
+  z-index: 100;
 }
 
 .radio-container .checkmark {
@@ -2064,6 +2071,7 @@ form .reset-pass-element .form-line label {
   width: 25px;
   background-color: #eeeeee;
   border-radius: 50%;
+  z-index: 100;
 }
 
 .checkbox-container .checkmark {
@@ -2075,17 +2083,20 @@ form .reset-pass-element .form-line label {
   background-color: #ffffff;
   border-radius: 5px;
   border: 1px solid #dadada;
+  z-index: 100;
 }
 
 .radio-container:hover input ~ .checkmark,
 .checkbox-container:hover input ~ .checkmark {
   background-color: #f5f5f5;
+  z-index: 100;
 }
 
 .radio-container input:checked ~ .checkmark,
 .checkbox-container input:checked ~ .checkmark {
   background-color: #3a38a7;
   border: 1px solid #3a38a7;
+  z-index: 100;
 }
 
 .radio-container .checkmark:after,
@@ -2093,21 +2104,24 @@ form .reset-pass-element .form-line label {
   content: "";
   position: absolute;
   display: none;
+  z-index: 100;
 }
 
 .radio-container input:checked ~ .checkmark:after,
 .checkbox-container input:checked ~ .checkmark:after {
   display: block;
+  z-index: 100;
 }
 
 .radio-container .checkmark:after,
 .checkbox-container .checkmark:after {
   top: -2px;
   left: 4px;
-  position: absolute;
+  /* position: absolute; */
   font-family: "Material Icons";
   content: "\2713";
   color: #ffffff;
+  z-index: 100;
 }
 
 /* Login - Register */
@@ -2121,15 +2135,29 @@ form .reset-pass-element .form-line label {
   margin-bottom: 0;
 }
 
-/* Sign-up */
-.form-control:focus {
-  box-shadow: none;
+.password {
+  display: flex;
 }
 
-.form-control.is-invalid:focus,
-.was-validated .form-control:invalid:focus {
-  border: none;
-  box-shadow: none;
+.password i {
+  margin-left: -30px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+/* Sign-up */
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+  background-image: none !important;
+  border-color: #ced4da;
+  padding-right: 0.75em;
+}
+
+.form-control.is-valid,
+.was-validated .form-control:valid {
+  background-image: none !important;
+  border-color: #ced4da;
+  padding-right: 0.75em;
 }
 
 /* Pagination */

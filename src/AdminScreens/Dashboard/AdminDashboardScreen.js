@@ -48,12 +48,12 @@ const AdminDashboardScreen = () => {
           <table className="data-table">
             <thead>
               <tr>
-                <th className="left"></th>
+                <th className="left responsive-hide">ID</th>
                 <th className="left">Name</th>
                 <th className="center">Username</th>
                 <th className="center">Email</th>
                 <th className="center responsive-hide2">Roles</th>
-                {/* <th className="rIght responsive-hide">Last 7 days</th> */}
+                <th className="center">Current Balance</th>
                 <th className="right">&nbsp;</th>
               </tr>
             </thead>

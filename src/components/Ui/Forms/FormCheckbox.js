@@ -1,18 +1,21 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from "react";
+import PropTypes from "prop-types";
 
 const FormCheckbox = memo(({ name, text, onChange, checked }) => (
-  <label className='checkbox-container'>
+  <label className="checkbox-container">
     {text}
     <input
-      type='checkbox'
+      type="checkbox"
       id={name}
-      name={name}
-      value='0'
+      // name={name}
+      // value="0"
       defaultChecked={checked}
-      onChange={(e) => onChange(e)}
+      onChange={(e) => {
+        console.log(e);
+        return onChange(e);
+      }}
     />
-    <span className='checkmark' />
+    <span className="checkmark" />
   </label>
 ));
 

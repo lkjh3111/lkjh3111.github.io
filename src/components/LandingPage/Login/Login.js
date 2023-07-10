@@ -5,12 +5,13 @@ import classes from "./Login.module.css";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthService from "../../../services/AuthService";
+import FormCheckbox from "../../../components/Ui/Forms/FormCheckbox";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState("");
-  const [remember, setRemember] = useState(false);
+  // const [remember, setRemember] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({
     email: "",
@@ -44,6 +45,13 @@ const Login = (props) => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  // const handleRemember = (e) => {
+  //   e.preventDefault();
+  //   console.log("test");
+  //   console.log(e.target.value);
+  //   setRemember(!e.target.value);
+  // };
 
   const togglePassword = (e) => {
     if (showPassword) {
@@ -140,7 +148,7 @@ const Login = (props) => {
                   <small>{errors.password}</small>
                 </span>
               </div>
-              <div className="input-group">
+              <div className="password">
                 <input
                   type={showPassword ? "text" : "password"}
                   placeholder="Enter Password"
@@ -151,27 +159,30 @@ const Login = (props) => {
                     errors.password ? "is-invalid form-control" : "form-control"
                   }
                 />
-                <div className="input-group-btn">
-                  <button
-                    className="btn btn-outline-primary btn-lg"
-                    onClick={togglePassword}
-                  >
-                    <i
-                      className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}
-                    ></i>
-                  </button>
-                </div>
+                <i
+                  className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}
+                  id="togglePassword"
+                  onClick={togglePassword}
+                ></i>
               </div>
             </div>
             <div className={classes.remember_forgot_div}>
-              <div className={classes.checkbox_label}>
-                <input
+              {/* <div className={classes.checkbox_label}> */}
+              {/* <input
                   type="checkbox"
                   className={classes.checkbox}
-                  // id="customCheck1"
-                />
-                <label>Remember me</label>
-              </div>
+                  id="rememberMe"
+                  checked={remember}
+                  onChange={handleRemember}
+                /> */}
+              {/* <FormCheckbox
+                name="rememberMe"
+                checked={remember}
+                text="Remember Me"
+                onChange={handleRemember}
+              /> */}
+              {/* <label>Remember me</label> */}
+              {/* </div> */}
               <div>
                 <Link to="/forgot-password">Forgot password?</Link>
               </div>

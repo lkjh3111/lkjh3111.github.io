@@ -3,7 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%);
-  width: 700px;
+  width: 750px;
   background-color: #fff;
   padding-top: 20px;
   padding-bottom: 40px;
@@ -22,15 +22,15 @@
 
 .signup_modal_content h2 {
   color: var(--primaryitemcolor);
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 30px;
 }
 
 .signup_modal_content input {
-  width: 260px;
+  width: 280px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
   align-items: flex-start;

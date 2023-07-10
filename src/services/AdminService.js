@@ -27,7 +27,7 @@ class AdminService {
     });
   }
 
-  editUser(id, firstName, lastName, username, email) {
+  editUser(id, firstName, lastName, username, email, balance) {
     let config = {
       headers: authHeader(),
     };
@@ -39,6 +39,7 @@ class AdminService {
           lastName,
           username,
           email,
+          balance,
         },
         config
       )
