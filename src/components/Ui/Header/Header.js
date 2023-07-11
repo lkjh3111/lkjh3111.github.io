@@ -5,13 +5,13 @@ import HeaderRight from "./HeaderRight";
 
 const Header = (props) => {
   return (
-    <header className='flex flex-center flex-space-between'>
+    <header className="flex flex-center flex-space-between">
       <HeaderLeft
         icon={props.icon}
         onClick={props.onClick}
         // title={props.title}
       />
-      <HeaderRight />
+      <HeaderRight image={props.image} />
     </header>
   );
 };

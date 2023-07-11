@@ -12,14 +12,12 @@ const WalletOverview = memo(({ currencyChange }) => {
   const [currencyList, setCurrencyList] = useState({});
 
   useEffect(() => {
-    console.log("test2");
     UserService.getUserWallets(userId).then((response) => {
       setData(response);
     });
   }, []);
 
   useEffect(() => {
-    console.log("test");
     ForexService.getCurrencyList().then((response) => {
       setCurrencyList(response);
     });

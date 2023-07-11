@@ -1,17 +1,57 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import AuthService from "../../../../services/AuthService";
 
 import Box from "../../Common/Box";
 import Image from "../../../../assets/image/blank-profile.png";
+import UserService from "../../../../services/UserService";
+import { toast } from "react-toastify";
 
 const Profile = memo(() => {
+  const [preview, setPreview] = useState(null);
+  const [image, setImage] = useState(null);
   const user = AuthService.getCurrentUser();
   const name = user.firstName + " " + user.lastName;
   const id = user.id;
-  const [menuOpened, setMenuOpened] = useState(false);
+  // const [menuOpened, setMenuOpened] = useState(false);
 
-  const handleMenuOpen = () => {
-    setMenuOpened(!menuOpened);
+  // const handleMenuOpen = () => {
+  //   setMenuOpened(!menuOpened);
+  // };
+
+  useEffect(() => {
+    UserService.getImage(id).then((response) => {
+      setPreview("data:image/jpeg;base64," + response.image);
+    });
+  }, [preview]);
+
+  const successNotification = (e) => toast.success(e);
+  const failNotification = (e) => toast.error(e);
+
+  const onClick = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let img = e.target.files[0];
+      // setPreview(URL.createObjectURL(img));
+      setImage(img);
+      handleUpload(img);
+    }
+  };
+
+  const handleUpload = (img) => {
+    UserService.uploadImage(id, img).then(
+      (response) => {
+        successNotification(response);
+        window.location.reload();
+      },
+      (error) => {
+        const message =
+          (error.response &&
+            error.response.data &&
+            error.response.data.result) ||
+          error.result ||
+          error.toString();
+        failNotification(message);
+      }
+    );
   };
 
   return (
@@ -19,7 +59,7 @@ const Profile = memo(() => {
       <div className="box-title box-vertical-padding box-horizontal-padding no-select">
         <div className="flex flex-center flex-space-between">
           <p>My Profile</p>
-          <button
+          {/* <button
             type="button"
             className="box-icon pointer"
             onClick={() => handleMenuOpen()}
@@ -50,19 +90,31 @@ const Profile = memo(() => {
                 </li>
               </ul>
             </div>
-          )}
+          )} */}
         </div>
       </div>
       <div className="widget-profile box-content box-content-height-nobutton">
         <div className="center">
           <form className="upload no-select" noValidate>
-            <input type="file" name="file" id="file" accept=".jpg, .jpeg" />
+            <input
+              type="file"
+              name="file"
+              id="file"
+              accept=".jpg, .jpeg"
+              onChange={onClick}
+            />
+            {/* <input accept="image/*" type="file" onChange={onClick} /> */}
             <label htmlFor="file">
-              <div
+              {/* <div
                 className="icon cover pointer"
                 style={{
-                  backgroundImage: { Image },
+                  backgroundImage: { preview },
                 }}
+              /> */}
+              <img
+                className="icon cover pointer"
+                src={preview}
+                alt="User avatar"
               />
               <div className="edit pointer">
                 <i className="material-icons">edit</i>

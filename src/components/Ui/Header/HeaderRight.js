@@ -1,12 +1,20 @@
 import { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../../services/AuthService";
+import UserService from "../../../services/UserService";
 
-const HeaderRight = memo(() => {
+const HeaderRight = memo(({ image }) => {
   // const location = useLocation();
+  // const [preview, setPreview] = useState(null);
   const user = AuthService.getCurrentUser();
   const name = user.firstName + " " + user.lastName;
   const [hide, setHide] = useState(false);
+
+  // useEffect(() => {
+  //   UserService.getImage(user.id).then((response) => {
+  //     setPreview("data:image/jpeg;base64," + response.image);
+  //   });
+  // }, [preview]);
 
   useEffect(() => {
     if (user.roles.find((e) => e === "ADMIN")) {
@@ -45,11 +53,16 @@ const HeaderRight = memo(() => {
           {!hide && (
             <li>
               <Link to="/profile">
-                <div
+                {/* <div
                   className="profile-picture cover"
                   // style={{
                   //   backgroundImage: `url('https://pbs.twimg.com/profile_images/1265581417364369408/b7CxjEfi_400x400.jpg')`,
                   // }}
+                /> */}
+                <img
+                  className="profile-picture cover"
+                  src={image}
+                  alt="User avatar"
                 />
               </Link>
             </li>

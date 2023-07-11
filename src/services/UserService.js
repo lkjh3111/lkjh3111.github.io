@@ -47,6 +47,32 @@ class UserService {
       });
   }
 
+  uploadImage(id, file) {
+    let formData = new FormData();
+    formData.append("file", file);
+    let headers = authHeader();
+    headers["content-type"] = "multipart/form-data";
+    const config = {
+      headers: headers,
+    };
+    return axios
+      .post(host + "/users/" + id + "/image", formData, config)
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
+  getImage(id) {
+    let config = {
+      headers: authHeader(),
+    };
+    return axios
+      .get(host + "/users/" + id + "/image", config)
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
   getUserWallet(id, currency) {
     let config = {
       headers: authHeader(),

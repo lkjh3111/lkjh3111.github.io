@@ -7,7 +7,6 @@ const WalletOverviewRow = memo(({ item, currencyChange, currencyList }) => {
   const currencyName = currencyList[item.currency.toLowerCase()];
 
   useEffect(() => {
-    console.log(currencyName);
     ForexService.convertCurrency(item.currency, "usd").then((response) => {
       setConvertedValue(response.usd);
     });
