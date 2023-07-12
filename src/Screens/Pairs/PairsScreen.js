@@ -33,16 +33,13 @@ const PairsScreen = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    console.log(keyword);
     if (keyword) {
       const filtered = data.filter(
         (pair) => pair.baseCurrency.toLowerCase() === keyword.toLowerCase()
       );
       setFilteredData(filtered);
-      console.log(filteredData);
     } else {
       setFilteredData(data);
-      console.log(filteredData);
     }
   };
 

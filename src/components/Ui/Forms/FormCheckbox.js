@@ -11,7 +11,6 @@ const FormCheckbox = memo(({ name, text, onChange, checked }) => (
       // value="0"
       defaultChecked={checked}
       onChange={(e) => {
-        console.log(e);
         return onChange(e);
       }}
     />

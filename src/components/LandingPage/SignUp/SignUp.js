@@ -48,10 +48,6 @@ const SignUp = (props) => {
   }, []);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    if (e.target.value === " ") {
-      console.log("test");
-    }
     let stateUpdated = {
       ...state,
       [e.target.name]: e.target.value,
@@ -80,7 +76,6 @@ const SignUp = (props) => {
     } else {
       setShowPassword(true);
     }
-    console.log(showPassword);
   };
 
   const toggleConfirmPassword = (e) => {

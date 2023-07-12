@@ -48,8 +48,6 @@ const Login = (props) => {
 
   // const handleRemember = (e) => {
   //   e.preventDefault();
-  //   console.log("test");
-  //   console.log(e.target.value);
   //   setRemember(!e.target.value);
   // };
 
