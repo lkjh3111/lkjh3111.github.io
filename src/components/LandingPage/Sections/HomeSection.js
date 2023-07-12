@@ -3,12 +3,10 @@ import TheButton from "../../Ui/TheButton";
 import TransparentButton from "../../Ui/TransparentButton";
 import classes from "./HomeSection.module.css";
 import { Row, Container } from "react-bootstrap";
-// import { Link } from "react-scroll";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import DevicesImage from "../../../assets/image/devices.webp";
 import CapitalRow from "../../Ui/Tables/Capital/CapitalRow";
-// import BackgroundImage from "../../assets/image/chart.png";
 
 const HomeSection = () => {
   const [data, setData] = useState([]);
@@ -119,63 +117,37 @@ const HomeSection = () => {
   }, []);
 
   return (
-    <section id='home' className={classes.bg_image}>
+    <section id="home" className={classes.bg_image}>
       <Container className={classes.container}>
         <Row>
           <div
             className={classes.devices__image}
             src={DevicesImage}
-            fluid='true'
-            alt='Devices pic'
-            data-aos='fade-left'
-            data-aos-easing='ease-out'
-            data-aos-duration='1500'
-          >
-            {/* <img
-            className={classes.devices__image}
-            src={DevicesImage}
-            fluid='true'
-            alt='Devices pic'
-            data-aos='fade-left'
-            data-aos-easing='ease-out'
-            data-aos-duration='1500'
-          ></img> */}
-          </div>
-          {/* <Row className={`${classes.row} mx-auto`}> */}
-          {/* <div className={`ms-auto`}>
-            <img
-              // className={classes.devices__image}
-              src={BackgroundImage}
-              fluid='true'
-              alt='Background pic'
-            ></img>
-          </div> */}
-          {/* <Col
-            lg={6}
-            className='p-0'
-            data-aos='fade-right'
-            data-aos-easing='ease-out'
-            data-aos-duration='1500'
-          > */}
+            fluid="true"
+            alt="Devices pic"
+            data-aos="fade-left"
+            data-aos-easing="ease-out"
+            data-aos-duration="1500"
+          ></div>
           <div>
             <div
               className={classes.text__div}
-              data-aos='fade-right'
-              data-aos-easing='ease-out'
-              data-aos-duration='1500'
+              data-aos="fade-right"
+              data-aos-easing="ease-out"
+              data-aos-duration="1500"
             >
               <h1>Trade Stocks, Forex and Crypto</h1>
             </div>
             <div
               className={classes.buttons}
-              data-aos='fade-right'
-              data-aos-easing='ease-out'
-              data-aos-duration='1500'
+              data-aos="fade-right"
+              data-aos-easing="ease-out"
+              data-aos-duration="1500"
             >
-              <Link className={classes.trade_now_button} to='/trading'>
+              <Link className={classes.trade_now_button} to="/trading">
                 <TheButton>Trade Now</TheButton>
               </Link>
-              <Link className={classes.practice_button} to='/dashboard'>
+              <Link className={classes.practice_button} to="/dashboard">
                 <TransparentButton>Free Practice Account</TransparentButton>
               </Link>
             </div>
@@ -183,9 +155,9 @@ const HomeSection = () => {
         </Row>
         <Row className={classes.markets}>
           <div
-            data-aos='fade-up'
-            data-aos-easing='ease-out'
-            data-aos-duration='500'
+            data-aos="fade-up"
+            data-aos-easing="ease-out"
+            data-aos-duration="500"
           >
             <div className={classes.markets__properties}>
               <div>
@@ -217,19 +189,18 @@ const HomeSection = () => {
             </div>
           </div>
         </Row>
-        {/* <Row> */}
         <div>
           {data && data.length > 0 && (
-            <table className='data-table'>
+            <table className="data-table">
               <thead>
                 <tr>
-                  <th className='left'>Order</th>
-                  <th className='center'>Coin</th>
-                  <th className='center'>Final Price</th>
-                  <th className='center'>Change (24h)</th>
-                  <th className='center responsive-hide2'>Volume (24h)</th>
-                  <th className='rIght responsive-hide'>Last 7 days</th>
-                  <th className='right'>&nbsp;</th>
+                  <th className="left">Order</th>
+                  <th className="center">Coin</th>
+                  <th className="center">Final Price</th>
+                  <th className="center">Change (24h)</th>
+                  <th className="center responsive-hide2">Volume (24h)</th>
+                  <th className="rIght responsive-hide">Last 7 days</th>
+                  <th className="right">&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
@@ -245,7 +216,6 @@ const HomeSection = () => {
             </table>
           )}
         </div>
-        {/* </Row> */}
       </Container>
     </section>
   );

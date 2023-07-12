@@ -7,7 +7,6 @@ import Logo from "../../../assets/Logo/logo.svg";
 import { useState } from "react";
 import Login from "../Login/Login";
 import SignUp from "../SignUp/SignUp";
-import FormCheckbox from "../../Ui/Forms/FormCheckbox";
 
 const TheNavbar = () => {
   const [navbar, setNavbar] = useState(false);

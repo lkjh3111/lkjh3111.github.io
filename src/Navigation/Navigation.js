@@ -17,14 +17,9 @@ import { PrivateRoute } from "../routes/PrivateRoute";
 import { AdminRoute } from "../routes/AdminRoute";
 import AuthService from "../services/AuthService";
 import AuthVerify from "../commons/AuthVerify";
-import WalletScreen from "../Screens/Wallet/WalletScreen";
 
-// import SigninScreen from '../Screens/Members/SigninScreen';
-// import SignupScreen from '../Screens/Members/SignupScreen';
 import ForgotScreen from "../Screens/Members/ForgotScreen";
 import ResetPasswordScreen from "../Screens/Members/ResetPasswordScreen";
-// import ProfileScreen from "../Screens/Members/ProfileScreen";
-// import SiteLayout from "../components/layouts/SiteLayout";
 
 const Navigation = () => {
   const logOut = () => {
@@ -63,10 +58,6 @@ const Navigation = () => {
           path="/orders"
           element={<PrivateRoute Component={OrdersScreen} />}
         />
-        {/* <Route
-          path="/wallets"
-          element={<PrivateRoute Component={WalletScreen} />}
-        /> */}
         <Route
           path="/admin/dashboard"
           element={<AdminRoute Component={AdminDashboardScreen} />}
@@ -84,10 +75,6 @@ const Navigation = () => {
           path="/reset-password/:resetToken"
           element={<ResetPasswordScreen />}
         />
-
-        {/* <Route path='/forgot-password' element={<ForgotScreen />} /> */}
-        {/* <SiteLayout /> */}
-        {/* <Route path='/members/signup' element={<SignupScreen />} /> */}
         <Route path="*" element={<NotFoundScreen />} status={404} />
       </Routes>
       <AuthVerify logOut={logOut} />

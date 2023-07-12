@@ -9,7 +9,6 @@ import twitter from "../../../assets/Icon/twitter.png";
 import fb from "../../../assets/Icon/facebook.png";
 
 const Footer = () => {
-  //Structure & layout of the footer
   return (
     <div className={classes.footer_bg}>
       <Container>
@@ -17,18 +16,8 @@ const Footer = () => {
           <Col lg={6}>
             <div className={classes.info}>
               <div className={classes.navbar_brand}>
-                <Link
-                  to='hero'
-                  // spy={true}
-                  // smooth={true}
-                  // offset={-50}
-                  // duration={500}
-                >
-                  <img
-                    // className={classes.navbar_brand}
-                    src={Logo}
-                    alt='logo'
-                  ></img>
+                <Link to="hero">
+                  <img src={Logo} alt="logo"></img>
                   <span className={classes.navbar__text}>
                     158 Forex Trading
                   </span>
@@ -63,40 +52,40 @@ const Footer = () => {
             <div className={classes.social}>
               <h3>Social</h3>
               <a
-                href='https://www.instagram.com'
-                target='_blank'
-                rel='noreferrer'
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noreferrer"
               >
                 <p>
                   <img
                     src={insta}
-                    alt='instagram'
+                    alt="instagram"
                     className={classes.social_icon}
                   ></img>
                 </p>
               </a>
               <a
-                href='https://mobile.twitter.com'
-                target='_blank'
-                rel='noreferrer'
+                href="https://mobile.twitter.com"
+                target="_blank"
+                rel="noreferrer"
               >
                 <p>
                   <img
                     src={twitter}
-                    alt='twitter'
+                    alt="twitter"
                     className={classes.social_icon}
                   ></img>
                 </p>
               </a>
               <a
-                href='https://www.facebook.com'
-                target='_blank'
-                rel='noreferrer'
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noreferrer"
               >
                 <p>
                   <img
                     src={fb}
-                    alt='facebook'
+                    alt="facebook"
                     className={classes.social_icon}
                   ></img>
                 </p>

@@ -1,23 +1,15 @@
 import React from "react";
 import HomeSection from "./HomeSection";
-import HeroTwoSection from "./HeroTwoSection";
-// import HeroThreeSection from "./HeroThreeSection";
-import HeroFourSection from "./HeroFourSection";
-import HeroFiveSection from "./HeroFiveSection";
-// import HeroSixSection from "./HeroSixSection";
-// import HeroSevenSection from "./HeroSevenSection";
+import Platform from "./Platform";
+import Features from "./Features";
 
 const Sections = () => {
   //Rendering every of the section components
   return (
     <main>
       <HomeSection />
-      {/* <HeroTwoSection /> */}
-      {/* <HeroThreeSection /> */}
-      <HeroFourSection />
-      <HeroFiveSection />
-      {/* <HeroSixSection /> */}
-      {/* <HeroSevenSection /> */}
+      <Platform />
+      <Features />
     </main>
   );
   //END

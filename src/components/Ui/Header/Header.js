@@ -6,11 +6,7 @@ import HeaderRight from "./HeaderRight";
 const Header = (props) => {
   return (
     <header className="flex flex-center flex-space-between">
-      <HeaderLeft
-        icon={props.icon}
-        onClick={props.onClick}
-        // title={props.title}
-      />
+      <HeaderLeft icon={props.icon} onClick={props.onClick} />
       <HeaderRight image={props.image} />
     </header>
   );
@@ -24,7 +20,4 @@ Header.defaultProps = {
 
 Header.propTypes = {
   icon: PropTypes.string,
-  // title: PropTypes.string.isRequired,
 };
-
-// export default Header;

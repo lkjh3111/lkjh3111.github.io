@@ -45,12 +45,6 @@ const HeaderRight = memo(({ image }) => {
           {!hide && (
             <li>
               <Link to="/profile">
-                {/* <div
-                  className="profile-picture cover"
-                  // style={{
-                  //   backgroundImage: `url('https://pbs.twimg.com/profile_images/1265581417364369408/b7CxjEfi_400x400.jpg')`,
-                  // }}
-                /> */}
                 <img
                   className="profile-picture cover"
                   src={image ? image : DefaultImage}

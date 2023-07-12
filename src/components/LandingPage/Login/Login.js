@@ -5,7 +5,7 @@ import classes from "./Login.module.css";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthService from "../../../services/AuthService";
-import FormCheckbox from "../../../components/Ui/Forms/FormCheckbox";
+// import FormCheckbox from "../../../components/Ui/Forms/FormCheckbox";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");

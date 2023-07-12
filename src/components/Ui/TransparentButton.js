@@ -2,7 +2,6 @@ import React from "react";
 import classes from "./TransparentButton.module.css";
 
 const TheButton = (props) => {
-  //Layout and structure of the TheButton component
   return (
     <button
       className={`${classes.button} ${props.className}`}
@@ -12,7 +11,6 @@ const TheButton = (props) => {
       {props.children}
     </button>
   );
-  //END
 };
 
 export default TheButton;

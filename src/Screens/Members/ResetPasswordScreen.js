@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import MainLayout from "../../components/layouts/MainLayout";
 import Box from "../../components/Ui/Common/Box";
