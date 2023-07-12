@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 import MainLayout from "../../components/layouts/MainLayout";
 import Box from "../../components/Ui/Common/Box";
 import FormInput from "../../components/Ui/Forms/FormInput";
 import FormButton from "../../components/Ui/Forms/FormButton";
 import Logo from "../../assets/Logo/logo.svg";
+import UserService from "../../services/UserService";
+import { toast } from "react-toastify";
 
 const ResetPasswordScreen = () => {
+  const { resetToken } = useParams();
   const [formValues, setFormValues] = useState({
     newPassword: "",
     confirmPassword: "",
@@ -21,6 +24,14 @@ const ResetPasswordScreen = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const navigate = useNavigate();
+
+  const sleep = async (milliseconds) => {
+    await new Promise((resolve) => {
+      return setTimeout(resolve, milliseconds);
+    });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -29,6 +40,9 @@ const ResetPasswordScreen = () => {
       [name]: value,
     });
   };
+
+  const successNotification = (e) => toast.success(e);
+  const failNotification = (e) => toast.error(e);
 
   const toggleNewPassword = (e) => {
     e.preventDefault();
@@ -76,9 +90,23 @@ const ResetPasswordScreen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("test");
     if (validateForm()) {
-      console.log("Request sent");
+      UserService.resetPassword(resetToken, formValues.newPassword).then(
+        async (response) => {
+          successNotification(response);
+          await sleep(4000);
+          navigate("/");
+        },
+        (error) => {
+          const message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.result) ||
+            error.result ||
+            error.toString();
+          failNotification(message);
+        }
+      );
     }
   };
 
@@ -164,11 +192,11 @@ const ResetPasswordScreen = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="form-line">
+                    {/* <div className="form-line">
                       <div className="full-width right">
                         <Link to="/">Login</Link>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="form-line">
                       <div className="buttons">
                         <FormButton

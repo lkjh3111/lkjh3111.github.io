@@ -6,6 +6,8 @@ import Box from "../../components/Ui/Common/Box";
 import FormInput from "../../components/Ui/Forms/FormInput";
 import FormButton from "../../components/Ui/Forms/FormButton";
 import Logo from "../../assets/Logo/logo.svg";
+import UserService from "../../services/UserService";
+import { toast } from "react-toastify";
 
 const ForgotScreen = () => {
   const [formValues, setFormValues] = useState({
@@ -30,6 +32,9 @@ const ForgotScreen = () => {
       [name]: value,
     });
   };
+
+  const successNotification = (e) => toast.success(e);
+  const failNotification = (e) => toast.error(e);
 
   const validateForm = () => {
     let errors = {};
@@ -57,9 +62,21 @@ const ForgotScreen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Test!");
     if (validateForm()) {
-      console.log("Send request!");
+      UserService.forgotPassword(formValues.email).then(
+        (response) => {
+          successNotification(response);
+        },
+        (error) => {
+          const message =
+            (error.response &&
+              error.response.data &&
+              error.response.data.result) ||
+            error.result ||
+            error.toString();
+          failNotification(message);
+        }
+      );
     }
   };
 

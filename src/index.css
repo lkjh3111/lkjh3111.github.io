@@ -1842,7 +1842,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .forgot-label {
   display: flex;
   justify-content: space-between;
-  padding-top: 10px;
 }
 
 .form .reset-pass-element .form-line input[type="password"] {

@@ -73,6 +73,28 @@ class UserService {
       });
   }
 
+  forgotPassword(email) {
+    return axios
+      .post(host + "/users/password/forgot", null, {
+        headers: authHeader(),
+        params: { email: email },
+      })
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
+  resetPassword(token, newPassword) {
+    return axios
+      .post(host + "/users/password/reset", null, {
+        headers: authHeader(),
+        params: { token: token, newPassword: newPassword },
+      })
+      .then((response) => {
+        return response.data.result;
+      });
+  }
+
   getUserWallet(id, currency) {
     let config = {
       headers: authHeader(),

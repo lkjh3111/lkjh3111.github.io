@@ -80,7 +80,10 @@ const Navigation = () => {
           element={<AdminRoute Component={AdminOrdersScreen} />}
         />
         <Route path="/forgot-password" element={<ForgotScreen />} />
-        <Route path="/reset-password" element={<ResetPasswordScreen />} />
+        <Route
+          path="/reset-password/:resetToken"
+          element={<ResetPasswordScreen />}
+        />
 
         {/* <Route path='/forgot-password' element={<ForgotScreen />} /> */}
         {/* <SiteLayout /> */}

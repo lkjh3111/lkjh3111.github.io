@@ -1,20 +1,12 @@
 import { memo, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../../services/AuthService";
-import UserService from "../../../services/UserService";
+import DefaultImage from "../../../assets/image/blank-profile.png";
 
 const HeaderRight = memo(({ image }) => {
-  // const location = useLocation();
-  // const [preview, setPreview] = useState(null);
   const user = AuthService.getCurrentUser();
   const name = user.firstName + " " + user.lastName;
   const [hide, setHide] = useState(false);
-
-  // useEffect(() => {
-  //   UserService.getImage(user.id).then((response) => {
-  //     setPreview("data:image/jpeg;base64," + response.image);
-  //   });
-  // }, [preview]);
 
   useEffect(() => {
     if (user.roles.find((e) => e === "ADMIN")) {
@@ -61,7 +53,7 @@ const HeaderRight = memo(({ image }) => {
                 /> */}
                 <img
                   className="profile-picture cover"
-                  src={image}
+                  src={image ? image : DefaultImage}
                   alt="User avatar"
                 />
               </Link>

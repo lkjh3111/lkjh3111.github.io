@@ -48,11 +48,19 @@ const SignUp = (props) => {
   }, []);
 
   const handleChange = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === " ") {
+      console.log("test");
+    }
     let stateUpdated = {
       ...state,
       [e.target.name]: e.target.value,
     };
     setState(stateUpdated);
+  };
+
+  const handleKeyDown = (e) => {
+    e.stopPropagation();
   };
 
   const handleClear = () => {
@@ -181,7 +189,8 @@ const SignUp = (props) => {
                   placeholder="Enter First Name"
                   value={state.firstName}
                   onChange={handleChange}
-                  autoComplete="on"
+                  onKeyDown={handleKeyDown}
+                  autoComplete="off"
                   className={
                     errors.firstName
                       ? "is-invalid form-control"
@@ -202,7 +211,8 @@ const SignUp = (props) => {
                   placeholder="Enter Last Name"
                   value={state.lastName}
                   onChange={handleChange}
-                  autoComplete="on"
+                  onKeyDown={handleKeyDown}
+                  autoComplete="off"
                   className={
                     errors.lastName ? "is-invalid form-control" : "form-control"
                   }
